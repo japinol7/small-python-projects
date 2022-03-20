@@ -1,5 +1,4 @@
 import copy
-from pprint import pprint
 from abc import ABCMeta, abstractmethod
 
 
@@ -22,11 +21,12 @@ class Actor(metaclass=ABCMeta):
 
     def __str__(self):
         return (f"name: {self.name!r}, "
+                f"class: {self.type_actor!r}, "
                 f"type: {self.type!r}, "
                 f"health: {self.health!r}, "
                 f"power: {self.power!r}")
 
-    def  __repr__(self):
+    def __repr__(self):
         return (f"{self.type_actor}("
                 f"{self.name!r}, "
                 f"{self.type!r}, "
@@ -40,7 +40,7 @@ class Actor(metaclass=ABCMeta):
     @name.setter
     def name(self, v):
         if v in Actor.actors:
-            raise ActorExistsException 
+            raise ActorExistsException
         Actor.actors[v] = Actor.actors.pop(self._name)
         self._name = v
 
@@ -115,34 +115,25 @@ class Pc(Actor):
 
 def main():
     p1 = Pc("P1", "rider", 50, 20)
-    p2 = Pc("P2", "rider", 35, 45)
-    p3 = Pc("P3", "rider", 67, 33)
+    Pc("P2", "rider", 35, 45)
+    Pc("P3", "rider", 67, 33)
     baragorn = Npc("Baragorn", "fighter", 100, 20)
+
     npc_def = [
         ("Aragorn", "rider", 100, 20),
         ("Gandalf", "mage", 110, 520),
         ("Legolas", "thief", 110, 520),
         ]
+    [Npc(*npc) for npc in npc_def]
 
-    some_npcs = [Npc(*npc) for npc in npc_def]
+    for actor in Actor.actors.values():
+        print(repr(actor))
 
-    print("Baragon:")
-    pprint(baragorn)
-    print("\np1:")
-    pprint(p1)
-    print("\np2:")
-    pprint(p2)
-    print("\np3:")
-    pprint(p3)
-    print("\nsome_npcs:")
-    pprint(some_npcs)
-
-    print("\nActors:")
-    pprint(Actor.actors)
-    print("\nNpcs:")
-    pprint(Npc.npcs)
-    print("\nPcs:")
-    pprint(Pc.pcs)
+    default_pc = p1
+    default_npc = baragorn
+    print('-' * 10)
+    print(f'Default pc: {default_pc}')
+    print(f'Default npc: {default_npc}')
 
 
 if __name__ == "__main__":
