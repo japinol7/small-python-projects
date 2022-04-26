@@ -18,7 +18,6 @@ FILE_NAMES = os.path.join('../..', 'res', 'names', 'names_anime1.json')
 
 def main():
     log.info("Start program")
-    names_sel = []
 
     with open(FILE_NAMES, 'r') as fin:
         names = json.loads(fin.read()).get('names', [])
