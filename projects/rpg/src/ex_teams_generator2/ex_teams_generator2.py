@@ -5,6 +5,9 @@ from config.config import (
     N_TEAMS,
     N_MEMBERS,
     GROUP_SEPARATOR,
+    BODY_TEAMS_KEY,
+    BODY_ERRORS_KEY,
+    ERROR_TAG,
     )
 from config.config import log
 from team.team import calc_team
@@ -14,25 +17,41 @@ FILE_NAMES = os.path.join('../..', 'res', 'names', 'names_anime1.json')
 
 
 def main():
+    log.info("Start program")
     names_sel = []
 
     with open(FILE_NAMES, 'r') as fin:
         names = json.loads(fin.read()).get('names', [])
     names = list(set(names))
 
+    names_sel = []
+    body = {BODY_TEAMS_KEY: {}, BODY_ERRORS_KEY: {}}
+    log.info(f"Generate {N_TEAMS} Teams of {N_MEMBERS} members")
     for i in range(N_TEAMS):
-        calc_team(f'Team {i+1}', names, names_sel, N_MEMBERS)
+        team_name = f'Team {i + 1}'
+        team = calc_team(team_name, names, names_sel, N_MEMBERS)
+        body_key = BODY_TEAMS_KEY if team.get(team_name)[0] != ERROR_TAG else BODY_ERRORS_KEY
+        body[body_key].update(team)
+        # remove currently selected member names from the list of available names
         names = list(set(names) - set(names_sel))
         names_sel = []
 
     names_remaining = names
     if names_remaining:
         if len(names_remaining) < N_MEMBERS:
-            new_ln = '\n'
-            log.info(f"Remaining Characters:\n{new_ln.join([x for x in names])}\n{GROUP_SEPARATOR}")
+            names_separator = ', '
+            log.info(f"Remaining Characters: {names_separator.join([x for x in names])}\n{GROUP_SEPARATOR}")
         else:
             log.info(f"Remaining Characters: {len(names_remaining)}\n{GROUP_SEPARATOR}")
 
+    log.info(f"End Program")
+    return {
+        'statusCode': 200,
+        'headers': {'Content-Type': 'application/json'},
+        'body': json.dumps(body),
+        }
+
 
 if __name__ == "__main__":
-    main()
+    res = main()
+    log.info(res['body'])
