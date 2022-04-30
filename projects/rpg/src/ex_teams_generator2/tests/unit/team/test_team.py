@@ -1,4 +1,3 @@
-
 from config.config import (
     ERROR_TAG,
     ERROR_NOT_ENOUGH_MSG,
@@ -60,7 +59,7 @@ def test_calc_team_side_effect_names_sel_once(random_choice_names_repeated_mock)
     assert result == result_expected
 
 
-def test_calc_2_teams_not_enough_names():
+def test_calc_team_2_teams_not_enough_names():
     """Tests selecting 1 name from a list of 3 names.
     Then, select 3 names from a list of 3 names, one of them already selected the fist time.
     """
