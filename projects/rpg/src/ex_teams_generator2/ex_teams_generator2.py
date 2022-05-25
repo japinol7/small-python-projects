@@ -8,6 +8,8 @@ from config.config import (
     BODY_TEAMS_KEY,
     BODY_ERRORS_KEY,
     ERROR_TAG,
+    LOG_START_APP_MSG,
+    LOG_END_APP_MSG,
     )
 from config.config import log
 from team.team import calc_team
@@ -17,7 +19,7 @@ FILE_NAMES = os.path.join('../..', 'res', 'names', 'names_anime1.json')
 
 
 def main():
-    log.info("Start program")
+    log.info(LOG_START_APP_MSG)
 
     with open(FILE_NAMES, 'r') as fin:
         names = json.loads(fin.read()).get('names', [])
@@ -43,7 +45,7 @@ def main():
         else:
             log.info(f"Remaining Characters: {len(names_remaining)}\n{GROUP_SEPARATOR}")
 
-    log.info(f"End Program")
+    log.info(LOG_END_APP_MSG)
     return {
         'statusCode': 200,
         'headers': {'Content-Type': 'application/json'},
