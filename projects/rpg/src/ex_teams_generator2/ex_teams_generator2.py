@@ -13,11 +13,12 @@ from config.config import (
     )
 from config.config import log
 from team.team import calc_team
-
+from utils.time_it_dec import time_it
 
 FILE_NAMES = os.path.join('../..', 'res', 'names', 'names_anime1.json')
 
 
+@time_it
 def main():
     log.info(LOG_START_APP_MSG)
 
