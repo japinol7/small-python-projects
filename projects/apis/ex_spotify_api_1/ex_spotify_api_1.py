@@ -17,7 +17,7 @@ def main():
 
     spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
-    artist_name = 'Ichiko Aoba'
+    artist_name = 'Hilary Hahn'
     results = spotify.search(q=f'artist:{artist_name}', type='artist')
     items = results['artists']['items']
     if len(items) < 1:
