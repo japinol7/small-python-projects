@@ -17,7 +17,7 @@ def main():
 
     spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
-    artist_name = 'Hilary Hahn'
+    artist_name = 'Hilary Ha'
     results = spotify.search(q=f'artist:{artist_name}', type='artist')
     items = results['artists']['items']
     if len(items) < 1:
@@ -31,7 +31,10 @@ def main():
     artist = items[0]
     artist_uri = artist['uri']
     artist_url = artist['external_urls']['spotify']
-    log.info(f"Artist: {artist['name']}, {artist_url}")
+    followers = artist['followers']['total']
+    popularity = artist['popularity']
+    log.info(f"Artist: {artist['name']}, followers: {followers} "
+             f"popularity: {popularity} uri/url {artist_uri} {artist_url}")
 
     results = spotify.artist_albums(artist_uri, album_type='album')
     albums = results['items']
@@ -41,6 +44,17 @@ def main():
 
     for album in albums:
         log.info(f"Album: {album['name']}")
+
+    log.info(f"{'-' * 15}")
+    for artist in items[1:]:
+        followers = artist['followers']['total']
+        popularity = artist['popularity']
+        if followers < 2 and popularity < 1:
+            continue
+        artist_uri = artist['uri']
+        artist_url = artist['external_urls']['spotify']
+        log.info(f"--- Another artist: {artist['name']}, followers: {followers} "
+                 f"popularity: {popularity} uri/url {artist_uri} {artist_url}")
 
 
 if __name__ == '__main__':
