@@ -26,7 +26,7 @@ def main():
 
     if len(items) > 1:
         log.warning(f"Found {len(items)} artists that match the artist name: '{artist_name}'. "
-                    f"We choose the first and discard the rest.")
+                    f"When searching for albums, we choose the first artist and discard the rest.")
 
     artist = items[0]
     artist_uri = artist['uri']
