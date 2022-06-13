@@ -1,5 +1,5 @@
 """ Calculates n rows of the Floyd's triangle.
-The Floyd's triangle is defined by filling the rows of the triangle with consecutive numbers,
+The Floyd's triangle is defined by filling its rows with consecutive numbers,
 starting with a 1 in the top left corner.
 Ex:
 1
