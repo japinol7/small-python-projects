@@ -14,14 +14,16 @@ __author__ = 'Joan A. Pinol  (japinol)'
 
 from time_it.time_it import time_it
 
-N_ROWS_DEFAULT = 10
+N_ROWS_DEFAULT: int = 10
+
+IntMatrix = list[list[int]]
 
 
-def calc_floyd_triangle(n_rows=N_ROWS_DEFAULT):
-    rows = []
-    num = 1
+def calc_floyd_triangle(n_rows: int = N_ROWS_DEFAULT) -> IntMatrix:
+    rows: IntMatrix = []
+    num: int = 1
     for i in range(n_rows):
-        columns = []
+        columns: list[int] = []
         for j in range(i + 1):
             columns.append(num)
             num = num + 1
@@ -29,8 +31,8 @@ def calc_floyd_triangle(n_rows=N_ROWS_DEFAULT):
     return rows
 
 
-def print_floyd_triangle(rows):
-    num_max_space = len(str(rows[-1][-1]))
+def print_floyd_triangle(rows: IntMatrix) -> None:
+    num_max_space: int = len(str(rows[-1][-1]))
     for row in rows:
         for column in row:
             print(f'{column:<{num_max_space}}', end=' ')
@@ -38,6 +40,6 @@ def print_floyd_triangle(rows):
 
 
 if __name__ == "__main__":
-    res = time_it(calc_floyd_triangle)
+    res: IntMatrix = time_it(calc_floyd_triangle)
     print(f"Floyd's triangle of {N_ROWS_DEFAULT} rows:")
     print_floyd_triangle(res)
