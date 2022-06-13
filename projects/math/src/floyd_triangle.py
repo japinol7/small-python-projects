@@ -30,9 +30,10 @@ def calc_floyd_triangle(n_rows=N_ROWS_DEFAULT):
 
 
 def print_floyd_triangle(rows):
-    for column in rows:
-        for item in column:
-            print(item, end=' ')
+    num_max_space = len(str(rows[-1][-1]))
+    for row in rows:
+        for column in row:
+            print(f'{column:<{num_max_space}}', end=' ')
         print()
 
 
