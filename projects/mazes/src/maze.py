@@ -5,6 +5,7 @@ import random
 ROWS_DEFAULT = 15
 COLUMNS_DEFAULT = 15
 SPARSENESS_DEFAULT = 0.02
+CELL_SEPARATOR = '  '
 
 FILE_INPUT_PATH = os.path.join('..', 'input')
 FILE_OUTPUT_PATH = os.path.join('..', 'output')
@@ -55,7 +56,7 @@ class Maze:
             self.grid[self.goal.y][self.goal.x] = Cell.GOAL.value
 
     def _clean_grid(self):
-        self.grid = [[Cell.EMPTY.value for c in range(self.columns)]
+        self.grid = [[Cell.EMPTY.value for _ in range(self.columns)]
                      for r in range(self.rows)]
 
     def _random_fill(self):
@@ -71,7 +72,7 @@ class Maze:
 
         self.grid = []
         for row in rows:
-            self.grid.append(row.strip().split('  '))
+            self.grid.append(row.strip().split(CELL_SEPARATOR))
 
         self.rows = len(self.grid)
         self.columns = len(self.grid[0])
@@ -84,7 +85,7 @@ class Maze:
             fout.write(str(self))
 
     def __str__(self):
-        res = ""
+        res = ''
         for row in self.grid:
-            res += '  '.join([cell for cell in row]) + '\n'
+            res += CELL_SEPARATOR.join([cell for cell in row]) + '\n'
         return res
