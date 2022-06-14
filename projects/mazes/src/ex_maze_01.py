@@ -1,4 +1,5 @@
-"""Create a maze or NxN cells with a start and a goal."""
+"""Creates a maze of NxN cells with a start and a goal."""
+
 __author__ = 'Joan A. Pinol  (japinol)'
 
 from time_it.time_it import time_it
