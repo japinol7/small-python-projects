@@ -1,4 +1,5 @@
-from enum import Enum, auto
+from enum import Enum
+from typing import NamedTuple
 import os
 import random
 
@@ -19,16 +20,9 @@ class Cell(str, Enum):
     WALL = 'W'
 
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return f"{self.x, self.y}"
-
-    def __repr__(self):
-        return self.__str__()
+class Point(NamedTuple):
+    x: int
+    y: int
 
 
 class Maze:
@@ -94,15 +88,30 @@ class Maze:
         """Viable neighbour destination locations."""
         point = location
         locations = []
-        if point.y + 1 < self.rows and self.grid[point.y + 1][point.x] != Cell.WALL:
+        if point.y + 1 < self.rows and self.grid[point.y + 1][point.x] != Cell.WALL.value:
             locations += [Point(point.x, point.y + 1)]
-        if point.y - 1 >= 0 and self.grid[point.y - 1][point.x] != Cell.WALL:
+        if point.y - 1 >= 0 and self.grid[point.y - 1][point.x] != Cell.WALL.value:
             locations += [Point(point.x, point.y - 1)]
-        if point.x + 1 < self.columns and self.grid[point.y][point.x + 1] != Cell.WALL:
+        if point.x + 1 < self.columns and self.grid[point.y][point.x + 1] != Cell.WALL.value:
             locations += [Point(point.x + 1, point.y)]
-        if point.x - 1 >= 0 and self.grid[point.y][point.x - 1] != Cell.WALL:
+        if point.x - 1 >= 0 and self.grid[point.y][point.x - 1] != Cell.WALL.value:
             locations += [Point(point.x - 1, point.y)]
         return locations
+
+    def check_goal(self, location):
+        return location == self.goal
+
+    def mark_path(self, path):
+        for location in path:
+            self.grid[location.y][location.x] = Cell.PATH.value
+        self.grid[self.start.y][self.start.x] = Cell.START.value
+        self.grid[self.goal.y][self.goal.x] = Cell.GOAL.value
+
+    def clean_path(self, path):
+        for location in path:
+            self.grid[location.y][location.x] = Cell.EMPTY.value
+        self.grid[self.start.y][self.start.x] = Cell.START.value
+        self.grid[self.goal.y][self.goal.x] = Cell.GOAL.value
 
     def __str__(self):
         res = ''
