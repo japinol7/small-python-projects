@@ -24,6 +24,12 @@ class Point:
         self.x = x
         self.y = y
 
+    def __str__(self):
+        return f"{self.x, self.y}"
+
+    def __repr__(self):
+        return self.__str__()
+
 
 class Maze:
     def __init__(self, name):
@@ -84,8 +90,25 @@ class Maze:
         with open(file_path_name, 'w', encoding='utf8') as fout:
             fout.write(str(self))
 
+    def destination_locations(self, location):
+        """Viable neighbour destination locations."""
+        point = location
+        locations = []
+        if point.y + 1 < self.rows and self.grid[point.y + 1][point.x] != Cell.WALL:
+            locations += [Point(point.x, point.y + 1)]
+        if point.y - 1 >= 0 and self.grid[point.y - 1][point.x] != Cell.WALL:
+            locations += [Point(point.x, point.y - 1)]
+        if point.x + 1 < self.columns and self.grid[point.y][point.x + 1] != Cell.WALL:
+            locations += [Point(point.x + 1, point.y)]
+        if point.x - 1 >= 0 and self.grid[point.y][point.x - 1] != Cell.WALL:
+            locations += [Point(point.x - 1, point.y)]
+        return locations
+
     def __str__(self):
         res = ''
         for row in self.grid:
             res += CELL_SEPARATOR.join([cell for cell in row]) + '\n'
         return res
+
+    def __repr__(self):
+        return self.__str__()
