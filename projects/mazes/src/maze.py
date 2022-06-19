@@ -77,7 +77,7 @@ class Maze:
         self.rows = len(self.grid)
         self.columns = len(self.grid[0])
         self.start = Point(self.grid[0].index(Cell.START.value), 0)
-        self.goal = Point(self.grid[-1].index(Cell.GOAL.value), len(self.grid))
+        self.goal = Point(self.grid[-1].index(Cell.GOAL.value), len(self.grid) - 1)
 
     def save(self):
         file_path_name = os.path.join(FILE_OUTPUT_PATH, self.name + '.txt')
