@@ -84,8 +84,8 @@ class Maze:
         with open(file_path_name, 'w', encoding='utf8') as fout:
             fout.write(str(self))
 
-    def destination_locations(self, location):
-        """Viable neighbour destination locations."""
+    def calc_destination_locations(self, location):
+        """Calculate viable neighbour destination locations."""
         point = location
         locations = []
         if point.y + 1 < self.rows and self.grid[point.y + 1][point.x] != Cell.WALL.value:
