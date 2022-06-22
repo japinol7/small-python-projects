@@ -1,4 +1,6 @@
-"""Creates a maze of NxN cells with a start and a goal."""
+"""Creates a maze of NxN cells with a start and a goal.
+Also, solves a maze.
+"""
 
 __author__ = 'Joan A. Pinol  (japinol)'
 
