@@ -66,7 +66,7 @@ class Maze:
                     self.grid[i][j] = Cell.WALL.value
 
     def load(self):
-        file_path_name = os.path.join(FILE_OUTPUT_PATH, self.name + '.txt')
+        file_path_name = os.path.join(FILE_INPUT_PATH, self.name + '.txt')
         with open(file_path_name, 'r', encoding='utf8') as fin:
             rows = fin.readlines()
 

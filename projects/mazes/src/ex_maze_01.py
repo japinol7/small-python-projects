@@ -1,40 +1,51 @@
-"""Creates a maze of NxN cells with a start and a goal.
-Also, solves a maze.
-"""
+"""Creates and solves a maze of NxN cells with a start and a goal."""
 
 __author__ = 'Joan A. Pinol  (japinol)'
 
 from config.config import log
 from utils.time_it import time_it
+from utils.utils import calc_path_from_location_node
 from config.config import LOG_START_APP_MSG, LOG_END_APP_MSG
-from maze import Maze
-# from path_search import dfs, calc_path_from_location_node
+from model.maze import Maze
+from solver.path_search_dfs import dfs
 
 
-def main(load_maze=False):
-    log.info(LOG_START_APP_MSG)
-
-    maze = Maze('maze_01')
+def create_maze(name, load_maze=False):
+    log.info(f"Create maze: {name}")
+    maze = Maze(name)
     if load_maze:
         maze.load()
     else:
         maze.create(rows=12, columns=12)
         maze.save()
     log.info(f"Maze Start location: {maze.start}. Maze Goal location: {maze.goal}")
-
-    log.info(LOG_END_APP_MSG)
     return maze
 
 
-if __name__ == "__main__":
-    maze = time_it(main, load_maze=True)
+def solve_maze(maze, save_maze=False):
+    solution_node = dfs(maze.start, maze.check_goal, maze.calc_destination_locations)
+    if not solution_node:
+        log.warning("No solutions found.")
+        exit()
+    log.info(f"Solution found: {solution_node}")
+    path = calc_path_from_location_node(solution_node)
+    maze.mark_path(path)
+
+    if save_maze:
+        maze.save()
+    return maze
+
+
+def main():
+    log.info(LOG_START_APP_MSG)
+    maze_name = 'maze_01'
+    maze = time_it(create_maze, name=maze_name, load_maze=True)
     print(maze)
 
-    # solution_node = dfs(maze.start, maze.check_goal, maze.calc_destination_locations)
-    # if not solution_node:
-    #     log.warning("No solutions found.")
-    #     exit()
-    # log.info(f"Solution found: {solution_node}")
-    # path = calc_path_from_location_node(solution_node)
-    # maze.mark_path(path)
-    # print(maze)
+    maze = time_it(solve_maze, maze=maze, save_maze=True)
+    print(maze)
+    log.info(LOG_END_APP_MSG)
+
+
+if __name__ == "__main__":
+    main()
