@@ -30,7 +30,7 @@ def solve_maze(maze, save_maze=False):
     solution_node = dfs(maze.start, maze.check_goal, maze.calc_destination_locations)
     if not solution_node:
         log.warning("No solutions found.")
-        exit()
+        return None
     log.info(f"Solution found: {solution_node}")
     path = calc_path_from_location_node(solution_node)
     maze.mark_path(path)
