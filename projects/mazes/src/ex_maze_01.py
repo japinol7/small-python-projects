@@ -46,8 +46,9 @@ def main():
     maze = time_it(create_maze, name=maze_name, load_maze=True)
     print(maze)
 
-    _ = time_it(solve_maze, maze=maze, save_maze=True)
-    print(maze)
+    solution_node = time_it(solve_maze, maze=maze, save_maze=True)
+    if solution_node:
+        print(maze)
     log.info(LOG_END_APP_MSG)
 
 
