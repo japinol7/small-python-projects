@@ -11,18 +11,22 @@ from solver.path_search_dfs import dfs
 
 
 def create_maze(name, load_maze=False):
+    """Creates and returns a maze either by loading an existing one or generating a new one randomly."""
     log.info(f"Create maze: {name}")
     maze = Maze(name)
     if load_maze:
         maze.load()
     else:
         maze.create(rows=12, columns=12)
-        maze.save()
+        maze.save(save_as_input=True)
     log.info(f"Maze Start location: {maze.start}. Maze Goal location: {maze.goal}")
     return maze
 
 
 def solve_maze(maze, save_maze=False):
+    """Solves a given maze as a side effect.
+    It returns the solution node if it finds one. Otherwise, None.
+    """
     solution_node = dfs(maze.start, maze.check_goal, maze.calc_destination_locations)
     if not solution_node:
         log.warning("No solutions found.")
@@ -33,7 +37,7 @@ def solve_maze(maze, save_maze=False):
 
     if save_maze:
         maze.save()
-    return maze
+    return solution_node
 
 
 def main():
@@ -42,7 +46,7 @@ def main():
     maze = time_it(create_maze, name=maze_name, load_maze=True)
     print(maze)
 
-    maze = time_it(solve_maze, maze=maze, save_maze=True)
+    _ = time_it(solve_maze, maze=maze, save_maze=True)
     print(maze)
     log.info(LOG_END_APP_MSG)
 

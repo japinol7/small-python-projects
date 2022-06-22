@@ -79,8 +79,9 @@ class Maze:
         self.start = Point(self.grid[0].index(Cell.START.value), 0)
         self.goal = Point(self.grid[-1].index(Cell.GOAL.value), len(self.grid) - 1)
 
-    def save(self):
-        file_path_name = os.path.join(FILE_OUTPUT_PATH, self.name + '.txt')
+    def save(self, save_as_input=False):
+        file_path = FILE_INPUT_PATH if save_as_input else FILE_OUTPUT_PATH
+        file_path_name = os.path.join(file_path, self.name + '.txt')
         with open(file_path_name, 'w', encoding='utf8') as fout:
             fout.write(str(self))
 
