@@ -5,7 +5,7 @@ from container import Stack
 from model.node import Node
 
 
-def dfs(start_location, check_goal, calc_destination_locations):
+def calc_dfs(start_location, check_goal, calc_destination_locations):
     """Implements depth-first algorithm for traversing a graph or tree data structure."""
     next_node = Stack()
     next_node.push(Node(start_location, None))

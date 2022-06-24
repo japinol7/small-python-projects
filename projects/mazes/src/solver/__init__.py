@@ -1,1 +1,1 @@
-from solver.depth_first import dfs
+from solver.depth_first import calc_dfs
