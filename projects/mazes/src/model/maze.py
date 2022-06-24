@@ -7,6 +7,7 @@ import random
 from config.config import (
     MAZE_ROWS_DEFAULT,
     MAZE_COLUMNS_DEFAULT,
+    MAZE_SPARSENESS_ROWS_COLS_BASE,
     MAZE_SPARSENESS_DEFAULT,
     CELL_SEPARATOR,
     FILE_INPUT_PATH,
@@ -34,7 +35,11 @@ class Maze:
         self.columns = columns
         self.start = Point(start[0], start[1]) if start else Point(random.randint(0, self.columns - 1), 0)
         self.goal = Point(goal[0], goal[1]) if goal else Point(random.randint(0, self.columns - 1), self.rows - 1)
-        self.sparseness = sparseness
+        if MAZE_SPARSENESS_ROWS_COLS_BASE < rows * columns:
+            ratio = MAZE_SPARSENESS_ROWS_COLS_BASE / (rows * columns)
+        else:
+            ratio = 1
+        self.sparseness = sparseness * ratio
         self.grid = None
 
         self._create()
@@ -74,6 +79,13 @@ class Maze:
         file_path = FILE_INPUT_PATH if save_as_input else FILE_OUTPUT_PATH
         file_path_name = os.path.join(file_path, self.name + '.txt')
         with open(file_path_name, 'w', encoding='utf8') as fout:
+            fout.write(str(self))
+
+    def save_with_no_solution(self, save_as_input=False):
+        file_path = FILE_INPUT_PATH if save_as_input else FILE_OUTPUT_PATH
+        file_path_name = os.path.join(file_path, self.name + '.txt')
+        with open(file_path_name, 'w', encoding='utf8') as fout:
+            fout.write("No solutions found. Original maze:\n")
             fout.write(str(self))
 
     def calc_destination_locations(self, location):
