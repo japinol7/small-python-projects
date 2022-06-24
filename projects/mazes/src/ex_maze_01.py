@@ -11,8 +11,8 @@ from controller.controller import MazeController
 
 def main():
     log.info(LOG_START_APP_MSG)
-
     controller = MazeController()
+
     maze_name = 'maze_01'
     maze = time_it(controller.create_maze, name=maze_name, load_maze=True)
     print(maze)
