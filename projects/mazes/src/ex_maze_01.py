@@ -7,7 +7,7 @@ from utils.time_it import time_it
 from utils.utils import calc_path_from_location_node
 from config.config import LOG_START_APP_MSG, LOG_END_APP_MSG
 from model.maze import Maze
-from solver.path_search_dfs import dfs
+from solver.depth_first import dfs
 
 
 def create_maze(name, load_maze=False):
