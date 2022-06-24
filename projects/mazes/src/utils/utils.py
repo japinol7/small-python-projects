@@ -1,6 +1,13 @@
 """Module utils."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
+from typing import NamedTuple
+
+
+class Point(NamedTuple):
+    x: int
+    y: int
+
 
 def calc_path_from_location_node(node):
     path = [node.state]

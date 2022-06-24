@@ -1,28 +1,19 @@
-from enum import Enum
-from typing import NamedTuple
+"""Module maze."""
+__author__ = 'Joan A. Pinol  (japinol)'
+
 import os
 import random
 
-ROWS_DEFAULT = 15
-COLUMNS_DEFAULT = 15
-SPARSENESS_DEFAULT = 0.02
-CELL_SEPARATOR = '  '
-
-FILE_INPUT_PATH = os.path.join('..', 'input')
-FILE_OUTPUT_PATH = os.path.join('..', 'output')
-
-
-class Cell(str, Enum):
-    START = 'S'
-    GOAL = 'G'
-    EMPTY = '·'
-    PATH = '*'
-    WALL = 'W'
-
-
-class Point(NamedTuple):
-    x: int
-    y: int
+from config.config import (
+    MAZE_ROWS_DEFAULT,
+    MAZE_COLUMNS_DEFAULT,
+    MAZE_SPARSENESS_DEFAULT,
+    CELL_SEPARATOR,
+    FILE_INPUT_PATH,
+    FILE_OUTPUT_PATH,
+    )
+from model.cell import Cell
+from utils.utils import Point
 
 
 class Maze:
@@ -37,8 +28,8 @@ class Maze:
 
         self.file_name = self.name + '.txt'
 
-    def create(self, rows=ROWS_DEFAULT, columns=COLUMNS_DEFAULT,
-               start=None, goal=None, sparseness=SPARSENESS_DEFAULT, ):
+    def create(self, rows=MAZE_ROWS_DEFAULT, columns=MAZE_COLUMNS_DEFAULT,
+               start=None, goal=None, sparseness=MAZE_SPARSENESS_DEFAULT, ):
         self.rows = rows
         self.columns = columns
         self.start = Point(start[0], start[1]) if start else Point(random.randint(0, self.columns - 1), 0)

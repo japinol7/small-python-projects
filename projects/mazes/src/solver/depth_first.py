@@ -1,3 +1,6 @@
+"""Module depth_first."""
+__author__ = 'Joan A. Pinol  (japinol)'
+
 from container import Stack
 from model.node import Node
 

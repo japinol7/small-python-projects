@@ -19,5 +19,8 @@ class Stack:
     def pop(self):
         return self._container.pop()
 
+    def __str__(self):
+        return repr(self._container)
+
     def __repr__(self):
         return repr(self._container)
