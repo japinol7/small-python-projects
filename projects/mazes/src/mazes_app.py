@@ -10,7 +10,6 @@ from config.config import (
     LOG_START_APP_MSG,
     LOG_END_APP_MSG,
     LOG_INPUT_ERROR_MSG,
-    APP_NAME,
     MAZE_ROWS_COLS_MAX,
     MAZE_ROWS_COLS_MIN,
     MAZE_ROWS_DEFAULT,
@@ -43,7 +42,7 @@ def mazes(maze_name, load_maze, rows, columns, print_maze):
 def main():
     # Parse optional arguments from the command line
     parser = ArgumentParser(description="Maze solver.",
-                            prog=APP_NAME)
+                            prog='mazes_app')
     parser.add_argument('-c', '--create', default=False, action='store_true',
                         help="Create a new maze instead of loading one.")
     parser.add_argument('-p', '--print', default=False, action='store_true',
