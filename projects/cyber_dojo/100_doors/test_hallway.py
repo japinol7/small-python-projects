@@ -111,3 +111,12 @@ class TestHallway:
         result = hallway.get_open_doors()
         expected = [1, 4, 9, 16]
         assert result == expected
+
+    def test_correct_output(self):
+        hallway = Hallway(num_doors=100)
+        hallway.traverse_num_doors_times()
+        result = hallway.get_open_doors()
+        expected = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+        assert result == expected
+        print(f"Output: \nOpen doors:\n{result}\n"
+              f"All the other doors are closed.\n")
