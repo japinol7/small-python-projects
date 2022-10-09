@@ -32,7 +32,11 @@ class Hallway:
         return [door + 1 for door, state in enumerate(self.doors) if state]
 
 
-if __name__ == '__main__':
+def main():
     hallway = Hallway(num_doors=100)
     hallway.traverse_num_doors_times()
     print(f"Open doors: {hallway.get_open_doors()}")
+
+
+if __name__ == '__main__':
+    main()
