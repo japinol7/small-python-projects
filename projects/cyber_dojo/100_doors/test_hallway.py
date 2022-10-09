@@ -10,7 +10,6 @@ class TestHallway:
         assert result == expected
 
     def test_there_are_exactly_the_correct_number_of_doors(self):
-        # All the doors should be False, which means they are closed
         hallway = Hallway(num_doors=3)
         result = len(hallway.doors)
         expected = 3
