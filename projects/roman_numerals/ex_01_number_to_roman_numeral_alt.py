@@ -1,5 +1,7 @@
 from utils.utils import print_test_result
 
+MIN_NUMBER = 1
+MAX_NUMBER = 4999
 ROMAN_NUMERAL_MAPPING = {
     1000: 'M',
     900: 'CM',
@@ -18,6 +20,8 @@ ROMAN_NUMERAL_MAPPING = {
 
 
 def convert_to_roman_numeral(num):
+    if num < MIN_NUMBER or num > MAX_NUMBER:
+        return ''
     roman_numeral = []
     while num > 0:
         for key, ch_roman in ROMAN_NUMERAL_MAPPING.items():
@@ -50,7 +54,11 @@ def main():
             8: TestCaseMapping(
                 4978, 'MMMMCMLXXVIII'),
             9: TestCaseMapping(
+                4999, 'MMMMCMXCIX'),
+            10: TestCaseMapping(
                 0, ''),
+            11: TestCaseMapping(
+                52000, ''),
             }
         for input_val, expected in test_cases.values():
             result = convert_to_roman_numeral(input_val)
