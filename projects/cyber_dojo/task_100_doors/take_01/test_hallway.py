@@ -101,21 +101,21 @@ class TestHallway:
     def test_traverse_num_doors_times__for_four_doors_and_get_open_doors(self):
         hallway = Hallway(num_doors=4)
         hallway.traverse_num_doors_times()
-        result = hallway.get_open_doors()
+        result = list(hallway.get_open_doors())
         expected = [1, 4]
         assert result == expected
 
     def test_traverse_num_doors_times__for_twenty_doors_and_get_open_doors(self):
         hallway = Hallway(num_doors=20)
         hallway.traverse_num_doors_times()
-        result = hallway.get_open_doors()
+        result = list(hallway.get_open_doors())
         expected = [1, 4, 9, 16]
         assert result == expected
 
     def test_correct_output(self):
         hallway = Hallway(num_doors=100)
         hallway.traverse_num_doors_times()
-        result = hallway.get_open_doors()
+        result = list(hallway.get_open_doors())
         expected = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
         assert result == expected
         print(f"Output: \nOpen doors:\n{result}\n"

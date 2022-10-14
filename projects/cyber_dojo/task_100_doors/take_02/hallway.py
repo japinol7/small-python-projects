@@ -4,26 +4,6 @@ import math
 class Hallway:
     def __init__(self, num_doors):
         self.num_doors = num_doors
-        self.doors = [False for _ in range(num_doors)]
-
-    def is_door_open(self, door):
-        return self.doors[door]
-
-    def open_door(self, door):
-        self.doors[door] = True
-
-    def close_door(self, door):
-        self.doors[door] = False
-
-    def toggle_door(self, door):
-        self.doors[door] = not self.doors[door]
-
-    def open_doors(self, doors):
-        for door in doors:
-            self.doors[door] = True
-
-    def get_open_doors(self):
-        return [door + 1 for door, state in enumerate(self.doors) if state]
 
     def get_doors_to_open(self):
         """Gets doors to open if we traverse the hallway this way:
@@ -32,9 +12,9 @@ class Hallway:
         The second time we only visit every second door.
         The third time, every third door, etc
         We know from the first try with program take_01 that
-        the solution is this list of doors open:
+        the solution for an input of 100 doors is this list of doors open:
         [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-        Now we easily see a pattern, and we can take advantage of it.
+        Now we can easily see a pattern, and take advantage of it.
         The open doors are the squares of the consecutive integers from 1 to sqrt(num_doors).
         """
-        return [door * door for door in range(1, int(math.sqrt(self.num_doors) + 1))]
+        return (door * door for door in range(1, int(math.sqrt(self.num_doors) + 1)))

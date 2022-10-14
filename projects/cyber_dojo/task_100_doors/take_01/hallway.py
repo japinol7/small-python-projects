@@ -16,7 +16,7 @@ class Hallway:
         self.doors[door] = not self.doors[door]
 
     def get_open_doors(self):
-        return [door + 1 for door, state in enumerate(self.doors) if state]
+        return (door + 1 for door, state in enumerate(self.doors) if state)
 
     def traverse(self, steps=1):
         for door in range(steps - 1, self.num_doors, steps):
