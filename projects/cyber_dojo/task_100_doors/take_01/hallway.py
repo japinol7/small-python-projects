@@ -15,6 +15,9 @@ class Hallway:
     def toggle_door(self, door):
         self.doors[door] = not self.doors[door]
 
+    def get_open_doors(self):
+        return [door + 1 for door, state in enumerate(self.doors) if state]
+
     def traverse(self, steps=1):
         for door in range(steps - 1, self.num_doors, steps):
             self.toggle_door(door)
@@ -27,17 +30,3 @@ class Hallway:
         """
         for step in range(1, self.num_doors + 1):
             self.traverse(step)
-
-    def get_open_doors(self):
-        return [door + 1 for door, state in enumerate(self.doors) if state]
-
-
-def main():
-    hallway = Hallway(num_doors=100)
-    hallway.traverse_num_doors_times()
-    print(f"Output: \nOpen doors:\n{hallway.get_open_doors()}\n"
-          f"All the other doors are closed.\n")
-
-
-if __name__ == '__main__':
-    main()

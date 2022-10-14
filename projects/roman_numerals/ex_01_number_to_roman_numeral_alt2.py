@@ -29,7 +29,7 @@ def convert_to_roman_numeral(num):
     return ''.join(roman_numeral)
 
 
-if __name__ == '__main__':
+def main():
     from collections import namedtuple
     def check_test_some_cases():
         failed = 0
@@ -59,3 +59,7 @@ if __name__ == '__main__':
             failed += print_test_result(result, expected)
         print(f"{'-' * 25}\nTests FAILED: {failed}")
     check_test_some_cases()
+
+
+if __name__ == '__main__':
+    main()
