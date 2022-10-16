@@ -3,9 +3,9 @@ The Floyd's triangle is defined by filling its rows with consecutive numbers,
 starting with a 1 in the top left corner.
 Ex:
 1
-2 3
-4 5 6
-7 8 9 10
+2  3
+4  5  6
+7  8  9  10
 11 12 13 14 15
 16 17 18 19 20 21
 22 23 24 25 26 27 28
@@ -39,7 +39,7 @@ def print_floyd_triangle(rows: IntMatrix) -> None:
         print()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     res: IntMatrix = time_it(calc_floyd_triangle)
     print(f"Floyd's triangle of {N_ROWS_DEFAULT} rows:")
     print_floyd_triangle(res)
