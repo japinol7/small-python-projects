@@ -1,16 +1,17 @@
+OPEN_DOOR = True
+CLOSED_DOOR = False
+
+
 class Hallway:
+    """Represents a hallway of doors.
+    Open doors will be represented by True; closed doors, by False.
+    """
     def __init__(self, num_doors):
         self.num_doors = num_doors
-        self.doors = [False for _ in range(num_doors)]
+        self.doors = [CLOSED_DOOR for _ in range(num_doors)]
 
     def is_door_open(self, door):
         return self.doors[door]
-
-    def open_door(self, door):
-        self.doors[door] = True
-
-    def close_door(self, door):
-        self.doors[door] = False
 
     def toggle_door(self, door):
         self.doors[door] = not self.doors[door]
