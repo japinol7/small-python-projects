@@ -12,9 +12,8 @@ def main():
         res = 'Ok. You are ready to rock.'
     else:
         res = "Don't worry. You will be ready to rock soon enough."
-
     print(res)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

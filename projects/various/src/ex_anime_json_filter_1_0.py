@@ -80,5 +80,5 @@ def main():
     print('-' * 15)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
