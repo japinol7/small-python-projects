@@ -9,12 +9,12 @@ class ActorExistsException(Exception):
 class Actor(metaclass=ABCMeta):
     actors = {}
 
-    def __init__(self, name_, type, health, power):
-        if name_ in self.__class__.actors:
+    def __init__(self, name, type, health, power):
+        if name in self.__class__.actors:
             raise ActorExistsException
         self.type_actor = None
-        self._name = name_
-        self.__class__.actors[name_] = self
+        self._name = name
+        self.__class__.actors[name] = self
         self.type = type
         self.health = health
         self.power = power
@@ -136,5 +136,5 @@ def main():
     print(f'Default npc: {default_npc}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -86,5 +86,5 @@ def main():
     pprint(Pc.pcs)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

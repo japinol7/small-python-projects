@@ -50,5 +50,5 @@ def main():
             print(f"Remaining Characters: {len(names_remaining)}\n{GROUP_SEPARATOR}")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
