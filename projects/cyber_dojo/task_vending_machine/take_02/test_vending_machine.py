@@ -42,3 +42,14 @@ class TestVendingMachine:
         vending_machine.add_items(stock_items)
         result = vending_machine.process_order(*item)
         assert result == expected
+
+    @pytest.mark.parametrize('item, expected', [
+        (('chips', 1), 0),
+        (('candy', 2), 3),
+        ])
+    def test_after_process_order_stock_will_be_updated(self, stock_items, item, expected):
+        vending_machine = VendingMachine()
+        vending_machine.add_items(stock_items)
+        vending_machine.process_order(*item)
+        result = vending_machine.get_item_qty(item[0])
+        assert result == expected
