@@ -53,3 +53,17 @@ class TestVendingMachine:
         vending_machine.process_order(*item)
         result = vending_machine.get_item_qty(item[0])
         assert result == expected
+
+    def test_process_order__not_enough_stock(self, stock_items):
+        items_n_expected = [
+            ({'name': 'chips', 'price': 0.5}, 'SOLD OUT'),
+            ({'name': 'cola', 'price': 1}, 1),
+            ({'name': 'cola', 'price': 1}, 'SOLD OUT'),
+            ]
+        vending_machine = VendingMachine()
+        vending_machine.add_items(stock_items)
+
+        for item, expected in items_n_expected:
+            vending_machine.process_order(*item.values())
+            result = vending_machine.get_item_qty(item['name'])
+            assert result == expected
