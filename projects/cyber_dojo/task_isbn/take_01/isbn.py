@@ -1,5 +1,8 @@
 def validate_isbn(isbn):
     """Validates if a given string is a valid ISBN-13 code."""
+    if any(not ch.isnumeric() and ch != '-' and ch != ' ' for ch in isbn):
+        return 'false'
+
     isbn_nums = [int(ch) for ch in isbn if ch.isnumeric()]
     isbn_digits = isbn_nums[:-1]
     isbn_control_digit_input = isbn_nums[-1]
