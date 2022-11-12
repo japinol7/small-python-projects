@@ -1,17 +1,17 @@
 class FizzbuzzPlus:
     @staticmethod
     def is_fizz(number):
-        if '3' in str(number):
-            return True
         if number % 3 == 0:
+            return True
+        if '3' in str(number):
             return True
         return False
 
     @staticmethod
     def is_buzz(number):
-        if '5' in str(number):
-            return True
         if number % 5 == 0:
+            return True
+        if '5' in str(number):
             return True
         return False
 
