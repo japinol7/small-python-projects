@@ -1,13 +1,11 @@
 class Fizzbuzz:
     @staticmethod
     def fizzbuzz(number):
-        if number % 3 == 0 and number % 5 == 0:
-            return 'FizzBuzz'
-        if number % 3 == 0:
-            return 'Fizz'
-        if number % 5 == 0:
-            return 'Buzz'
-        return number
+        res = 'Fizz' if number % 3 == 0 else ''
+        res += 'Buzz' if number % 5 == 0 else ''
+        if not res:
+            res = number
+        return res
 
     @classmethod
     def fizzbuzz_range(cls, max_number):
