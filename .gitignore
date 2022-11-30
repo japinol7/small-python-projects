@@ -121,3 +121,5 @@ ENV/
 # PyCharm
 .idea/
 /db.sqlite3
+/projects/api_create/api_01/app/res/data/anime-offline-database.json
+/projects/api_create/api_01/app/tests/res/data/anime-offline-database.json

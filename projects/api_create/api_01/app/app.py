@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+from zipfile import ZipFile
 
 from apistar import App, Route, types, validators
 from apistar.http import JSONResponse
@@ -59,7 +60,24 @@ def get_wanted_columns(anime):
     return {k: v for k, v in anime.items() if k in ANIME_COLUMNS_WANTED}
 
 
+def __unzip_data_files():
+    if os.path.isfile(os.path.join('res', 'data', 'anime-offline-database.json')):
+        logger.info(f"File already exists. Skipping unzip data file")
+        return
+
+    logger.info(f"Unzip data file")
+    file_name = os.path.join('res', 'data', 'zip', 'anime-offline-database.zip')
+    try:
+        with ZipFile(file_name) as fin_zip:
+            fin_zip.extractall(os.path.join('res', 'data'))
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Error extracting database files. File not found: {file_name}")
+    except Exception as e:
+        raise Exception(f"Error extracting database files from: {file_name}. Error msg: {e}")
+
+
 def load_anime_data():
+    __unzip_data_files()
     file_name = os.path.join('res', 'data', 'anime-offline-database.json')
     animes = {}
 
