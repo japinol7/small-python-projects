@@ -69,7 +69,7 @@ class ShoppingBasket:
 
         price_discounts = []
         groupings = powerset(self.items, 2, 5)
-        groupings = get_groups_of_different_len(list(groupings))
+        groupings = get_groups_of_different_len(groupings)
         for items in groupings:
             # Calculate discount for the current grouping
             item_quantities = {item.name: item.qty for item in items}
