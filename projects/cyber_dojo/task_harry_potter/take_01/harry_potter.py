@@ -1,4 +1,4 @@
-from itertools import chain, combinations
+from itertools import chain, combinations, groupby
 
 HARRY_POTTER_BOOK_PRICE = 8
 DISCOUNTS = {
@@ -19,6 +19,13 @@ def powerset(iterable, min_items=0, max_items=None):
     if not max_items:
         max_items = len(s)
     return chain.from_iterable(combinations(s, r) for r in range(min_items, max_items + 1))
+
+
+def get_groups_of_different_len(items):
+    res = []
+    for k, g in groupby(sorted(items, key=lambda x: len(x)), key=lambda x: len(x)):
+        res.append(next(g))
+    return res
 
 
 class Item:
@@ -61,9 +68,9 @@ class ShoppingBasket:
         price = total_books * HARRY_POTTER_BOOK_PRICE
 
         price_discounts = []
-        # TODO: Optimize groupings. Consider only the groupings we need for the calculation
-        all_groupings = powerset(self.items, 2, 5)
-        for items in all_groupings:
+        groupings = powerset(self.items, 2, 5)
+        groupings = get_groups_of_different_len(list(groupings))
+        for items in groupings:
             # Calculate discount for the current grouping
             item_quantities = {item.name: item.qty for item in items}
             discount = self._calculate_discount(items, item_quantities)
