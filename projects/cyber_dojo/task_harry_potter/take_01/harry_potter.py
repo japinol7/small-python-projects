@@ -16,8 +16,10 @@ def powerset(iterable, min_items=0, max_items=None):
     powerset([1, 2, 3], min_items=2, max_items=2) --> [(1, 2), (1, 3), (2, 3)]
     """
     s = list(iterable)
-    if not max_items:
+    if not max_items or max_items > len(s):
         max_items = len(s)
+    if min_items < 0:
+        min_items = 0
     return chain.from_iterable(combinations(s, r) for r in range(min_items, max_items + 1))
 
 
@@ -68,7 +70,7 @@ class ShoppingBasket:
         price = total_books * HARRY_POTTER_BOOK_PRICE
 
         price_discounts = []
-        groupings = powerset(self.items, 2, 5)
+        groupings = powerset(self.items, min(DISCOUNTS), max(DISCOUNTS))
         groupings = get_groups_of_different_len(groupings)
         for items in groupings:
             # Calculate discount for the current grouping
