@@ -10,7 +10,7 @@ def list_permutations(nums):
 
 
 def get_subsets_that_add_up_to_number(target, n_chunks):
-    """Get subsets that add up to a given number."""
+    """Gets subsets that add up to a given number."""
     def _collapse(nums):
         yield nums
         while len(nums) > 1:

@@ -10,7 +10,7 @@ def list_permutations(nums):
 
 
 def get_subsets_that_add_up_to_number(numbers, target, partial=None, partial_sum=0):
-    """Get subsets that add up to a given number."""
+    """Gets subsets that add up to a given number."""
     if partial is None:
         partial = []
     if partial_sum == target:
