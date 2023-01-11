@@ -3,20 +3,17 @@ def _partition(list_, low, high):
     pivot = list_[high]
     i = low - 1
     for j in range(low, high):
-        if list_[j] <= pivot:
+        if pivot > list_[j]:
             i = i + 1
             list_[i], list_[j] = list_[j], list_[i]
-
     # Swap the pivot element with the greater element, i
     list_[i + 1], list_[high] = list_[high], list_[i + 1]
     # Return the position from where the partition is done
     return i + 1
 
 
-def quicksort(list_, low=None, high=None):
-    """Sorts a list of elements using the quicksort algorithm with 'partition' as a helping function."""
-    if low is None:
-        low = 0
+def quicksort(list_, low=0, high=None):
+    """Sorts a list of elements using the quicksort algorithm with '_partition' as a help function."""
     if high is None:
         high = len(list_) - 1
 
