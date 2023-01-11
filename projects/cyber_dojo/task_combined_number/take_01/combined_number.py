@@ -6,6 +6,7 @@ class CombinedNumber:
 
         res = [str(x) for x in nums]
 
+        # Sort items
         res_len = len(res)
         for i in range(res_len):
             for j in range(res_len):
