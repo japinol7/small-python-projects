@@ -1,0 +1,7 @@
+Time task_phone_numbers take_01, best time of 5 executions
+File: ..\data\phone_numbers_consistent_7000.txt
+Time take_01     consistent data: 2.9962928999999994
+
+Time task_phone_numbers take_01, best time of 5 executions
+File: ..\data\phone_numbers_not_consistent_7000.txt
+Time take_01 NOT consistent data: 1.067680499999998
