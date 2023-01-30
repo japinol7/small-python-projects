@@ -1,3 +1,6 @@
+# WIP. Work in progress
+
+
 class VendingMachine:
     def __init__(self):
         self._items = {}

@@ -1,3 +1,5 @@
+# WIP. Work in progress
+
 import pytest
 
 from vending_machine import VendingMachine
