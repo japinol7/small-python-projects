@@ -44,7 +44,7 @@ class TestVendingMachine:
         assert result == expected
 
     @pytest.mark.parametrize('item, expected', [
-        (('chips', 1), 0),
+        (('chips', 1), 'SOLD OUT'),
         (('candy', 2), 3),
         ])
     def test_after_process_order_stock_will_be_updated(self, stock_items, item, expected):
