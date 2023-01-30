@@ -15,7 +15,7 @@ class CalcStats:
         return len(self.nums)
 
     def average(self):
-        return round(sum(self.nums) / len(self.nums), 6)
+        return round(sum(self.nums) / len(self.nums), DECIMALS)
 
     @staticmethod
     def to_str(statistics_nums):
