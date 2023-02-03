@@ -1,8 +1,6 @@
-# WIP. Work in progress
-
 import pytest
 
-from vending_machine import VendingMachine
+from vending_machine import VendingMachine, VendingMachineState
 
 
 class TestVendingMachine:
@@ -69,3 +67,15 @@ class TestVendingMachine:
             vending_machine.process_order(*item.values())
             result = vending_machine.get_item_qty(item['name'])
             assert result == expected
+
+    def test_process_order__simple_states(self, stock_items):
+        vending_machine = VendingMachine()
+        assert vending_machine.state == VendingMachineState.CHOOSE_ITEM
+
+        vending_machine.add_items(stock_items)
+        item = 'candy', 2
+        vending_machine.choose_item(item[0])
+        assert vending_machine.state == VendingMachineState.INSERT_MONEY
+
+        vending_machine.insert_money(item[1])
+        assert vending_machine.state == VendingMachineState.SALE_PROCESSED
