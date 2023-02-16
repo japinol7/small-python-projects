@@ -9,9 +9,23 @@ class VendingMachineState(Enum):
     CHOOSE_ITEM = 1
     INSERT_MONEY = 2
     PUSH_CHANGE = 3
-    SALE_NOT_ENOUGH_MONEY = 4
-    PUSH_PRODUCT = 5
-    SALE_PROCESSED = 6
+    PUSH_PRODUCT = 4
+    SALE_PROCESSED = 5
+    WARNING_SOLD_OUT = 6
+    WARNING_NOT_ENOUGH_MONEY = 7
+    WARNING_EXACT_CHANGE = 8
+
+
+DISPLAY_MSG_STATES = {
+    VendingMachineState.INSERT_MONEY: 'INSERT COIN',
+    VendingMachineState.CHOOSE_ITEM: 'CHOOSE PRODUCT',
+    VendingMachineState.PUSH_CHANGE: 'COLLECT YOUR CHANGE',
+    VendingMachineState.PUSH_PRODUCT: 'COLLECT YOUR ITEM',
+    VendingMachineState.SALE_PROCESSED: 'THANK YOU',
+    VendingMachineState.WARNING_SOLD_OUT: 'SOLD OUT',
+    VendingMachineState.WARNING_NOT_ENOUGH_MONEY: 'INSERT COIN',
+    VendingMachineState.WARNING_EXACT_CHANGE: 'EXACT CHANGE ONLY',
+    }
 
 
 class VendingMachine:
@@ -19,12 +33,29 @@ class VendingMachine:
         self._items = {}
         self.item = None
         self.coins = []
+        self.invalid_coins = []
         self.money = 0
-        self.state = VendingMachineState.CHOOSE_ITEM
+        self.display_msg = ''
+        self._state = VendingMachineState.INSERT_MONEY
 
     @property
     def items(self):
         return self._items
+
+    @property
+    def state(self):
+        return self._state
+
+    @state.setter
+    def state(self, value):
+        self._state = value
+        self.display_msg = DISPLAY_MSG_STATES[self.state]
+
+    def reset(self):
+        self.item = None
+        self.display_msg = ''
+        self._state = VendingMachineState.INSERT_MONEY
+        self.clean_money()
 
     def add_items(self, items):
         new_items = {item['name']: item for item in items if not self.items.get(item['name'])}
@@ -49,45 +80,39 @@ class VendingMachine:
             return 'SOLD OUT'
         return self.items[item]['qty']
 
-    def _set_state(self, state):
-        self.state = state
-
     def choose_item(self, item):
-        if self.get_item_qty(item) != 'SOLD OUT':
-            self._set_state(VendingMachineState.INSERT_MONEY)
+        if self.get_item_price(item) > self.money:
             self.item = item
+            self.state = VendingMachineState.WARNING_NOT_ENOUGH_MONEY
+        elif self.get_item_qty(item) != 'SOLD OUT':
+            self.item = item
+            self.state = VendingMachineState.PUSH_CHANGE
+
+    @staticmethod
+    def _is_coin_valid(coin):
+        return coin.value > 0
 
     def insert_coin(self, diameter, thickness, weight):
         coin = Coin(diameter, thickness, weight)
+        if not self._is_coin_valid(coin):
+            self.invalid_coins += [coin]
+            return
         self.coins += [coin]
 
     def process_coins_value(self):
         self.money = sum(coin.value for coin in self.coins)
-        self._set_state(VendingMachineState.PUSH_CHANGE)
+        self.state = VendingMachineState.CHOOSE_ITEM
 
     def push_change(self):
         cash_change = round(self.money - self.get_item_price(self.item), DECIMALS)
-        self._set_state(VendingMachineState.PUSH_PRODUCT)
+        self.state = VendingMachineState.PUSH_PRODUCT
         return cash_change
 
     def clean_money(self):
         self.money = 0
         self.coins = []
+        self.invalid_coins = []
 
     def push_product(self):
         self.remove_item(self.item, 1)
-        self._set_state(VendingMachineState.SALE_PROCESSED)
-
-    def process_order(self, item, coins_stats):
-        item_sold = True
-        self.choose_item(item)
-
-        for coin_stats in coins_stats:
-            self.insert_coin(*coin_stats)
-        self.process_coins_value()
-
-        self.push_product()
-
-        change = self.push_change()
-        self.clean_money()
-        return item_sold, change
+        self.state = VendingMachineState.SALE_PROCESSED

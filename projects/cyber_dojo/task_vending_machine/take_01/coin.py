@@ -51,5 +51,5 @@ class Coin:
                f"stats: {self.diameter}, {self.thickness}, {self.weight}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(" \
-               f"'{self.diameter, self.thickness, self.weight}')"
+        return f"{self.__class__.__name__}("\
+               f"{self.diameter}, {self.thickness}, {self.weight})"
