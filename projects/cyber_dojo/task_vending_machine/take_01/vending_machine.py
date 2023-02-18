@@ -37,6 +37,7 @@ class VendingMachine:
         self.money = 0
         self.display_msg = ''
         self._state = VendingMachineState.INSERT_MONEY
+        self.warning = False
 
     @property
     def items(self):
@@ -56,6 +57,7 @@ class VendingMachine:
         self.display_msg = ''
         self._state = VendingMachineState.INSERT_MONEY
         self.clean_money()
+        self.warning = False
 
     def add_items(self, items):
         new_items = {item['name']: item for item in items if not self.items.get(item['name'])}
@@ -81,12 +83,19 @@ class VendingMachine:
         return self.items[item]['qty']
 
     def choose_item(self, item):
+        self.item = item
+
         if self.get_item_price(item) > self.money:
-            self.item = item
+            self.warning = True
             self.state = VendingMachineState.WARNING_NOT_ENOUGH_MONEY
-        elif self.get_item_qty(item) != 'SOLD OUT':
-            self.item = item
-            self.state = VendingMachineState.PUSH_CHANGE
+            return
+
+        if self.get_item_qty(item) == 'SOLD OUT':
+            self.warning = True
+            self.state = VendingMachineState.WARNING_SOLD_OUT
+            return
+
+        self.state = VendingMachineState.PUSH_CHANGE
 
     @staticmethod
     def _is_coin_valid(coin):
