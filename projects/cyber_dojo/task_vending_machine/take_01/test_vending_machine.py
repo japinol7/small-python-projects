@@ -1,6 +1,7 @@
 import pytest
 
 from coin import Coin
+from item import Item
 from vending_machine import VendingMachineState
 
 
@@ -9,11 +10,11 @@ class TestVendingMachine:
         vending_machine = vending_machine_with_stock
         result = vending_machine.items
         expected = {
-            'candy': {'name': 'candy', 'price': 0.65, 'qty': 4},
-            'chips': {'name': 'chips', 'price': 0.5, 'qty': 1},
-            'cola': {'name': 'cola', 'price': 1, 'qty': 2}
+            'candy': Item('candy', price=0.65, stock=4),
+            'chips': Item('chips', price=0.5, stock=1),
+            'cola': Item('cola', price=1, stock=2),
             }
-        assert result == expected
+        assert str(result) == str(expected)
 
     def test_add_items__some_exist(self, vending_machine, stock_items):
         initial_items = [
@@ -25,12 +26,12 @@ class TestVendingMachine:
         vending_machine.add_items(stock_items)
         result = vending_machine.items
         expected = {
-            'candy': {'name': 'candy', 'price': 0.65, 'qty': 5},
-            'chips': {'name': 'chips', 'price': 0.5, 'qty': 1},
-            'cola': {'name': 'cola', 'price': 1, 'qty': 12},
-            'sprite': {'name': 'sprite', 'qty': 2, 'price': 0.70},
+            'candy': Item('candy', price=0.65, stock=5),
+            'cola': Item('cola', price=1, stock=12),
+            'sprite': Item('sprite',  price=0.7, stock=2),
+            'chips': Item('chips', price=0.5, stock=1),
             }
-        assert result == expected
+        assert str(result) == str(expected)
 
     def test_process_order__happy_path_states(self, vending_machine, stock_items):
         assert vending_machine.state == VendingMachineState.INSERT_MONEY

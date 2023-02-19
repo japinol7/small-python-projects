@@ -1,6 +1,7 @@
 from enum import Enum
 
 from coin import Coin
+from item import Item
 
 DECIMALS = 2
 
@@ -37,7 +38,6 @@ class VendingMachine:
         self.money = 0
         self.display_msg = ''
         self._state = VendingMachineState.INSERT_MONEY
-        self.warning = False
 
     @property
     def items(self):
@@ -57,41 +57,37 @@ class VendingMachine:
         self.display_msg = ''
         self._state = VendingMachineState.INSERT_MONEY
         self.clean_money()
-        self.warning = False
 
     def add_items(self, items):
-        new_items = {item['name']: item for item in items if not self.items.get(item['name'])}
+        """ Adds items to the vending machine.
+        Example of input items values:
+        [{'name': 'cola', 'qty': 10, 'price': 0.65},]
+        """
+        new_items = {item['name']: Item(item['name'], item['price'], item['qty'])
+                     for item in items if not self.items.get(item['name'])}
         new_items.update({
-            item['name']: {
-                'name': item['name'],
-                'price': item['price'],
-                'qty': self.items.get(item['name'])['qty'] + item['qty'],
-                }
+            item['name']:
+                Item(item['name'], item['price'], stock=item['qty'] + self.items.get(item['name'], 0).stock)
             for item in items if self.items.get(item['name'])
             })
         self.items.update(new_items)
 
-    def remove_item(self, item, qty):
-        self.items[item]['qty'] -= qty
+    def get_item_price(self, item_name):
+        return self.items[item_name].price
 
-    def get_item_price(self, item):
-        return self.items[item]['price']
-
-    def get_item_qty(self, item):
-        if self.items[item]['qty'] < 1:
+    def get_item_qty(self, item_name):
+        if self.items[item_name].stock < 1:
             return 'SOLD OUT'
-        return self.items[item]['qty']
+        return self.items[item_name].stock
 
-    def choose_item(self, item):
-        self.item = item
+    def choose_item(self, item_name):
+        self.item = self.items[item_name]
 
-        if self.get_item_price(item) > self.money:
-            self.warning = True
+        if self.get_item_price(item_name) > self.money:
             self.state = VendingMachineState.WARNING_NOT_ENOUGH_MONEY
             return
 
-        if self.get_item_qty(item) == 'SOLD OUT':
-            self.warning = True
+        if self.get_item_qty(item_name) == 'SOLD OUT':
             self.state = VendingMachineState.WARNING_SOLD_OUT
             return
 
@@ -113,7 +109,7 @@ class VendingMachine:
         self.state = VendingMachineState.CHOOSE_ITEM
 
     def push_change(self):
-        cash_change = round(self.money - self.get_item_price(self.item), DECIMALS)
+        cash_change = round(self.money - self.get_item_price(self.item.name), DECIMALS)
         self.state = VendingMachineState.PUSH_PRODUCT
         return cash_change
 
@@ -123,5 +119,5 @@ class VendingMachine:
         self.invalid_coins = []
 
     def push_product(self):
-        self.remove_item(self.item, 1)
+        self.item.decrease_stock()
         self.state = VendingMachineState.SALE_PROCESSED
