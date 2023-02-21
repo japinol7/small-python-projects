@@ -26,6 +26,11 @@ def vending_machine_with_stock(stock_items):
 
 
 @pytest.fixture()
+def v_machine_controller():
+    return VendingMachineController()
+
+
+@pytest.fixture()
 def v_machine_controller_with_stock(stock_items):
     v_machine_controller = VendingMachineController()
     v_machine_controller.add_items(stock_items)

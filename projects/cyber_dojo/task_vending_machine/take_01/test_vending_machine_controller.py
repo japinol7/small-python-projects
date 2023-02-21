@@ -1,7 +1,21 @@
 import pytest
 
+from vending_machine_controller import VendingMachineControllerException
+
 
 class TestVendingMachine:
+
+    @pytest.mark.parametrize('items', [
+        [{'name': 'chips', 'price': 0.5}],
+        [{'name': 'cola', 'qty': 2, 'price': -1}],
+        [{'name': 'chips', 'qty': 1, 'price': 0.5},
+         {'n': 'cola', 'qty': 2, 'price': 1}],
+        [{}],
+        None,
+        ])
+    def test_add_items_with_invalid_fields_must_raise_exception(self, items, v_machine_controller):
+        with pytest.raises(VendingMachineControllerException):
+            v_machine_controller.add_items(items)
 
     @pytest.mark.parametrize('item, coins, expected', [
         ('chips',

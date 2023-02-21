@@ -1,6 +1,10 @@
 from vending_machine import VendingMachine
 
 
+class VendingMachineControllerException(Exception):
+    pass
+
+
 class VendingMachineController:
     def __init__(self):
         self.v_machine = VendingMachine()
@@ -9,7 +13,21 @@ class VendingMachineController:
         self.v_machine.reset()
 
     def add_items(self, items):
+        self.validate_items(items)
         self.v_machine.add_items(items)
+
+    @staticmethod
+    def validate_items(items):
+        if not items:
+            raise VendingMachineControllerException("Warning. You must set some items to add.")
+
+        for item in items:
+            if any((not item.get('name'),
+                    item.get('price', -1) < 0,
+                    item.get('qty', -1) < 0
+                    )):
+                raise VendingMachineControllerException(
+                    f"Warning. Item have an invalid name, price or qty field: {item}")
 
     def insert_coin(self, diameter, thickness, weight):
         self.v_machine.insert_coin(diameter, thickness, weight)
