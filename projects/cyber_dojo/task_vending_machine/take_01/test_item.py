@@ -27,4 +27,3 @@ class TestItem:
         item = Item(name='candy', price=0.65, stock=0)
         with pytest.raises(ItemException):
             item.decrease_stock()
-

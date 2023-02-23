@@ -17,6 +17,22 @@ class TestVendingMachine:
         with pytest.raises(VendingMachineControllerException):
             v_machine_controller.add_items(items)
 
+    def test_cancel_after_insert_some_money(self, v_machine_controller):
+        coins = [
+            (17.91, 1.35, 2.268),
+            (21.21, 1.95, 5),
+            (24.257, 1.956, 5.67),
+            (21.21, 1.95, 5),
+            ]
+        for coin in coins:
+            v_machine_controller.insert_coin(*coin)
+        result = v_machine_controller.cancel()
+        expected = "[Coin(17.91, 1.35, 2.268), " \
+                   "Coin(21.21, 1.95, 5), " \
+                   "Coin(24.257, 1.956, 5.67), " \
+                   "Coin(21.21, 1.95, 5)]"
+        assert repr(result) == expected
+
     @pytest.mark.parametrize('item, coins, expected', [
         ('chips',
             [(24.257, 1.956, 5.67),

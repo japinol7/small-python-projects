@@ -30,14 +30,14 @@ DISPLAY_MSG_STATES = {
 
 
 class VendingMachine:
-    def __init__(self):
+    def __init__(self, display):
         self._items = {}
         self.item = None
         self.coins = []
         self.invalid_coins = []
         self.money = 0
-        self.display_msg = ''
         self._state = VendingMachineState.INSERT_MONEY
+        self._display = display
 
     @property
     def items(self):
@@ -50,11 +50,19 @@ class VendingMachine:
     @state.setter
     def state(self, value):
         self._state = value
-        self.display_msg = DISPLAY_MSG_STATES[self.state]
+        self.display.msg = DISPLAY_MSG_STATES[self.state]
+
+    @property
+    def display(self):
+        return self._display
+
+    @display.setter
+    def display(self, value):
+        self._display = value
 
     def reset(self):
         self.item = None
-        self.display_msg = ''
+        self.display.msg = ''
         self._state = VendingMachineState.INSERT_MONEY
         self.clean_money()
 
@@ -112,6 +120,11 @@ class VendingMachine:
         cash_change = round(self.money - self.get_item_price(self.item.name), DECIMALS)
         self.state = VendingMachineState.PUSH_PRODUCT
         return cash_change
+
+    def push_coins(self):
+        coins = self.coins
+        self.reset()
+        return coins
 
     def clean_money(self):
         self.money = 0

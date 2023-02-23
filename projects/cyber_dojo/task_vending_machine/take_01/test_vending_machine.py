@@ -75,7 +75,7 @@ class TestVendingMachine:
         assert vending_machine.coins == []
         assert vending_machine.invalid_coins == []
         assert vending_machine.money == 0
-        assert vending_machine.display_msg == ''
+        assert vending_machine.display.msg == ''
         assert vending_machine.state == VendingMachineState.INSERT_MONEY
 
     def test_process_order__not_enough_money(self, vending_machine_with_stock, stock_items):

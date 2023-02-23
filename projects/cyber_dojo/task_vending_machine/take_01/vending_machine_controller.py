@@ -6,8 +6,8 @@ class VendingMachineControllerException(Exception):
 
 
 class VendingMachineController:
-    def __init__(self):
-        self.v_machine = VendingMachine()
+    def __init__(self, display):
+        self.v_machine = VendingMachine(display)
 
     def reset(self):
         self.v_machine.reset()
@@ -43,6 +43,9 @@ class VendingMachineController:
 
     def push_change(self):
         return self.v_machine.push_change()
+
+    def cancel(self):
+        return self.v_machine.push_coins()
 
     def process_order(self, item, coins_stats):
         item_sold = True

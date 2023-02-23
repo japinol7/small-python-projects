@@ -1,5 +1,6 @@
 import pytest
 
+from take_01.display import Display
 from vending_machine import VendingMachine
 from vending_machine_controller import VendingMachineController
 
@@ -15,23 +16,23 @@ def stock_items():
 
 @pytest.fixture()
 def vending_machine():
-    return VendingMachine()
+    return VendingMachine(Display())
 
 
 @pytest.fixture()
 def vending_machine_with_stock(stock_items):
-    vending_machine = VendingMachine()
+    vending_machine = VendingMachine(Display())
     vending_machine.add_items(stock_items)
     return vending_machine
 
 
 @pytest.fixture()
 def v_machine_controller():
-    return VendingMachineController()
+    return VendingMachineController(Display())
 
 
 @pytest.fixture()
 def v_machine_controller_with_stock(stock_items):
-    v_machine_controller = VendingMachineController()
+    v_machine_controller = VendingMachineController(Display())
     v_machine_controller.add_items(stock_items)
     return v_machine_controller
