@@ -1,6 +1,6 @@
 import pytest
 
-from take_01.display import Display
+from display import Display
 from vending_machine import VendingMachine
 from vending_machine_controller import VendingMachineController
 
