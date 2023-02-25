@@ -1,4 +1,5 @@
 from functools import partial
+import os
 import tkinter as tk
 from tkinter import messagebox
 
@@ -7,9 +8,11 @@ def btn_clicked(text):
     messagebox.showinfo(title='Image path', message=text)
 
 
-image_paths = ["V:/repos/uploads/movies_lib_explorer/2_movie_alien_ridley scott.png",
-               "V:/repos/uploads/movies_lib_explorer/2_movie_Manhattan_Woody Allen.png",
-               "V:/repos/uploads/movies_lib_explorer/2_movie_To Have and Have Not_Howard Hawks.png"]
+image_paths = [
+    os.path.join('V:/', 'repos', 'uploads', 'movies_lib_explorer', '2_movie_alien_ridley scott.png'),
+    os.path.join('V:/', 'repos', 'uploads', 'movies_lib_explorer', '2_movie_Manhattan_Woody Allen.png'),
+    os.path.join('V:/', 'repos', 'uploads', 'movies_lib_explorer', '2_movie_To Have and Have Not_Howard Hawks.png'),
+    ]
 images = []
 buttons = []
 
