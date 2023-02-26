@@ -1,7 +1,8 @@
 CELL_FILL = '.'
 CELL_O = 'O'
-CELL_FILL_PRETTY = f'{CELL_FILL}  '
-CELL_O_PRETTY = f'{CELL_O}  '
+CELL_WHITE_SPACE = '  '
+CELL_FILL_PRETTY = f'{CELL_FILL}{CELL_WHITE_SPACE}'
+CELL_O_PRETTY = f'{CELL_O}{CELL_WHITE_SPACE}'
 
 
 def print_diamond_in_square(size):
