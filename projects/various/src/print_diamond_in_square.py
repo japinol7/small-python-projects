@@ -31,6 +31,8 @@ def print_diamond_in_square_grid(grid):
 
 def main():
     grid = get_diamond_in_square_grid(15)
+    if not grid:
+        return
     print_diamond_in_square_grid(grid)
 
 
