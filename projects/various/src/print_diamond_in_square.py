@@ -5,7 +5,7 @@ CELL_FILL_PRETTY = f'{CELL_FILL}{CELL_WHITE_SPACE}'
 CELL_O_PRETTY = f'{CELL_O}{CELL_WHITE_SPACE}'
 
 
-def get_diamond_in_square(size):
+def get_diamond_in_square_grid(size):
     if size % 2 == 0:
         print("User Error. You must supply an odd number, "
               f" but you provided: {size} !")
@@ -24,11 +24,15 @@ def get_diamond_in_square(size):
     return grid
 
 
-def print_diamond_in_square(grid):
+def print_diamond_in_square_grid(grid):
     for row in grid:
         print(''.join(row).replace(CELL_FILL, CELL_FILL_PRETTY).replace(CELL_O, CELL_O_PRETTY))
 
 
+def main():
+    grid = get_diamond_in_square_grid(15)
+    print_diamond_in_square_grid(grid)
+
+
 if __name__ == '__main__':
-    grid = get_diamond_in_square(15)
-    print_diamond_in_square(grid)
+    main()
