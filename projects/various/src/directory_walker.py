@@ -4,27 +4,36 @@ from pathlib import Path
 
 def directory_recursive_walk_exec_func(directory_path, func):
     try:
-        sub_dirs = [f.path for f in os.scandir(directory_path) if f.is_dir()]
-        for sub_dir in sub_dirs:
-            os.chdir(sub_dir)
-            func()
-            directory_recursive_walk_exec_func(os.getcwd(), func)
+        sub_dirs = (f.path for f in os.scandir(directory_path) if f.is_dir())
     except Exception as e:
-        print("-- Cannot access folder ___")
+        print(f"ERROR: Cannot access directory {'-' * 15}")
+        return
+
+    for sub_dir in sub_dirs:
+        os.chdir(sub_dir)
+        func()
+        directory_recursive_walk_exec_func(os.getcwd(), func)
 
 
 def directory_one_level_walk_exec_func(directory_path, func):
     try:
-        sub_dirs = [f.path for f in os.scandir(directory_path) if f.is_dir()]
-        for sub_dir in sub_dirs:
-            os.chdir(sub_dir)
-            func()
+        sub_dirs = (f.path for f in os.scandir(directory_path) if f.is_dir())
     except Exception as e:
-        print("-- Cannot access folder ___")
+        print(f"ERROR: Cannot access directory {'-' * 15}")
+        return
+
+    for sub_dir in sub_dirs:
+        os.chdir(sub_dir)
+        func()
 
 
 def process_directory():
-    print(os.getcwd())
+    dir_ = ''
+    try:
+        dir_ = os.getcwd()
+        print(dir_)
+    except Exception as e:
+        print(f"ERROR: Error processing directory: {dir_}{'-' * 15} Msg: {e}")
 
 
 def main():
