@@ -46,13 +46,13 @@ class TestVendingMachine:
         assert vending_machine.state == VendingMachineState.CHOOSE_ITEM
 
         vending_machine.choose_item('candy')
-        assert vending_machine.state == VendingMachineState.PUSH_CHANGE
+        assert vending_machine.state == VendingMachineState.DISPENSE_CHANGE
 
-        vending_machine.push_change()
-        assert vending_machine.state == VendingMachineState.PUSH_PRODUCT
+        vending_machine.dispense_change()
+        assert vending_machine.state == VendingMachineState.DISPENSE_ITEM
 
-        vending_machine.push_product()
-        assert vending_machine.state == VendingMachineState.SALE_PROCESSED
+        vending_machine.dispense_item()
+        assert vending_machine.state == VendingMachineState.ORDER_PROCESSED
 
         vending_machine.reset()
         assert vending_machine.state == VendingMachineState.INSERT_MONEY
@@ -66,8 +66,8 @@ class TestVendingMachine:
 
         vending_machine.process_coins_value()
         vending_machine.choose_item('candy')
-        vending_machine.push_change()
-        vending_machine.push_product()
+        vending_machine.dispense_change()
+        vending_machine.dispense_item()
 
         vending_machine.reset()
         assert vending_machine.state == VendingMachineState.INSERT_MONEY

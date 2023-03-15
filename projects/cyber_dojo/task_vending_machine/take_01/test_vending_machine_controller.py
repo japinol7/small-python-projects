@@ -1,6 +1,7 @@
 import pytest
 
-from vending_machine_controller import VendingMachineControllerException
+from vending_machine_controller import VendingMachineControllerException, VendingMachineState
+from coin import Coin
 
 
 class TestVendingMachine:
@@ -33,6 +34,34 @@ class TestVendingMachine:
                    "Coin(21.21, 1.95, 5)]"
         assert repr(result) == expected
 
+    @pytest.mark.parametrize('coin_stats, expected', [
+        ((24.257, 1.956, 5.67), 0.25),
+        ((17.91, 1.35, 2.268), 0.10),
+        ((24.257, 1.15, 5), 0),
+        ((0, 0, 0), 0),
+        ])
+    def test_insert_a_valid_coin_and_calc_value(self, v_machine_controller, stock_items, coin_stats, expected):
+        v_machine_controller.insert_coin(*coin_stats)
+        v_machine_controller.process_coins_value()
+        result = v_machine_controller.v_machine.money
+        assert result == expected
+
+    def test_insert_not_valid_coins(self, v_machine_controller):
+        coins = [
+            (22, 5, 3),
+            (24.257, 1.956, 5.67),
+            (15.91, 1.35, 2.268),
+            (0, 0, 0),
+            ]
+        for coin in coins:
+            v_machine_controller.insert_coin(*coin)
+        result = v_machine_controller.v_machine.invalid_coins
+        expected = [Coin(22, 5, 3),
+                    Coin(15.91, 1.35, 2.268),
+                    Coin(0, 0, 0),
+                    ]
+        assert repr(result) == repr(expected)
+
     @pytest.mark.parametrize('item, coins, expected', [
         ('chips',
             [(24.257, 1.956, 5.67),
@@ -60,7 +89,7 @@ class TestVendingMachine:
         assert result == expected
 
     @pytest.mark.parametrize('item, expected', [
-        (('chips', []), 'SOLD OUT'),
+        (('chips', []), 0),
         (('candy', []), 3),
         ])
     def test_after_process_order_stock_will_be_updated(self, v_machine_controller_with_stock, stock_items, item, expected):
@@ -69,13 +98,36 @@ class TestVendingMachine:
         assert result == expected
 
     def test_process_order__not_enough_stock(self, v_machine_controller_with_stock, stock_items):
-        items_n_expected = [
-            ({'name': 'chips', 'price': []}, 'SOLD OUT'),
-            ({'name': 'cola', 'price': []}, 1),
-            ({'name': 'cola', 'price': []}, 'SOLD OUT'),
+        items_coins_n_expected = [
+            ({'item_name': 'cola',
+              'coins_stats': [(24.257, 1.956, 5.67), (24.257, 1.956, 5.67)]},
+             VendingMachineState.DISPENSE_ITEM),
+            ({'item_name': 'cola',
+              'coins_stats': [(24.257, 1.956, 5.67), (24.257, 1.956, 5.67)]},
+             VendingMachineState.DISPENSE_ITEM),
+            ({'item_name': 'cola',
+              'coins_stats': [(24.257, 1.956, 5.67), (24.257, 1.956, 5.67)]},
+             VendingMachineState.WARNING_SOLD_OUT),
             ]
 
-        for item, expected in items_n_expected:
-            v_machine_controller_with_stock.process_order(*item.values())
-            result = v_machine_controller_with_stock.v_machine.get_item_qty(item['name'])
+        for values, expected in items_coins_n_expected:
+            v_machine_controller_with_stock.process_order(**values)
+            result = v_machine_controller_with_stock.state
             assert result == expected
+
+    def test_process_order_reset(self, v_machine_controller_with_stock, stock_items):
+        items_n_coins = [
+            {'item_name': 'cola',
+             'coins_stats': [(24.257, 1.956, 5.67), (24.257, 1.956, 5.67)]},
+            {'item_name': 'cola',
+             'coins_stats': [(24.257, 1.956, 5.67), (24.257, 1.956, 5.67)]},
+            ]
+
+        for item_n_coin in items_n_coins:
+            v_machine_controller_with_stock.process_order(**item_n_coin)
+            v_machine_controller_with_stock.reset()
+            assert v_machine_controller_with_stock.state == VendingMachineState.INSERT_MONEY
+            assert v_machine_controller_with_stock.v_machine.item is None
+            assert v_machine_controller_with_stock.v_machine.coins == []
+            assert v_machine_controller_with_stock.v_machine.invalid_coins == []
+            assert v_machine_controller_with_stock.v_machine.money == 0

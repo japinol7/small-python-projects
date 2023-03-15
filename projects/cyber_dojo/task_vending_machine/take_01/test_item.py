@@ -8,8 +8,7 @@ class TestItem:
         ('candy', 4, 0.65, "Item(name='candy', price=0.65, stock=4)"),
         ('chips', 1, 0.5, "Item(name='chips', price=0.5, stock=1)"),
         ('cola', 2, 1, "Item(name='cola', price=1, stock=2)"),
-        ]
-                             )
+        ])
     def test_create_item(self, name, stock, price, expected):
         result = Item(name, price=price, stock=stock)
         assert repr(result) == expected

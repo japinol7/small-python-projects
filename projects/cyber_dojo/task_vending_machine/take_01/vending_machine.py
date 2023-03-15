@@ -9,20 +9,22 @@ DECIMALS = 2
 class VendingMachineState(Enum):
     CHOOSE_ITEM = 1
     INSERT_MONEY = 2
-    PUSH_CHANGE = 3
-    PUSH_PRODUCT = 4
-    SALE_PROCESSED = 5
-    WARNING_SOLD_OUT = 6
-    WARNING_NOT_ENOUGH_MONEY = 7
-    WARNING_EXACT_CHANGE = 8
+    DISPENSE_CHANGE = 3
+    DISPENSE_ITEM = 4
+    ORDER_PROCESSED = 5
+    ORDER_CANCELLED = 6
+    WARNING_SOLD_OUT = 7
+    WARNING_NOT_ENOUGH_MONEY = 10
+    WARNING_EXACT_CHANGE = 11
 
 
 DISPLAY_MSG_STATES = {
     VendingMachineState.INSERT_MONEY: 'INSERT COIN',
     VendingMachineState.CHOOSE_ITEM: 'CHOOSE PRODUCT',
-    VendingMachineState.PUSH_CHANGE: 'COLLECT YOUR CHANGE',
-    VendingMachineState.PUSH_PRODUCT: 'COLLECT YOUR ITEM',
-    VendingMachineState.SALE_PROCESSED: 'THANK YOU',
+    VendingMachineState.DISPENSE_CHANGE: 'COLLECT YOUR CHANGE',
+    VendingMachineState.DISPENSE_ITEM: 'COLLECT YOUR ITEM',
+    VendingMachineState.ORDER_PROCESSED: 'THANK YOU',
+    VendingMachineState.ORDER_CANCELLED: 'ORDER CANCELLED',
     VendingMachineState.WARNING_SOLD_OUT: 'SOLD OUT',
     VendingMachineState.WARNING_NOT_ENOUGH_MONEY: 'INSERT COIN',
     VendingMachineState.WARNING_EXACT_CHANGE: 'EXACT CHANGE ONLY',
@@ -84,8 +86,6 @@ class VendingMachine:
         return self.items[item_name].price
 
     def get_item_qty(self, item_name):
-        if self.items[item_name].stock < 1:
-            return 'SOLD OUT'
         return self.items[item_name].stock
 
     def choose_item(self, item_name):
@@ -95,11 +95,11 @@ class VendingMachine:
             self.state = VendingMachineState.WARNING_NOT_ENOUGH_MONEY
             return
 
-        if self.get_item_qty(item_name) == 'SOLD OUT':
+        if self.get_item_qty(item_name) < 1:
             self.state = VendingMachineState.WARNING_SOLD_OUT
             return
 
-        self.state = VendingMachineState.PUSH_CHANGE
+        self.state = VendingMachineState.DISPENSE_CHANGE
 
     @staticmethod
     def _is_coin_valid(coin):
@@ -116,12 +116,12 @@ class VendingMachine:
         self.money = sum(coin.value for coin in self.coins)
         self.state = VendingMachineState.CHOOSE_ITEM
 
-    def push_change(self):
+    def dispense_change(self):
         cash_change = round(self.money - self.get_item_price(self.item.name), DECIMALS)
-        self.state = VendingMachineState.PUSH_PRODUCT
+        self.state = VendingMachineState.DISPENSE_ITEM
         return cash_change
 
-    def push_coins(self):
+    def dispense_coins(self):
         coins = self.coins
         self.reset()
         return coins
@@ -131,6 +131,6 @@ class VendingMachine:
         self.coins = []
         self.invalid_coins = []
 
-    def push_product(self):
+    def dispense_item(self):
         self.item.decrease_stock()
-        self.state = VendingMachineState.SALE_PROCESSED
+        self.state = VendingMachineState.ORDER_PROCESSED
