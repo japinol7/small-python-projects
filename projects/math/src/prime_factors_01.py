@@ -17,7 +17,7 @@ def get_prime_factors(num):
 
 
 def main():
-    input_num = 3 * 3 * 5 * 2 ** 3 * 17 * 55 * 11 ** 5
+    input_num = 3 * 3 * 5 * 2 ** 3 * 17 * 11 ** 6
     result = list(time_it(get_prime_factors, input_num))
     expected = math.prod(result)
     print(f'Res: {result}')
