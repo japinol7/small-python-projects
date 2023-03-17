@@ -4,7 +4,7 @@ from config.config import (
     OPENAI_API_KEY_FILE,
     LANGUAGE,
     )
-from chatgpt.chatgpt import get_chatgpt_answer
+from chatgpt.chatgpt import ChatGPTClient
 from text_to_speech.text_to_speech import play_text_to_speech, init_music_mixer, is_music_busy
 from tools.utils import utils
 from tools.logger import logger
@@ -39,7 +39,14 @@ def voice_assistant():
     if not userinput:
         return
 
-    content = get_chatgpt_answer(userinput, openai_api_key)
+    chat_gpt_client = ChatGPTClient(openai_api_key)
+    messages = []
+    messages += [ChatGPTClient.format_message(
+        'user',
+        userinput
+        )]
+    chat_gpt_client.get_answer(messages)
+    content = chat_gpt_client.response.answer_raw
     log.info(f"Answer:\n{content}")
     play_text_to_speech(text=content, lang=LANGUAGE)
 
