@@ -33,6 +33,26 @@ class VendingMachineController:
     def state(self):
         return self.v_machine.state
 
+    @property
+    def money(self):
+        return self.v_machine.money
+
+    @property
+    def coins(self):
+        return self.v_machine.coins
+
+    @property
+    def invalid_coins(self):
+        return self.v_machine.invalid_coins
+
+    @property
+    def item(self):
+        return self.v_machine.item
+
+    @property
+    def items(self):
+        return self.v_machine.items
+
     def insert_coin(self, diameter, thickness, weight):
         self.v_machine.insert_coin(diameter, thickness, weight)
 

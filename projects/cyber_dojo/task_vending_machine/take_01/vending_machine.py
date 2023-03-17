@@ -38,8 +38,8 @@ class VendingMachine:
         self.coins = []
         self.invalid_coins = []
         self.money = 0
-        self._state = VendingMachineState.INSERT_MONEY
-        self._display = display
+        self.display = display
+        self.state = VendingMachineState.INSERT_MONEY
 
     @property
     def items(self):

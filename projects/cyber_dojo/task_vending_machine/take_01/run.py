@@ -1,9 +1,13 @@
 # TODO: WIP. This kata is in development.
 
+from cmd_app import CmdApp
+
+
 def main():
-    pass
+    print("WIP. This kata is in development.")
+    app = CmdApp()
+    app.run()
 
 
 if __name__ == '__main__':
-    print("WIP. This kata is in development.")
     main()

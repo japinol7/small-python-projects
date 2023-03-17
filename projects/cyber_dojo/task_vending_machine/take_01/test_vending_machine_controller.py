@@ -43,7 +43,7 @@ class TestVendingMachine:
     def test_insert_a_valid_coin_and_calc_value(self, v_machine_controller, stock_items, coin_stats, expected):
         v_machine_controller.insert_coin(*coin_stats)
         v_machine_controller.process_coins_value()
-        result = v_machine_controller.v_machine.money
+        result = v_machine_controller.money
         assert result == expected
 
     def test_insert_not_valid_coins(self, v_machine_controller):
@@ -55,7 +55,7 @@ class TestVendingMachine:
             ]
         for coin in coins:
             v_machine_controller.insert_coin(*coin)
-        result = v_machine_controller.v_machine.invalid_coins
+        result = v_machine_controller.invalid_coins
         expected = [Coin(22, 5, 3),
                     Coin(15.91, 1.35, 2.268),
                     Coin(0, 0, 0),
@@ -127,7 +127,7 @@ class TestVendingMachine:
             v_machine_controller_with_stock.process_order(**item_n_coin)
             v_machine_controller_with_stock.reset()
             assert v_machine_controller_with_stock.state == VendingMachineState.INSERT_MONEY
-            assert v_machine_controller_with_stock.v_machine.item is None
-            assert v_machine_controller_with_stock.v_machine.coins == []
-            assert v_machine_controller_with_stock.v_machine.invalid_coins == []
-            assert v_machine_controller_with_stock.v_machine.money == 0
+            assert v_machine_controller_with_stock.item is None
+            assert v_machine_controller_with_stock.coins == []
+            assert v_machine_controller_with_stock.invalid_coins == []
+            assert v_machine_controller_with_stock.money == 0
