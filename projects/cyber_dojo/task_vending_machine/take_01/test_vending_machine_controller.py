@@ -88,6 +88,44 @@ class TestVendingMachine:
         result = v_machine_controller_with_stock.process_order(item, coins)
         assert result == expected
 
+    def test_get_items_with_numeric_key(self, v_machine_controller_with_stock):
+        v_machine = v_machine_controller_with_stock
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.choose_item('chips')
+        v_machine.reset()
+        result = v_machine.get_items_with_numeric_key(start=1)
+        expected = ("{1: Item(name='candy', price=0.65, stock=4), "
+                    "2: Item(name='chips', price=0.5, stock=1), "
+                    "3: Item(name='cola', price=1, stock=2)}")
+        assert str(result) == expected
+
+    def test_get_items_with_stock(self, v_machine_controller_with_stock):
+        v_machine = v_machine_controller_with_stock
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.process_coins_value()
+        v_machine.choose_item('chips')
+        v_machine.dispense_item()
+        v_machine.reset()
+        result = v_machine.get_items_with_stock()
+        expected = ("{'candy': Item(name='candy', price=0.65, stock=4), "
+                    "'cola': Item(name='cola', price=1, stock=2)}")
+        assert str(result) == expected
+
+    def test_get_items_with_stock_with_numeric_key(self, v_machine_controller_with_stock):
+        v_machine = v_machine_controller_with_stock
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.insert_coin(24.257, 1.956, 5.67)
+        v_machine.process_coins_value()
+        v_machine.choose_item('chips')
+        v_machine.dispense_item()
+        v_machine.reset()
+        result = v_machine.get_items_with_stock_with_numeric_key(start=1)
+        expected = ("{1: Item(name='candy', price=0.65, stock=4), "
+                    "3: Item(name='cola', price=1, stock=2)}")
+        assert str(result) == expected
+
     @pytest.mark.parametrize('item, expected', [
         (('chips', []), 0),
         (('candy', []), 3),

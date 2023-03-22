@@ -1,4 +1,7 @@
-from vending_machine import VendingMachine, VendingMachineState
+import json
+
+from vending_machine import VendingMachine, VendingMachineState, DISPLAY_MSG_STATES
+from config import INVENTORY_FILE
 
 
 class VendingMachineControllerException(Exception):
@@ -15,6 +18,11 @@ class VendingMachineController:
     def add_items(self, items):
         self.validate_items(items)
         self.v_machine.add_items(items)
+
+    def load_items_from_json(self):
+        with open(INVENTORY_FILE, 'r') as fin:
+            items = json.loads(fin.read())
+        self.add_items(items)
 
     @staticmethod
     def validate_items(items):
@@ -52,6 +60,15 @@ class VendingMachineController:
     @property
     def items(self):
         return self.v_machine.items
+
+    def get_items_with_numeric_key(self, start=0):
+        return {i: v for i, v in enumerate(self.items.values(), start=start)}
+
+    def get_items_with_stock(self):
+        return dict(filter(lambda pair: pair[1].stock > 0, self.items.items()))
+
+    def get_items_with_stock_with_numeric_key(self, start=0):
+        return {i: v for i, v in enumerate(self.items.values(), start=start) if v.stock > 0}
 
     def insert_coin(self, diameter, thickness, weight):
         self.v_machine.insert_coin(diameter, thickness, weight)

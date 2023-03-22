@@ -24,6 +24,13 @@ COIN_VALUES = {
     CoinType.QUARTER:  0.25,
     }
 
+COIN_NAMES = {
+    CoinType.NONE:  '',
+    CoinType.NICKEL: 'Nickel',
+    CoinType.DIME:  'Dime',
+    CoinType.QUARTER:  'Quarter',
+    }
+
 
 class Coin:
     def __init__(self, diameter, thickness, weight):
