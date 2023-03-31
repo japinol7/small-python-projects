@@ -53,6 +53,10 @@ class Coin:
     def _compute_value(self):
         self.value = COIN_VALUES[self.type]
 
+    @staticmethod
+    def get_coin_stats(coin_type):
+        return COIN_STATS[coin_type]
+
     def __str__(self):
         return f"type: {self.type.name} value: {self.value} " \
                f"stats: {self.diameter}, {self.thickness}, {self.weight}"

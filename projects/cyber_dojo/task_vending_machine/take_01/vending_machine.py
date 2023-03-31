@@ -1,9 +1,8 @@
 from enum import Enum
 
+from config import DECIMALS
 from coin import Coin
 from item import Item
-
-DECIMALS = 2
 
 
 class VendingMachineState(Enum):
@@ -113,7 +112,7 @@ class VendingMachine:
         self.coins += [coin]
 
     def process_coins_value(self):
-        self.money = sum(coin.value for coin in self.coins)
+        self.money = round(sum(coin.value for coin in self.coins), DECIMALS)
         self.state = VendingMachineState.CHOOSE_ITEM
 
     def dispense_change(self):

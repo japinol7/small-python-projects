@@ -1,5 +1,6 @@
 import os
 
+DECIMALS = 2
 CURRENCY_CODE = 'USD'
 
 INVENTORY_FOLDER = os.path.join('.')

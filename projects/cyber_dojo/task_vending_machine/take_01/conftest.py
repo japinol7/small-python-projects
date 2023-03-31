@@ -1,6 +1,8 @@
 import pytest
 
 from display import Display
+from coin import CoinType, Coin
+from coin_dispenser import CoinDispenser
 from vending_machine import VendingMachine
 from vending_machine_controller import VendingMachineController
 
@@ -12,6 +14,17 @@ def stock_items():
         {'name': 'chips', 'qty': 1, 'price': 0.5},
         {'name': 'cola', 'qty': 2, 'price': 1},
         ]
+
+
+@pytest.fixture()
+def stock_dispenser_coins():
+    coins_types = [CoinType.QUARTER, CoinType.QUARTER, CoinType.QUARTER,
+                   CoinType.QUARTER,
+                   CoinType.DIME, CoinType.DIME, CoinType.DIME,
+                   CoinType.DIME, CoinType.DIME,
+                   CoinType.NICKEL, CoinType.NICKEL, CoinType.NICKEL]
+    return [Coin(*Coin.get_coin_stats(coin_type))
+            for coin_type in coins_types]
 
 
 @pytest.fixture()
@@ -36,3 +49,8 @@ def v_machine_controller_with_stock(stock_items):
     v_machine_controller = VendingMachineController(Display())
     v_machine_controller.add_items(stock_items)
     return v_machine_controller
+
+
+@pytest.fixture()
+def coin_dispenser_with_coins(stock_dispenser_coins):
+    return CoinDispenser(stock_dispenser_coins)
