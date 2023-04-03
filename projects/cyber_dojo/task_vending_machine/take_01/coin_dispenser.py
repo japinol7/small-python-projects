@@ -1,5 +1,3 @@
-from typing import List
-
 from config import DECIMALS
 from coin import Coin
 
@@ -13,10 +11,10 @@ class CoinDispenserCannotProvideExactChangeException(Exception):
 
 
 class CoinDispenser:
-    def __init__(self, coins: List[Coin]):
+    def __init__(self, coins: list[Coin]):
         self.coins = coins
 
-    def get_change_coins(self, cost: float, payment: float) -> List[float]:
+    def get_change_coins(self, cost: float, payment: float) -> list[float]:
         """Returns the coins to be returned as change"""
         if payment < cost:
             raise CoinDispenserNotEnoughPaymentException(
