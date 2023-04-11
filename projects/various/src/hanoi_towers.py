@@ -1,5 +1,12 @@
 from stack import Stack
 
+MIN_DISCS = 1
+MAX_DISCS = 20
+
+
+class HanoiTowersException(Exception):
+    pass
+
 
 class HanoiTowers:
     """The Towers of Hanoi."""
@@ -10,9 +17,13 @@ class HanoiTowers:
         self.tower_tmp = None
         self.tower_end = None
 
-        self.reset()
+        if not (MIN_DISCS <= n_discs <= MAX_DISCS):
+            raise HanoiTowersException(f"User Error. Invalid number of discs: "
+                                       f"must be between {MIN_DISCS} and {MAX_DISCS} .")
 
-    def reset(self):
+        self._setup()
+
+    def _setup(self):
         self.tower_start = Stack()
         self.tower_tmp = Stack()
         self.tower_end = Stack()
@@ -21,8 +32,7 @@ class HanoiTowers:
             self.tower_start.push(disc)
 
     def __str__(self):
-        return "HanoiTowers\n" \
-               f"\tn_discs: {self.n_discs}\n" \
+        return f"HanoiTowers for n_discs: {self.n_discs}\n" \
                f"\ttower_start: {self.tower_start}\n" \
                f"\ttower_tmp: {self.tower_tmp}\n" \
                f"\ttower_end: {self.tower_end}"
