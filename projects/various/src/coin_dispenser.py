@@ -38,7 +38,7 @@ def _test_coin_dispenser():
              0.10, 0.10, 0.10, 0.10, 0.10,
              0.05, 0.05, 0.05]
     cost = 1.3
-    payment = 1.55
+    payment = 1.50
     coin_dispenser = CoinDispenser(coins)
     result = coin_dispenser.get_change_coins(cost, payment)
     expected = [0.10, 0.10]
