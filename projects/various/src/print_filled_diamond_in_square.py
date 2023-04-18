@@ -2,7 +2,7 @@ CELL_FILL = ' '
 CELL_WHITE_SPACE = '  '
 CELL_X = 'X '
 CELL_FILL_PRETTY = f'{CELL_FILL}{CELL_WHITE_SPACE}'
-CELL_O_PRETTY = f'{CELL_X}{CELL_WHITE_SPACE}'
+CELL_X_PRETTY = f'{CELL_X}{CELL_WHITE_SPACE}'
 
 
 def get_filled_diamond_in_square_grid(size):
@@ -21,7 +21,7 @@ def get_filled_diamond_in_square_grid(size):
 
 def print_filled_diamond_in_square_grid(grid):
     for row in grid:
-        print(''.join(row).replace(CELL_FILL, CELL_FILL_PRETTY).replace(CELL_X, CELL_O_PRETTY))
+        print(''.join(row).replace(CELL_FILL, CELL_FILL_PRETTY).replace(CELL_X, CELL_X_PRETTY))
 
 
 def main():
