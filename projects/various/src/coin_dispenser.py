@@ -24,7 +24,7 @@ class CoinDispenser:
         for coin in sorted(self.coins, reverse=True):
             while change_amount >= coin:
                 change_coins += [coin]
-                change_amount -= coin
+                change_amount = round(change_amount - coin, DECIMALS)
 
         if change_amount:
             raise CoinDispenserCannotProvideExactChangeException(
@@ -38,7 +38,7 @@ def _test_coin_dispenser():
              0.10, 0.10, 0.10, 0.10, 0.10,
              0.05, 0.05, 0.05]
     cost = 1.3
-    payment = 1.50
+    payment = 1.5
     coin_dispenser = CoinDispenser(coins)
     result = coin_dispenser.get_change_coins(cost, payment)
     expected = [0.10, 0.10]
