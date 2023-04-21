@@ -1,7 +1,7 @@
 import pytest
 
 from vending_machine_controller import VendingMachineControllerException, VendingMachineState
-from coin import Coin
+from coin import Coin, CoinType
 
 
 class TestVendingMachine:
@@ -69,7 +69,7 @@ class TestVendingMachine:
              (24.257, 1.956, 5.67),
              (24.257, 1.956, 5.67),
              ],
-            (True, 0.5)
+            (True, (0.5, [Coin(24.257, 1.956, 5.67), Coin(24.257, 1.956, 5.67)]))
          ),
         ('cola',
             [(24.257, 1.956, 5.67),
@@ -81,12 +81,16 @@ class TestVendingMachine:
              (24.257, 1.956, 5.67),
              (17.91, 1.35, 2.268),
              ],
-            (True, 0.85)
+            (True, (0.85, [
+                Coin(24.257, 1.956, 5.67), Coin(24.257, 1.956, 5.67),
+                Coin(24.257, 1.956, 5.67), Coin(17.91, 1.35, 2.268)
+                ]))
          ),
         ])
-    def test_process_order(self, v_machine_controller_with_stock, stock_items, item, coins, expected):
-        result = v_machine_controller_with_stock.process_order(item, coins)
-        assert result == expected
+    def test_process_order(self, v_machine_controller_with_stock_and_coins_to_dispense,
+                           stock_items, item, coins, expected):
+        result = v_machine_controller_with_stock_and_coins_to_dispense.process_order(item, coins)
+        assert str(result) == str(expected)
 
     def test_get_items_with_numeric_key(self, v_machine_controller_with_stock):
         v_machine = v_machine_controller_with_stock
@@ -125,6 +129,17 @@ class TestVendingMachine:
         expected = ("{1: Item(name='candy', price=0.65, stock=4), "
                     "3: Item(name='cola', price=1, stock=2)}")
         assert str(result) == expected
+
+    @pytest.mark.parametrize('diameter, thickness, weight, expected', [
+        (21.21, 1.95, 5, CoinType.NICKEL),
+        (17.91, 1.35, 2.268, CoinType.DIME),
+        (24.257, 1.956, 5.67, CoinType.QUARTER),
+        (23, 2, 5, CoinType.NONE),
+        (0, 0, 0, CoinType.NONE),
+        ])
+    def test_get_coin_type(self, diameter, thickness, weight, expected):
+        result = Coin(diameter, thickness, weight).type
+        assert result == expected
 
     @pytest.mark.parametrize('item, expected', [
         (('chips', []), 0),

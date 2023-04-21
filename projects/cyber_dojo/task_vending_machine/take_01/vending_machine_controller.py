@@ -73,6 +73,9 @@ class VendingMachineController:
     def insert_coin(self, diameter, thickness, weight):
         self.v_machine.insert_coin(diameter, thickness, weight)
 
+    def insert_coin_dispense_change(self, diameter, thickness, weight):
+        self.v_machine.insert_coin_dispense_change(diameter, thickness, weight)
+
     def process_coins_value(self):
         self.v_machine.process_coins_value()
 
@@ -87,6 +90,10 @@ class VendingMachineController:
 
     def cancel(self):
         return self.v_machine.dispense_coins()
+
+    @staticmethod
+    def get_coin_type(coin):
+        return coin.get_coin_type(coin)
 
     def process_order(self, item_name, coins_stats):
         """Intended to be used as a simple way to process an order

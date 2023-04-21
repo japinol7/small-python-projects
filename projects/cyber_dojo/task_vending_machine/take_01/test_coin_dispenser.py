@@ -22,7 +22,7 @@ class TestCoinDispenser:
 
     def test_get_change_coins_without_exact_change_must_raise_exception(self, coin_dispenser_with_coins):
         with pytest.raises(CoinDispenserCannotProvideExactChangeException):
-            cost = 1.3
+            cost = 1.71
             payment = 1.85
             coin_dispenser_with_coins.get_change_coins(cost, payment)
 

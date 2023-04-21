@@ -52,5 +52,22 @@ def v_machine_controller_with_stock(stock_items):
 
 
 @pytest.fixture()
+def v_machine_controller_with_stock_and_coins_to_dispense(stock_items):
+    v_machine_controller = VendingMachineController(Display())
+    v_machine_controller.add_items(stock_items)
+
+    coins_types = [CoinType.QUARTER,
+                   CoinType.DIME, CoinType.DIME, CoinType.DIME,
+                   CoinType.DIME, CoinType.DIME, CoinType.DIME,
+                   CoinType.NICKEL, CoinType.NICKEL, CoinType.NICKEL,
+                   CoinType.NICKEL, CoinType.NICKEL,
+                   ]
+    for coin_stats in [Coin.get_coin_stats(coin_type) for coin_type in coins_types]:
+        v_machine_controller.insert_coin_dispense_change(*coin_stats)
+
+    return v_machine_controller
+
+
+@pytest.fixture()
 def coin_dispenser_with_coins(stock_dispenser_coins):
     return CoinDispenser(stock_dispenser_coins)

@@ -2,6 +2,7 @@ from enum import Enum
 
 from config import DECIMALS
 from coin import Coin
+from coin_dispenser import CoinDispenser
 from item import Item
 
 
@@ -34,6 +35,7 @@ class VendingMachine:
     def __init__(self, display):
         self._items = {}
         self.item = None
+        self.coins_dispense_change = []
         self.coins = []
         self.invalid_coins = []
         self.money = 0
@@ -111,14 +113,30 @@ class VendingMachine:
             return
         self.coins += [coin]
 
+    def insert_coin_dispense_change(self, diameter, thickness, weight):
+        coin = Coin(diameter, thickness, weight)
+        if not self._is_coin_valid(coin):
+            self.invalid_coins += [coin]
+            return
+        self.coins_dispense_change += [coin]
+
     def process_coins_value(self):
         self.money = round(sum(coin.value for coin in self.coins), DECIMALS)
         self.state = VendingMachineState.CHOOSE_ITEM
 
     def dispense_change(self):
+        """Returns a tuple with these elements:
+         1. The change value.
+         2. A list of change coins.
+         """
+        change_coins = []
         cash_change = round(self.money - self.get_item_price(self.item.name), DECIMALS)
+        if cash_change > 0:
+            change_coins = CoinDispenser(self.coins + self.coins_dispense_change).\
+                get_change_coins(self.get_item_price(self.item.name), self.money)
+
         self.state = VendingMachineState.DISPENSE_ITEM
-        return cash_change
+        return cash_change, change_coins
 
     def dispense_coins(self):
         coins = self.coins

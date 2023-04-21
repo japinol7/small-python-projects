@@ -1,6 +1,6 @@
 # TODO: WIP. This kata is in development.
 
-from coin import COIN_STATS, CoinType, COIN_NAMES
+from coin import COIN_STATS, COIN_NAMES, CoinType
 from config import CURRENCY_CODE
 from vending_machine_controller import VendingMachineController, VendingMachineState, DISPLAY_MSG_STATES
 from display import Display
@@ -82,7 +82,8 @@ class CmdApp:
         if self.v_machine.state == VendingMachineState.DISPENSE_CHANGE:
             cash_change = self.v_machine.dispense_change()
             take_stuff_str += "\nRetrieve your change:" \
-                              f"\n\t{cash_change} {CURRENCY_CODE}"
+                              f"\n\t{cash_change[0]} {CURRENCY_CODE}"\
+                              f"\n\t{[self.v_machine.get_coin_type(x).name for x in cash_change[1]]}"
         if self.v_machine.state == VendingMachineState.DISPENSE_ITEM:
             take_stuff_str += "\nRetrieve your Product"
             self.v_machine.dispense_item()

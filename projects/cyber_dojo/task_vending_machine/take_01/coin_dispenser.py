@@ -25,7 +25,7 @@ class CoinDispenser:
         for coin in sorted(self.coins, key=lambda x: x.value, reverse=True):
             while change_amount >= coin.value:
                 change_coins += [coin]
-                change_amount -= coin.value
+                change_amount = round(change_amount - coin.value, DECIMALS)
 
         if change_amount:
             raise CoinDispenserCannotProvideExactChangeException(

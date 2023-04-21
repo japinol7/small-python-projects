@@ -44,11 +44,7 @@ class Coin:
         self._compute_value()
 
     def _compute_type(self):
-        for key, val in COIN_STATS.items():
-            if val == (self.diameter, self.thickness, self.weight):
-                self.type = key
-                return
-        self.type = CoinType.NONE
+        self.type = Coin.get_coin_type(self)
 
     def _compute_value(self):
         self.value = COIN_VALUES[self.type]
@@ -56,6 +52,13 @@ class Coin:
     @staticmethod
     def get_coin_stats(coin_type):
         return COIN_STATS[coin_type]
+
+    @staticmethod
+    def get_coin_type(coin):
+        for key, val in COIN_STATS.items():
+            if val == (coin.diameter, coin.thickness, coin.weight):
+                return key
+        return CoinType.NONE
 
     def __str__(self):
         return f"type: {self.type.name} value: {self.value} " \
