@@ -21,6 +21,39 @@ DIGITS_REPR_2 = '._.\n'\
                 '._|\n'\
                 '|_.\n'
 
+DIGITS_REPR_3 = '._.\n'\
+                '._|\n'\
+                '._|\n'
+
+DIGITS_REPR_4 = '...\n'\
+                '|_|\n'\
+                '..|\n'
+
+DIGITS_REPR_5 = '._.\n'\
+                '|_.\n'\
+                '._|\n'
+
+DIGITS_REPR_6 = '._.\n'\
+                '|_.\n'\
+                '|_|\n'
+
+DIGITS_REPR_7 = '._.\n'\
+                '..|\n'\
+                '..|\n'
+
+DIGITS_REPR_8 = '._.\n'\
+                '|_|\n'\
+                '|_|\n'
+
+DIGITS_REPR_9 = '._.\n'\
+                '|_|\n'\
+                '..|\n'
+
+DIGITS_REPR_1234567890 = '' \
+                  '... ._. ._. ... ._. ._. ._. ._. ._. ._.\n'\
+                  '..| ._| ._| |_| |_. |_. ..| |_| |_| |.|\n'\
+                  '..| |_. ._| ..| ._| |_| ..| |_| ..| |_|\n'
+
 DIGITS_REPR_910 = '._. ... ._.\n'\
                   '|_| ..| |.|\n'\
                   '..| ..| |_|\n'
@@ -31,7 +64,15 @@ class TestLCDDigits:
         (0, DIGITS_REPR_0),
         (1, DIGITS_REPR_1),
         (2, DIGITS_REPR_2),
-        # (910, LCD_DIGITS_REPR_FOR_910),
+        (3, DIGITS_REPR_3),
+        (4, DIGITS_REPR_4),
+        (5, DIGITS_REPR_5),
+        (6, DIGITS_REPR_6),
+        (7, DIGITS_REPR_7),
+        (8, DIGITS_REPR_8),
+        (9, DIGITS_REPR_9),
+        (1234567890, DIGITS_REPR_1234567890),
+        (910, DIGITS_REPR_910),
         ])
     def test_generate_anagrams(self, num, expected):
         result = LCDDigits.generate(num)
