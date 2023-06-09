@@ -10,6 +10,7 @@ class LCDDigitCell(str, Enum):
 CELL_H = LCDDigitCell.HORIZONTAL
 CELL_V = LCDDigitCell.VERTICAL
 CELL_O = LCDDigitCell.OFF
+SEPARATOR = ' '
 
 DIGITS_0 = f"{CELL_O}{CELL_H}{CELL_O}%s" \
            f"{CELL_V}{CELL_O}{CELL_V}%s" \

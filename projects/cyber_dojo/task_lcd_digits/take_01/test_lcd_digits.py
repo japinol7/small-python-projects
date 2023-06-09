@@ -1,4 +1,4 @@
-from enum import Enum
+from lcd_digit_cell import SEPARATOR
 
 import pytest
 
@@ -8,6 +8,8 @@ from lcd_digit_cell import CELL_H, CELL_V, CELL_O
 TEST_CELL_H = '_'
 TEST_CELL_V = '|'
 TEST_CELL_O = '.'
+TEST_SEPARATOR = ' '
+TEST_SEPARATOR_BIG = '     '
 
 DIGITS_REPR_0 = '._.\n'\
                 '|.|\n'\
@@ -54,6 +56,11 @@ DIGITS_REPR_1234567890 = '' \
                   '..| ._| ._| |_| |_. |_. ..| |_| |_| |.|\n'\
                   '..| |_. ._| ..| ._| |_| ..| |_| ..| |_|\n'
 
+DIGITS_REPR_1234567890_SEPARATOR_BIG = '' \
+                  '...     ._.     ._.     ...     ._.     ._.     ._.     ._.     ._.     ._.\n'\
+                  '..|     ._|     ._|     |_|     |_.     |_.     ..|     |_|     |_|     |.|\n'\
+                  '..|     |_.     ._|     ..|     ._|     |_|     ..|     |_|     ..|     |_|\n'
+
 DIGITS_REPR_910 = '._. ... ._.\n'\
                   '|_| ..| |.|\n'\
                   '..| ..| |_|\n'
@@ -74,9 +81,23 @@ class TestLCDDigits:
         (1234567890, DIGITS_REPR_1234567890),
         (910, DIGITS_REPR_910),
         ])
-    def test_generate_anagrams(self, num, expected):
+    def test_generate_lcd_digits(self, num, expected):
         result = LCDDigits.generate(num)
         result = self._replace_lcd_digit_cells(digit_cell_str=result)
+        result = self._replace_lcd_digit_separators(digit_cell_str=result)
+        assert result == expected
+
+    @pytest.mark.parametrize('num, expected', [
+        (1234567890, DIGITS_REPR_1234567890_SEPARATOR_BIG),
+        ])
+    def test_generate_lcd_digits_with_separator_of_5_spaces(self, num, expected):
+        separator = '    '
+        result = LCDDigits.generate(num, separator)
+        result = self._replace_lcd_digit_cells(digit_cell_str=result)
+        result = self._replace_lcd_digit_separators(
+                      digit_cell_str=result,
+                      separator=separator,
+                      test_separator=TEST_SEPARATOR_BIG)
         assert result == expected
 
     def _replace_lcd_digit_cells(self, digit_cell_str):
@@ -84,6 +105,9 @@ class TestLCDDigits:
             replace(CELL_H, TEST_CELL_H).\
             replace(CELL_V, TEST_CELL_V).\
             replace(CELL_O, TEST_CELL_O)
+
+    def _replace_lcd_digit_separators(self, digit_cell_str, separator=SEPARATOR, test_separator=TEST_SEPARATOR):
+        return digit_cell_str.replace(separator, test_separator)
 
     def test_negative_num_should_raise_exception(self):
         with pytest.raises(LCDDigitsException):
