@@ -15,6 +15,7 @@ class TestPrimeFactors:
         (9, [3, 3]),
         (12, [2, 2, 3]),
         (15, [3, 5]),
+        (48510, [2, 3, 3, 5, 7, 7, 11]),
         ])
     def test_prime_factors(self, num, expected):
         result = list(PrimeFactors.generate_factors(num))
