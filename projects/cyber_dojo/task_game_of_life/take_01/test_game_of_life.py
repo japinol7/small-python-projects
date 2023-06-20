@@ -1,6 +1,10 @@
 import pytest
 
-from game_of_life import GameOfLife, GameOfLifeException
+from game_of_life import GameOfLife, GameOfLifeException, Cell
+
+TEST_CELL_EMPTY = '.'
+TEST_CELL_ALIVE = '*'
+TEST_CELLS = {'cell_alive': TEST_CELL_ALIVE, 'cell_empty': TEST_CELL_EMPTY}
 
 TEST_CASE_1 = (
     4, 8,
@@ -53,7 +57,7 @@ class TestGameOfLife:
         (1, 4, TEST_CASE_2, 4),
         ])
     def test_count_neighbours(self, row, col, grid_data, expected):
-        result = GameOfLife(*grid_data).count_neighbours(row, col)
+        result = GameOfLife(*grid_data, **TEST_CELLS).count_neighbours(row, col)
         assert result == expected
 
     @pytest.mark.parametrize('input_vals, expected', [
@@ -61,5 +65,5 @@ class TestGameOfLife:
         (TEST_CASE_2, TEST_CASE_2_EXPECTED[2]),
         ])
     def test_calc_next_generation(self, input_vals, expected):
-        result = GameOfLife(*input_vals).calc_next_generation()
+        result = GameOfLife(*input_vals, **TEST_CELLS).calc_next_generation()
         assert result == expected
