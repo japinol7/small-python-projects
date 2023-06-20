@@ -31,11 +31,7 @@ class GameOfLife:
             for col in range(self.cols_n):
                 is_cell_alive = self.grid[row][col] == self.cell_alive
                 neighbours_n = self.count_neighbours(row, col)
-                if is_cell_alive and neighbours_n < 2:
-                    new_grid[row][col] = self.cell_empty
-                elif is_cell_alive and neighbours_n > 3:
-                    new_grid[row][col] = self.cell_empty
-                elif is_cell_alive and neighbours_n in {2, 3}:
+                if is_cell_alive and neighbours_n in {2, 3}:
                     new_grid[row][col] = self.cell_alive
                 elif not is_cell_alive and neighbours_n == 3:
                     new_grid[row][col] = self.cell_alive
