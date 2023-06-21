@@ -1,14 +1,14 @@
 from game_of_life import GameOfLife
 
-GENERATIONS_N = 5
+GENERATIONS_N = 6
 
 GRID_VALS = (
     5, 8,
     '........\n'
+    '.**.....\n'
+    '.**.....\n'
     '...**...\n'
-    '.*****..\n'
-    '........\n'
-    '........',
+    '...**...',
     )
 
 
