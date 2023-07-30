@@ -1,7 +1,9 @@
+from tools.logger import logger
+from tools.logger.logger import log
 from stack import Stack
 
 MIN_DISCS = 1
-MAX_DISCS = 20
+MAX_DISCS = 24
 
 
 class HanoiTowersException(Exception):
@@ -9,7 +11,7 @@ class HanoiTowersException(Exception):
 
 
 class HanoiTowers:
-    """The Towers of Hanoi."""
+    """The Towers of Hanoi. This solver uses a recursive approach."""
 
     def __init__(self, n_discs):
         self.n_discs = n_discs
@@ -53,11 +55,14 @@ class HanoiTowers:
 
 
 def main():
-    hanoi_towers = HanoiTowers(5)
-    print(f"\nInitial state:\n{hanoi_towers}")
+    logger.add_stdout_handler()
+    log.info("Start HanoiTowers")
+
+    hanoi_towers = HanoiTowers(15)
+    log.info(f"Initial state:\n{hanoi_towers}")
 
     hanoi_towers.move_discs_to_end_tower()
-    print(f"\nAfter processing:\n{hanoi_towers}")
+    log.info(f"State after processing:\n{hanoi_towers}")
 
 
 if __name__ == "__main__":
