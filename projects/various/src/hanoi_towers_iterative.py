@@ -33,9 +33,6 @@ class HanoiTowers:
         for disc in range(self.n_discs, 0, -1):
             self.tower_start.push(disc)
 
-    def _reset(self):
-        self._setup()
-
     def __str__(self):
         return f"HanoiTowers for n_discs: {self.n_discs}\n" \
                f"\ttower_start: {self.tower_start}\n" \
