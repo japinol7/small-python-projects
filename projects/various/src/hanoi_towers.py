@@ -56,13 +56,14 @@ class HanoiTowers:
 
 def main():
     logger.add_stdout_handler()
-    log.info("Start HanoiTowers")
+    log.info("Start app HanoiTowers. Solver uses recursion")
 
     hanoi_towers = HanoiTowers(15)
     log.info(f"Initial state:\n{hanoi_towers}")
 
     hanoi_towers.move_discs_to_end_tower()
     log.info(f"State after processing:\n{hanoi_towers}")
+    log.info("End app HanoiTowers")
 
 
 if __name__ == "__main__":
