@@ -30,7 +30,7 @@ class HanoiTowers:
         self.tower_tmp = Stack()
         self.tower_end = Stack()
 
-        for disc in range(1, self.n_discs + 1):
+        for disc in range(self.n_discs, 0, -1):
             self.tower_start.push(disc)
 
     def __str__(self):
