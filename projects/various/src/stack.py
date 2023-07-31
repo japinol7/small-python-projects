@@ -16,8 +16,11 @@ class Stack:
     def pop(self):
         return self._container.pop()
 
+    def peek(self):
+        return self._container[-1] if not self.is_empty else None
+
     def __str__(self):
-        return repr(self._container)
+        return f"stack({repr(list(self._container))})"
 
     def __repr__(self):
-        return repr(self._container)
+        return f"stack({repr(list(self._container))})"
