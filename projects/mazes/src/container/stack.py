@@ -23,6 +23,9 @@ class Stack:
     def peek(self):
         return self._container[-1] if not self.is_empty else None
 
+    def __len__(self):
+        return len(self._container)
+
     def __str__(self):
         return f"stack({repr(list(self._container))})"
 
