@@ -45,7 +45,7 @@ class HanoiTowers:
         tower2_top_disc = tower2.pop() if not tower2.is_empty else no_disc_value
 
         if tower1_top_disc == no_disc_value and tower2_top_disc == no_disc_value:
-            raise Exception(f"No disk in towers: {tower1.name}, {tower2.name}")
+            raise Exception(f"No disc in towers: {tower1.name}, {tower2.name}")
 
         if tower1_top_disc == no_disc_value:
             to_log and log.info(f"Move disc {tower2_top_disc} from {tower2.name} to {tower1.name}")
@@ -69,7 +69,7 @@ class HanoiTowers:
 
         total_moves = int(pow(2, self.n_discs) - 1)
 
-        # Movement will be clockwise when the total disks is even, and anticlockwise otherwise
+        # Movement will be clockwise when the total discs is even, and anticlockwise otherwise
         if self.n_discs % 2 == 0:
             end, tmp = tmp, end
 
