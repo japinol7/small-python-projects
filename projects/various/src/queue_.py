@@ -2,8 +2,9 @@ from collections import deque
 
 
 class Queue:
-    def __init__(self):
+    def __init__(self, name=''):
         self._container = deque()
+        self.name = name
 
     @property
     def is_empty(self):
@@ -22,7 +23,7 @@ class Queue:
         return len(self._container)
 
     def __str__(self):
-        return repr(self._container)
+        return f"Queue({repr(list(self._container))})"
 
     def __repr__(self):
-        return repr(self._container)
+        return f"Queue({repr(list(self._container))})"
