@@ -64,6 +64,7 @@ def main():
     log.info(f"Initial state:\n{hanoi_towers}")
 
     hanoi_towers.move_discs_to_end_tower()
+
     log.info(f"State after processing:\n{hanoi_towers}")
     log.info("End app HanoiTowers")
 
