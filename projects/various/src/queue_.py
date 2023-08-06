@@ -15,6 +15,12 @@ class Queue:
     def pop(self):
         return self._container.popleft()
 
+    def peek(self):
+        return self._container[0] if not self.is_empty else None
+
+    def __len__(self):
+        return len(self._container)
+
     def __str__(self):
         return repr(self._container)
 
