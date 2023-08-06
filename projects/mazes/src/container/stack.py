@@ -1,7 +1,6 @@
 """Module stack."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-
 from collections import deque
 
 

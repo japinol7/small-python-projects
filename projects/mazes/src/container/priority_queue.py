@@ -5,8 +5,9 @@ from heapq import heappush, heappop
 
 
 class PriorityQueue:
-    def __init__(self):
+    def __init__(self, name=''):
         self._container = []
+        self.name = name
 
     @property
     def is_empty(self):
@@ -18,8 +19,11 @@ class PriorityQueue:
     def pop(self):
         return heappop(self._container)
 
+    def __len__(self):
+        return len(self._container)
+
     def __str__(self):
-        return repr(self._container)
+        return f"PriorityQueue({repr(self._container)})"
 
     def __repr__(self):
-        return repr(self._container)
+        return f"PriorityQueue({repr(self._container)})"
