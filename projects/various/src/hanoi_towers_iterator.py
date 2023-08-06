@@ -11,7 +11,9 @@ class HanoiTowersException(Exception):
 
 
 class HanoiTowers:
-    """The Towers of Hanoi. This solver uses an iterative approach."""
+    """The Towers of Hanoi. This solver uses an iterative approach.
+    Also, it is implemented as an iterator.
+    """
 
     def __init__(self, n_discs, to_log_moves=False):
         self.n_discs = n_discs
@@ -20,6 +22,7 @@ class HanoiTowers:
         self.tower_tmp = None
         self.tower_end = None
         self.move = 1
+        self.total_moves = int(pow(2, self.n_discs) - 1)
 
         if not (MIN_DISCS <= n_discs <= MAX_DISCS):
             raise HanoiTowersException(f"User Error. Invalid number of discs: "
@@ -34,6 +37,25 @@ class HanoiTowers:
 
         for disc in range(self.n_discs, 0, -1):
             self.tower_start.push(disc)
+
+        if self.n_discs % 2 == 0:
+            self.tower_end, self.tower_tmp = self.tower_tmp, self.tower_end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.move > self.total_moves:
+            raise StopIteration
+
+        if self.move % 3 == 1:
+            self.move_disc_between_towers(self.tower_start, self.tower_end, to_log=self.to_log_moves)
+        elif self.move % 3 == 2:
+            self.move_disc_between_towers(self.tower_start, self.tower_tmp, to_log=self.to_log_moves)
+        elif self.move % 3 == 0:
+            self.move_disc_between_towers(self.tower_tmp, self.tower_end, to_log=self.to_log_moves)
+
+        self.move += 1
 
     def __str__(self):
         return f"HanoiTowers for n_discs: {self.n_discs}\n" \
@@ -64,35 +86,16 @@ class HanoiTowers:
             tower1.push(tower1_top_disc)
             tower1.push(tower2_top_disc)
 
-    def move_discs_to_end_tower(self):
-        start = self.tower_start
-        end = self.tower_end
-        tmp = self.tower_tmp
-
-        total_moves = int(pow(2, self.n_discs) - 1)
-
-        # Movement will be clockwise when the total discs is even, and anticlockwise otherwise
-        if self.n_discs % 2 == 0:
-            end, tmp = tmp, end
-
-        for move in range(1, total_moves + 1):
-            if move % 3 == 1:
-                self.move_disc_between_towers(start, end, to_log=self.to_log_moves)
-            elif move % 3 == 2:
-                self.move_disc_between_towers(start, tmp, to_log=self.to_log_moves)
-            elif move % 3 == 0:
-                self.move_disc_between_towers(tmp, end, to_log=self.to_log_moves)
-            self.move += 1
-
 
 def main():
     logger.add_stdout_handler()
-    log.info("Start app HanoiTowers. Solver uses iteration")
+    log.info("Start app HanoiTowers. Solver uses iteration. Implemented as an iterator.")
 
     hanoi_towers = HanoiTowers(5, to_log_moves=True)
     log.info(f"Initial state:\n{hanoi_towers}")
 
-    hanoi_towers.move_discs_to_end_tower()
+    for _ in hanoi_towers:
+        pass
 
     log.info(f"State after processing:\n{hanoi_towers}")
     log.info("End app HanoiTowers")
