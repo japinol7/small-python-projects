@@ -19,6 +19,9 @@ class PriorityQueue:
     def pop(self):
         return heappop(self._container)
 
+    def peek(self):
+        return self._container[0] if not self.is_empty else None
+
     def __len__(self):
         return len(self._container)
 
