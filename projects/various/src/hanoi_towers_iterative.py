@@ -1,9 +1,14 @@
+from collections import namedtuple
+
 from tools.logger import logger
 from tools.logger.logger import log
 from stack import Stack
 
 MIN_DISCS = 1
 MAX_DISCS = 24
+
+HanoiTowers_Move = namedtuple('hanoi_towers_move',
+                              ['move_n', 'disc_n', 'tower_from', 'tower_to'])
 
 
 class HanoiTowersException(Exception):
@@ -43,26 +48,31 @@ class HanoiTowers:
 
     def move_disc_between_towers(self, tower1, tower2, to_log=False):
         no_disc_value = 0
-        tower1_top_disc = tower1.pop() if not tower1.is_empty else no_disc_value
-        tower2_top_disc = tower2.pop() if not tower2.is_empty else no_disc_value
+        tower1_top_disc = tower1.peek() if not tower1.is_empty else no_disc_value
+        tower2_top_disc = tower2.peek() if not tower2.is_empty else no_disc_value
 
         if tower1_top_disc == no_disc_value and tower2_top_disc == no_disc_value:
             raise Exception(f"No disc in towers: {tower1.name}, {tower2.name}")
 
         if tower1_top_disc == no_disc_value:
-            to_log and log.info(f"{self.move:2}. Move disc {tower2_top_disc} from {tower2.name} to {tower1.name}")
+            ht_move = HanoiTowers_Move(self.move, tower2_top_disc, tower2.name, tower1.name)
+            tower2.pop()
             tower1.push(tower2_top_disc)
         elif tower2_top_disc == no_disc_value:
-            to_log and log.info(f"{self.move:2}. Move disc {tower1_top_disc} from {tower1.name} to {tower2.name}")
+            ht_move = HanoiTowers_Move(self.move, tower1_top_disc, tower1.name, tower2.name)
+            tower1.pop()
             tower2.push(tower1_top_disc)
         elif tower1_top_disc <= tower2_top_disc:
-            to_log and log.info(f"{self.move:2}. Move disc {tower1_top_disc} from {tower1.name} to {tower2.name}")
-            tower2.push(tower2_top_disc)
+            ht_move = HanoiTowers_Move(self.move, tower1_top_disc, tower1.name, tower2.name)
+            tower1.pop()
             tower2.push(tower1_top_disc)
         else:
-            to_log and log.info(f"{self.move:2}. Move disc {tower2_top_disc} from {tower2.name} to {tower1.name}")
-            tower1.push(tower1_top_disc)
+            ht_move = HanoiTowers_Move(self.move, tower2_top_disc, tower2.name, tower1.name)
+            tower2.pop()
             tower1.push(tower2_top_disc)
+
+        to_log and log.info(f"{ht_move.move_n:2}. Move disc {ht_move.disc_n} "
+                            f"from {ht_move.tower_from} to {ht_move.tower_to}")
 
     def move_discs_to_end_tower(self):
         start = self.tower_start
