@@ -25,6 +25,16 @@ def calc_team(team_name, names, names_sel, n_members=3):
             print(name)
 
 
+def print_names_remaining(names_remaining):
+    if len(names_remaining) < N_MEMBERS:
+        print(f"Remaining Characters:\n{GROUP_SEPARATOR}")
+        for name in names_remaining:
+            print(f"{name}")
+    else:
+        print(f"Remaining Characters: {len(names_remaining)}\n"
+              f"{GROUP_SEPARATOR}")
+
+
 def main():
     names = set()
     names_sel = []
@@ -42,12 +52,7 @@ def main():
 
     names_remaining = list(set(names) - set(names_sel))
     if names_remaining:
-        if len(names_remaining) < N_MEMBERS:
-            print(f"Remaining Characters:\n{GROUP_SEPARATOR}")
-            for name in names_remaining:
-                print(f"{name}")
-        else:
-            print(f"Remaining Characters: {len(names_remaining)}\n{GROUP_SEPARATOR}")
+        print_names_remaining(names_remaining)
 
 
 if __name__ == '__main__':

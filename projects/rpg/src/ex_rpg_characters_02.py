@@ -1,6 +1,8 @@
 import copy
 from abc import ABCMeta, abstractmethod
 
+SECTOR_SEPARATOR = '\n' + ('-' * 10)
+
 
 class ActorExistsException(Exception):
     pass
@@ -131,7 +133,8 @@ def main():
 
     default_pc = p1
     default_npc = baragorn
-    print('-' * 10)
+
+    print(SECTOR_SEPARATOR)
     print(f'Default pc: {default_pc}')
     print(f'Default npc: {default_npc}')
 

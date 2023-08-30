@@ -24,7 +24,9 @@ class Actor(metaclass=ABCMeta):
         self.type = type
         self.health = health
         self.power = power
+        self.is_rude = False
         self.items = []
+        self.weapons = []
 
     def __str__(self):
         return (f"name: {self.name!r}, "
@@ -60,6 +62,10 @@ class Actor(metaclass=ABCMeta):
         Actor.actors[v] = cp
         return cp
 
+    def fight(self, other):
+        weapon = self.weapons and self.weapons[0] or None
+        print(f"{self.name} fights {other.name} with weapon: {weapon and weapon.name or 'fists'}")
+
     @abstractmethod
     def greet(self):
         pass
@@ -90,6 +96,9 @@ class Npc(Actor):
         return Npc.npcs[v]
 
     def greet(self):
+        if self.is_rude:
+            print('Bah!')
+            return
         print('Hello!')
 
 
@@ -118,6 +127,9 @@ class Pc(Actor):
         return Pc.pcs[v]
 
     def greet(self):
+        if self.is_rude:
+            print('Hello there!')
+            return
         print('Hi!')
 
 
@@ -189,9 +201,14 @@ class Item:
                 f"{self.health!r})")
 
 
+def do_two_fighters_combat(actor1, actor2):
+    actor1.fight(actor2)
+    actor2.fight(actor1)
+
+
 def print_item_types_with_items():
-    print(SECTOR_SEPARATOR)
-    print("Get all item types")
+    print(f"{SECTOR_SEPARATOR} \n"
+          "Get all item types")
     for item_type in ItemType.item_types.values():
         print(f'Item type: {item_type}')
 
@@ -211,6 +228,9 @@ def main():
     Pc("P3", "rider", 67, 33)
     baragorn = Npc("Baragorn", "fighter", 100, 20)
 
+    p1.is_rude = True
+    baragorn.is_rude = True
+
     npc_def = [
         ("Aragorn", "rider", 100, 20),
         ("Gandalf", "mage", 110, 520),
@@ -226,6 +246,12 @@ def main():
     print(SECTOR_SEPARATOR)
     print(f'Default pc: {default_pc}')
     print(f'Default npc: {default_npc}')
+
+    # Meet and greet
+    print(f"{SECTOR_SEPARATOR} \nActors Meet and greet")
+    for actor in Actor.actors.values():
+        print(f"{actor.name}:\n\t", end='')
+        actor.greet()
 
     # Create some item types
     item_type_broadsword = ItemType('broadsword')
@@ -252,7 +278,12 @@ def main():
     # Assign some items to actors
     baragorn.items.append(Item.items['Common Broadsword'])
     Actor.actors['P1'].items.append(Item.items['Aeronflight'])
+    baragorn.weapons.append(Item.items['Common Broadsword'])
+    # Actor.actors['P1'].weapons.append(Item.items['Aeronflight'])
     print_actors_with_items()
+
+    print(SECTOR_SEPARATOR)
+    do_two_fighters_combat(Actor.actors['P1'], Actor.actors['Baragorn'])
 
 
 if __name__ == '__main__':
