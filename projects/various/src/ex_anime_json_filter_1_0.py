@@ -1,7 +1,14 @@
 import json
 import os
+import pathlib
 import time
 from pprint import pprint
+from zipfile import ZipFile
+
+ROOT_FOLDER = pathlib.Path(__file__).parent.parent
+RESOURCES_FOLDER = os.path.join(ROOT_FOLDER, 'res', 'data')
+DATASET_FOLDER_ZIP = os.path.join(RESOURCES_FOLDER, 'zip')
+DATASET_FILE_ZIP = os.path.join(DATASET_FOLDER_ZIP, 'anime-offline-database.zip')
 
 
 ANIME_TITLE_WANTED = (
@@ -34,6 +41,21 @@ ANIME_COLUMNS_WANTED = (
     )
 
 
+class ImportDataException(Exception):
+    pass
+
+
+def __unzip_data_file():
+    print(f"Unzip data file")
+    try:
+        with ZipFile(DATASET_FILE_ZIP) as fin_zip:
+            fin_zip.extractall(RESOURCES_FOLDER)
+    except FileNotFoundError:
+        raise ImportDataException(f"Error extracting data files. File not found: {DATASET_FILE_ZIP}")
+    except Exception as e:
+        raise ImportDataException(f"Error extracting data files from: {DATASET_FILE_ZIP}. Error msg: {e}")
+
+
 def is_a_wanted_anime(anime, allow_missing_year=False):
     if not allow_missing_year and not anime['year']:
         return False
@@ -53,12 +75,12 @@ def get_wanted_columns(anime):
 
 
 def main():
-    file_name = os.path.join('..', 'res', 'data', 'anime-offline-database.json')
-
+    __unzip_data_file()
+    data_file_name = os.path.join('..', 'res', 'data', 'anime-offline-database.json')
     start_time = time.time()
 
     animes = []
-    with open(file_name, encoding='UTF8') as fin:
+    with open(data_file_name, encoding='utf-8') as fin:
         data = json.load(fin)
         for row in data['data']:
             row.update({
