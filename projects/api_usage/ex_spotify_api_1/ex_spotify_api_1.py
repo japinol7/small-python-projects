@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from tools.utils import utils
-from tools.logger.logger import logger as log
+from tools.logger.logger import log
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
