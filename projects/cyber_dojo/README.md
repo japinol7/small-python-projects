@@ -43,3 +43,68 @@ It's registered trustees are:
 The cyber-dojo Foundation issues licences for commercial use of the public cyber-dojo server 
 at https://cyber-dojo.org.
 If you need a licence please email license@cyber-dojo.org.
+<br> <br>
+
+## Available katas
+(updated 2023-09-29)
+
+* 100 doors
+* 12 Days of Xmas
+* ABC Problem
+* Align Columns
+* Anagrams
+* Array Shuffle
+* Balanced Parentheses
+* Best Shuffle
+* Bowling Game
+* Calc Stats
+* Closest To Zero
+* Combined Number
+* Count Coins
+* Diff Selector
+* Diversion
+* Eight Queens
+* Filename Range
+* Fisher-Yates Shuffle
+* Five Weekends
+* Fizz Buzz
+* Fizz Buzz Plus
+* Friday 13th
+* Game of Life
+* Gray Code
+* Group Neighbours
+* Haiku Review
+* Harry Potter
+* ISBN
+* Knight's Tour
+* LCD Digits
+* Leap Years
+* Levenshtein Distance
+* Longest Common Prefix
+* Magic Square
+* Mars Rover
+* Mine Field
+* Mine Sweeper
+* Monty Hall
+* Number Chains
+* Number Names
+* Phone Numbers
+* Poker Hands
+* Prime Factors
+* Print Diamond
+* Recently Used List
+* Remove Duplicates
+* Reordering
+* Reverse Roman
+* Reversi
+* Roman Numerals
+* Saddle Points
+* Tennis
+* Tiny Maze
+* Unsplice
+* Vending Machine
+* Wonderland Number
+* Word Wrap
+* Yatzy
+* Yatzy Cutdown
+* Zeckendorf Number
