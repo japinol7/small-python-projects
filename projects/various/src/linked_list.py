@@ -13,6 +13,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.size = 0
 
     @property
     def is_empty(self):
@@ -21,6 +22,7 @@ class LinkedList:
     def clear(self):
         self.head = None
         self.tail = None
+        self.size = 0
 
     def append(self, node):
         if not isinstance(node, Node):
@@ -31,8 +33,9 @@ class LinkedList:
         else:
             self.tail.next = node
         self.tail = node
+        self.size += 1
 
-    def find(self, data, start_node=None):
+    def search(self, data, start_node=None):
         current = self.head if not start_node else start_node
         while current:
             if current.data == data:
@@ -40,7 +43,7 @@ class LinkedList:
             current = current.next
         return None
 
-    def find_all(self, data):
+    def search_all(self, data):
         res = []
         current = self.head
         while current:
@@ -50,6 +53,9 @@ class LinkedList:
         return res
 
     def remove_head(self):
+        if not self.head:
+            return
+
         node = self.head
         if node is self.tail:
             node.data = None
@@ -58,8 +64,12 @@ class LinkedList:
             return
 
         self.head = self.head.next
+        self.size -= 1
 
     def remove_tail(self):
+        if not self.tail:
+            return
+
         self.remove(self.tail)
 
     def remove(self, node):
@@ -81,6 +91,8 @@ class LinkedList:
 
         if current is self.tail:
             self.tail = previous
+
+        self.size -= 1
 
     def reverse(self):
         previous = None
@@ -129,69 +141,15 @@ class LinkedList:
             current = current.next
         self.head = head
         self.tail = current
+        self.size = len(list_)
 
     def __len__(self):
         if self.is_empty:
             return 0
-        return self.count_nodes()
+        return self.size
 
     def __str__(self):
         str_ = ', '.join(str(node) for node in self.__class__.to_list(self))
         return f"LinkedList([{str_}])"
 
     __repr__ = __str__
-
-
-def main():
-    nums = LinkedList()
-    nums.from_list([1, 3, 5, 7, 9])
-    print(f"\nCreate Linked List: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.reverse()
-    print(f"\nReverse: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.reverse()
-    print(f"\nReverse: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.append(Node(11))
-    print(f"\nAppend 11: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.append(Node(13))
-    print(f"\nAppend 13: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove(nums.head.next.next)
-    print(f"\nRemove 3rt node: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove(nums.head)
-    print(f"\nRemove head: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove_head()
-    print(f"\nRemove head: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove_tail()
-    print(f"\nRemove tail: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove(nums.head)
-    print(f"\nRemove head: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove(nums.head)
-    print(f"\nRemove head: {nums}\n"
-          f"count: {len(nums)}")
-
-    nums.remove(nums.head)
-    print(f"\nRemove head: {nums}\n"
-          f"count: {len(nums)}")
-
-
-if __name__ == '__main__':
-    main()
