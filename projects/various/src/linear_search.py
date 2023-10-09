@@ -1,15 +1,19 @@
-import bisect
-
 from time_it.time_it import time_it
 
 
 def search_item_index(list_, item):
     """Returns the position of item in the nums list if exists.
     Otherwise, it returns -1.
-    It uses the binary search algorithm from the standard library.
+    Slow solution. It implements the linear search algorithm.
     """
-    res = bisect.bisect_right(list_, item)
-    return res - 1
+    index = 0
+    nums_len = len(list_)
+
+    while index < nums_len:
+        if list_[index] == item:
+            return index
+        index += 1
+    return -1
 
 
 def main():

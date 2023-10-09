@@ -7,4 +7,3 @@
 	author_nickname: japinol
 	author_gitHub: japinol7
 	author_twitter: @japinol
-
