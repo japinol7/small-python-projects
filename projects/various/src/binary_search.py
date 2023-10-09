@@ -2,7 +2,7 @@ from time_it.time_it import time_it
 
 
 def search_item_index(list_, item):
-    """Returns the position of item in the nums list if exists.
+    """Returns the position of item in the list if exists.
     Otherwise, it returns -1.
     Implements the binary search algorithm.
     """
