@@ -1,0 +1,10 @@
+import pytest
+
+
+@pytest.fixture()
+def stock_items():
+    return [
+        {'name': 'candy', 'qty': 4, 'price': 0.65},
+        {'name': 'chips', 'qty': 1, 'price': 0.5},
+        {'name': 'cola', 'qty': 2, 'price': 1},
+        ]
