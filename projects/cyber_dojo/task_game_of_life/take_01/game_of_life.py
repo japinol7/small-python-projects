@@ -1,3 +1,4 @@
+import copy
 from enum import Enum
 
 
@@ -72,6 +73,7 @@ class GameOfLife:
 
     @staticmethod
     def _grid_to_str(grid):
+        grid = copy.deepcopy(grid)
         for row in grid[:-1]:
             row.append('\n')
 
