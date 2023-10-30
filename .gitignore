@@ -11,6 +11,7 @@
 /projects/api_usage/ex_spotify_api_1/.cache
 
 *.cache
+*.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
