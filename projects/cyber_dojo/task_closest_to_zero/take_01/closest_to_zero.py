@@ -9,7 +9,7 @@ def get_number_closest_to_zero(nums: Iterable[int]) -> int:
     if not nums:
         return 0
 
-    min_positive = min((x for x in nums if x >= 0), default=MAX_INT_VALUE)
-    min_negative = -min((-x for x in nums if x < 0), default=MAX_INT_VALUE)
+    closest_positive = min((x for x in nums if x >= 0), default=MAX_INT_VALUE)
+    closest_negative = -min((-x for x in nums if x < 0), default=MAX_INT_VALUE)
 
-    return min_positive if min_positive <= -min_negative else min_negative
+    return closest_positive if closest_positive <= -closest_negative else closest_negative
