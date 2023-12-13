@@ -1,7 +1,7 @@
 from collections import OrderedDict
 from decimal import Decimal
-import json
 from pprint import pformat
+import json
 
 
 class JsonEncoder:

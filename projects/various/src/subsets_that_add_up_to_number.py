@@ -2,7 +2,7 @@
 
 import itertools
 
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
 def list_permutations(nums):

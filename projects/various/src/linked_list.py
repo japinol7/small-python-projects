@@ -36,6 +36,9 @@ class LinkedList:
         self.size += 1
 
     def search(self, data, start_node=None):
+        if start_node and not isinstance(start_node, Node):
+            raise TypeError("You must provide a Node object or None.")
+
         current = self.head if not start_node else start_node
         while current:
             if current.data == data:
@@ -107,7 +110,7 @@ class LinkedList:
 
     def count_nodes(self, start_node=None):
         if start_node and not isinstance(start_node, Node):
-            raise TypeError("You must provide a Node object")
+            raise TypeError("You must provide a Node object or None.")
 
         if self.is_empty:
             return 0

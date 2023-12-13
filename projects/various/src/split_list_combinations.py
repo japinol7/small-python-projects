@@ -1,6 +1,6 @@
 import itertools
 
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
 def split_list_combinations(nums, n_chunks):

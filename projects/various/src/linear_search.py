@@ -1,4 +1,4 @@
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
 def search_item_index(list_, item):

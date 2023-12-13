@@ -1,14 +1,14 @@
 import bisect
 
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
-def search_item_index(list_, item):
-    """Returns the position of item in the list if exists.
+def search_item_index(list_, target):
+    """Returns the position of the target number in an ordered list if exists.
     Otherwise, it returns -1.
     It uses the binary search algorithm from the standard library.
     """
-    res = bisect.bisect_right(list_, item)
+    res = bisect.bisect_right(list_, target)
     return res - 1
 
 

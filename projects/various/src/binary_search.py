@@ -1,19 +1,19 @@
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
-def search_item_index(list_, item):
-    """Returns the position of item in the list if exists.
+def search_item_index(list_, target):
+    """Returns the position of the target number in an ordered list if exists.
     Otherwise, it returns -1.
-    Implements the binary search algorithm.
+    It implements the binary search algorithm.
     """
     low = 0
     high = len(list_) - 1
 
     while low <= high:
         middle = (low + high) // 2
-        if list_[middle] == item:
+        if list_[middle] == target:
             return middle
-        if list_[middle] < item:
+        if list_[middle] < target:
             low = middle + 1
         else:
             high = middle - 1

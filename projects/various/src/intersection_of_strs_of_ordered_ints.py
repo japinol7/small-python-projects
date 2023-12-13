@@ -40,4 +40,5 @@ if __name__ == '__main__':
             result = calc_intersection_of_strs_of_ordered_ints(input_val)
             failed += print_test_result(result, expected)
         print(f"{'-' * 25}\nTests FAILED: {failed}")
+
     check_test_some_cases()

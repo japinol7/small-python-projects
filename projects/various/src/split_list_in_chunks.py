@@ -1,8 +1,8 @@
-from time_it.time_it import time_it
+from tools.time_it.time_it import time_it
 
 
 def split_list_in_chunks(nums, n_chunks):
-    """Splits sequence in chunks of similar size."""
+    """Splits a sequence in chunks of similar size."""
     k, m = divmod(len(nums), n_chunks)
     for i in range(n_chunks):
         yield nums[i * k + min(i, m): (i + 1) * k + min(i + 1, m)]
