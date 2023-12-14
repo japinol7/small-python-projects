@@ -1,16 +1,17 @@
+from collections.abc import Sequence
+
 from tools.time_it.time_it import time_it
 
 
-def search_item_index(list_, target):
+def search_item_index(list_: Sequence[int], target: int):
     """Returns the position of the target number in an ordered list if exists.
     Otherwise, it returns -1.
     It implements the binary search algorithm.
     """
-    low = 0
-    high = len(list_) - 1
+    low, high = 0, len(list_) - 1
 
     while low <= high:
-        middle = (low + high) // 2
+        middle = low + (high - low) // 2
         if list_[middle] == target:
             return middle
         if list_[middle] < target:
