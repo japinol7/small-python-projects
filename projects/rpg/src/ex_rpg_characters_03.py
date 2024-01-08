@@ -1,7 +1,7 @@
 import copy
 from abc import ABCMeta, abstractmethod
 
-SECTOR_SEPARATOR = '\n' + ('-' * 10)
+SECTOR_SEPARATOR = '\n' + '-' * 10
 
 
 class ActorExistsException(Exception):

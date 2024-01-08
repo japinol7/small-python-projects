@@ -11,7 +11,7 @@ from config.config import log
 
 
 def calc_team(team_name, names, names_sel, n_members):
-    """Choose n members randomly from a lists of names discarding names
+    """Chooses n members randomly from a lists of names discarding names
     already selected from this team or previous teams.
     This implementation retries a max of times the random choose of a member
     when its name has already been selected.
