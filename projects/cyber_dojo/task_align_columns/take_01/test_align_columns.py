@@ -9,17 +9,17 @@ that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$
 column$are$separated$by$at$least$one$space."""
 
 EXPECTED_ALIGN_VALS = {
-    ColumnAlignment.Left:
+    ColumnAlignment.LEFT:
         "Given  a          text      file   of     many     lines,     where    fields within  a  line"
         "are    delineated by        a      single 'dollar' character, write    a      program"
         "that   aligns     each      column of     fields   by         ensuring that   words   in each"
         "column are        separated by     at     least    one        space.  ",
-    ColumnAlignment.Right:
+    ColumnAlignment.RIGHT:
         " Given          a      text   file     of     many     lines,    where fields  within  a line"
         "   are delineated        by      a single 'dollar' character,    write      a program"
         "  that     aligns      each column     of   fields         by ensuring   that   words in each"
         "column        are separated     by     at    least        one   space.",
-    ColumnAlignment.Center:
+    ColumnAlignment.CENTER:
         "Given      a        text     file    of     many     lines,    where   fields within  a  line"
         " are   delineated    by       a    single 'dollar' character,  write     a    program"
         " that    aligns     each    column   of    fields      by     ensuring  that   words  in each"
@@ -36,6 +36,6 @@ class TestAlignColumns:
         assert result == expected
 
     def test_align_columns_empty(self):
-        result = AlignColumns.align_columns('', ColumnAlignment.Left)
+        result = AlignColumns.align_columns('', ColumnAlignment.LEFT)
         expected = ''
         assert result == expected

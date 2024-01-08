@@ -1,6 +1,6 @@
 import pytest
 
-from game_of_life import GameOfLife, GameOfLifeException, Cell
+from game_of_life import GameOfLife, GameOfLifeException
 
 TEST_CELL_EMPTY = '.'
 TEST_CELL_ALIVE = '*'

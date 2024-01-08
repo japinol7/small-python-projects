@@ -11,3 +11,5 @@ class TestFilenameRange:
     def test_filename_range(self, filename, expected):
         result = FilenameRange.filename_range(filename)
         assert result == expected
+        # print()
+        # print(filename, expected)

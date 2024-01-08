@@ -10,6 +10,7 @@ class TestCountCoins:
         (20, 9),
         (25, 13),
         (30, 18),
+        (53, 49),
         ])
     def test_changes(self, amount, value):
         result = CountCoins().changes(amount)

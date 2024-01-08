@@ -3,9 +3,9 @@ from itertools import zip_longest
 
 
 class ColumnAlignment(str, Enum):
-    Center = '^'
-    Left = '<'
-    Right = '>'
+    CENTER = '^'
+    LEFT = '<'
+    RIGHT = '>'
 
 
 class AlignColumns:
