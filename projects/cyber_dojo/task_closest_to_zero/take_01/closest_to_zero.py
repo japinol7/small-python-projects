@@ -10,6 +10,6 @@ def get_number_closest_to_zero(nums: Iterable[int]) -> int:
         return 0
 
     closest_positive = min((x for x in nums if x >= 0), default=MAX_INT_VALUE)
-    closest_negative = -min((-x for x in nums if x < 0), default=MAX_INT_VALUE)
+    closest_negative = max((x for x in nums if x < 0), default=-MAX_INT_VALUE)
 
     return closest_positive if closest_positive <= -closest_negative else closest_negative

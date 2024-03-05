@@ -13,6 +13,6 @@ def get_number_closest_to_zero(nums: Iterable[int]) -> int:
         raise TypeError(f"Input_vals must be an iterable instead of: {type(nums)}.")
 
     closest_positive = min(filter(lambda x: x >= 0, nums), default=MAX_INT_VALUE)
-    closest_negative = -min((-x for x in nums if x < 0), default=MAX_INT_VALUE)
+    closest_negative = max(filter(lambda x: x < 0, nums), default=-MAX_INT_VALUE)
 
     return closest_positive if closest_positive <= -closest_negative else closest_negative
