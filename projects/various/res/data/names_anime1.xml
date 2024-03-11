@@ -1,0 +1,490 @@
+<animes>
+  <anime>
+    <id date="2024-03-11">1</id>
+    <name>Cologne</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">2</id>
+    <name>Shinji Ikari</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">3</id>
+    <name>Rei Ayanami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">4</id>
+    <name>Ranma</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">5</id>
+    <name>Serenity</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">6</id>
+    <name>Monokuma</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">7</id>
+    <name>Ashitaka</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">8</id>
+    <name>Mononoke</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">9</id>
+    <name>Makoto Naegi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">10</id>
+    <name>Lain Iwakura</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">11</id>
+    <name>Gildarts Clive</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">12</id>
+    <name>Diana Cavendish</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">13</id>
+    <name>Asuka Soryu</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">14</id>
+    <name>Nain</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">15</id>
+    <name>Kyoko Kirigiri</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">16</id>
+    <name>Chihiro Fujisaki</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">17</id>
+    <name>Hajime Hinata</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">18</id>
+    <name>Haruko Haruhara</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">19</id>
+    <name>Faye Valentine</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">20</id>
+    <name>Toko Fukaba</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">21</id>
+    <name>Chiaki Nanami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">22</id>
+    <name>Ukyo Kuonji</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">23</id>
+    <name>Sakura Ogami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">24</id>
+    <name>Suigintou</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">25</id>
+    <name>Akane</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">26</id>
+    <name>Byakuya Togami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">27</id>
+    <name>Gundham Tanaka</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">28</id>
+    <name>Totoro</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">29</id>
+    <name>Vegeta</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">30</id>
+    <name>Arsene Lupin III</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">31</id>
+    <name>Motoko Kusanagi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">32</id>
+    <name>Shotaro Kaneda</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">33</id>
+    <name>Sailor Moon</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">34</id>
+    <name>Son Goku</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">35</id>
+    <name>Pikachu</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">36</id>
+    <name>Nekomaru Nidai</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">37</id>
+    <name>Himura Kenshin</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">38</id>
+    <name>Spike Spiegel</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">39</id>
+    <name>Astro Boy</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">40</id>
+    <name>Tetsuo Shima</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">41</id>
+    <name>Bulma</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">42</id>
+    <name>Kaito (North)</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">43</id>
+    <name>Alter Ego</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">44</id>
+    <name>Usami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">45</id>
+    <name>Nagito Komaeda</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">46</id>
+    <name>Muten-Roshi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">47</id>
+    <name>Happosai</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">48</id>
+    <name>Pan</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">49</id>
+    <name>Yusuke Urameshi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">50</id>
+    <name>Light Yagami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">51</id>
+    <name>Whis</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">52</id>
+    <name>Natsu Dragneel</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">53</id>
+    <name>Krillin</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">54</id>
+    <name>Kaworu Nagisa</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">55</id>
+    <name>Misato Katsuragi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">56</id>
+    <name>Ritsuko Akagi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">57</id>
+    <name>Naoko Akagi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">58</id>
+    <name>Gendo Ikar</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">59</id>
+    <name>Tien Shin Han</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">60</id>
+    <name>Son Gohan</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">61</id>
+    <name>Hiyoko Saionji</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">62</id>
+    <name>Trunks</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">63</id>
+    <name>Android 18</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">64</id>
+    <name>Gonta Gokuhara</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">65</id>
+    <name>Himiko Yumeno</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">66</id>
+    <name>K1-B0</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">67</id>
+    <name>Kaede Akamatsu</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">68</id>
+    <name>Menja-Tallarines</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">69</id>
+    <name>Beerus</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">70</id>
+    <name>Cor Petit</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">71</id>
+    <name>Friezer</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">72</id>
+    <name>Cell</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">73</id>
+    <name>Oolong</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">74</id>
+    <name>Puar</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">75</id>
+    <name>Chi-Chi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">76</id>
+    <name>Yajirobai</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">77</id>
+    <name>Mr. Popo</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">78</id>
+    <name>Kami</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">79</id>
+    <name>Android 17</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">80</id>
+    <name>Mr. Satan</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">81</id>
+    <name>Videl</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">82</id>
+    <name>Maron</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">83</id>
+    <name>Bardock</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">84</id>
+    <name>Pilaf</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">85</id>
+    <name>Mai</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">86</id>
+    <name>Shu</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">87</id>
+    <name>Shenron</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">88</id>
+    <name>Karin Mixet Murri</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">89</id>
+    <name>Maki Harukawa</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">90</id>
+    <name>Angie Yonaga</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">91</id>
+    <name>Captain Harlock</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">92</id>
+    <name>Kei Yuku</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">93</id>
+    <name>Miime</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">94</id>
+    <name>Tadashi Daiba</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">95</id>
+    <name>Emeraldas</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">96</id>
+    <name>Tochiro Oyama</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">97</id>
+    <name>Shuichi Saihara</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">98</id>
+    <name>Tenko Chabashira</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">99</id>
+    <name>Komaru Naegi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">100</id>
+    <name>Taichi Fujisaki</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">101</id>
+    <name>Jet Black</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">102</id>
+    <name>Miu Iruma</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">103</id>
+    <name>Kaito Momota</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">104</id>
+    <name>Koji Kabuto</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">105</id>
+    <name>Sayaka Yumi</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">106</id>
+    <name>Dr. Slump</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">107</id>
+    <name>Dr. Hell</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">108</id>
+    <name>Baron Ashura</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">109</id>
+    <name>Junko Enoshima</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">110</id>
+    <name>Goemon Ishikawa XIII</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">111</id>
+    <name>Fujiko Mine</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">112</id>
+    <name>Celestia Ludenberg</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">113</id>
+    <name>Aoi Asahina</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">114</id>
+    <name>Ibuki Mioda</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">115</id>
+    <name>Daisuke Jigen</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">116</id>
+    <name>Musculator</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">117</id>
+    <name>Kokichi Oma</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">118</id>
+    <name>Yasuhiro Hagakure</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">119</id>
+    <name>Kiyotaka Ishimaru</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">120</id>
+    <name>Peko Pekoyama</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">121</id>
+    <name>Fuyuhiko Kuzuryu</name>
+  </anime>
+  <anime>
+    <id date="2024-03-11">122</id>
+    <name>Akane Owari</name>
+  </anime>
+</animes>
