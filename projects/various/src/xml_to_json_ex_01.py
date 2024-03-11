@@ -5,12 +5,9 @@ import time
 
 from lxml import etree
 
-MAX_ANIME_TO_FETCH = 2
-
 ROOT_FOLDER = pathlib.Path(__file__).parent.parent
 RESOURCES_FOLDER = os.path.join(ROOT_FOLDER, 'res', 'data')
 DATASET_FILE = os.path.join(RESOURCES_FOLDER, 'names_anime1.xml')
-XSL_XML2JSON_FILE = os.path.join('utils', 'xml2json.xsl')
 
 
 def load_data():
