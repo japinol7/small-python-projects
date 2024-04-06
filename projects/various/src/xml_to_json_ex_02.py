@@ -21,14 +21,14 @@ def load_xml_data(file_name):
 
 def main():
     animes = load_xml_data(DATASET_FILE)
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     print('-' * 15)
     print(json.dumps(animes))
 
     print('-' * 15)
     print(f"Animes: {len(animes['animes'])}")
-    print(f'\nt: {time.time() - start_time:.{8}f} s')
+    print(f'\nt: {time.perf_counter() - start_time:.{8}f} s')
     print('-' * 15)
 
 

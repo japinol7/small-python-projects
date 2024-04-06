@@ -34,8 +34,7 @@ def listdict2xml(animes):
     for anime in animes:
         anime_ = etree.SubElement(root, 'anime')
         for k, v in anime.items():
-            child = etree.SubElement(anime_, k, attrib=ELEMENTS_WITH_ATTRIBUTES.get(k))
-            child.text = str(v)
+            xml_add_child(anime_, k, attrib=ELEMENTS_WITH_ATTRIBUTES.get(k), text=str(v))
     return root
 
 
@@ -44,9 +43,15 @@ def pprint_xml(element, **kwargs):
     print(xml_.decode('utf-8'), end='')
 
 
+def xml_add_child(parent, child_name, attrib=None, text=None):
+    child = etree.SubElement(parent, child_name, attrib=attrib)
+    child.text = str(text) if text else ''
+    return child
+
+
 def main():
     animes = load_data()
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     print('-' * 15)
     root = listdict2xml(animes)
@@ -54,7 +59,7 @@ def main():
 
     print('-' * 15)
     print(f"Animes: {len(animes)}")
-    print(f'\nt: {time.time() - start_time:.{8}f} s')
+    print(f'\nt: {time.perf_counter() - start_time:.{8}f} s')
     print('-' * 15)
 
 

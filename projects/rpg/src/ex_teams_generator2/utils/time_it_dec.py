@@ -11,8 +11,8 @@ def time_it(func):
     """Benchmarks a given function. It is intended to be used as a decorator."""
     @wraps(func)
     def wrapper(*args, **kwargs):
-        start = time.time()
+        start = time.perf_counter()
         res = func(*args, **kwargs)
-        log.info(f'{func.__name__} t: {time.time() - start:.8f} s')
+        log.info(f'{func.__name__} t: {time.perf_counter() - start:.8f} s')
         return res
     return wrapper

@@ -77,7 +77,7 @@ def get_wanted_columns(anime):
 def main():
     __unzip_data_file()
     data_file_name = os.path.join('..', 'res', 'data', 'anime-offline-database.json')
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     animes = []
     with open(data_file_name, encoding='utf-8') as fin:
@@ -98,7 +98,7 @@ def main():
 
     print('-' * 40)
     print(f"Animes: {len(animes)}")
-    print(f'\nt: {time.time() - start_time:.{8}f} s')
+    print(f'\nt: {time.perf_counter() - start_time:.{8}f} s')
     print('-' * 15)
 
 

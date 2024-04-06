@@ -34,7 +34,7 @@ def xml2dict(root, tag_to_find):
 
 
 def main():
-    start_time = time.time()
+    start_time = time.perf_counter()
     data = load_data()
     root = etree.fromstring(data)
     animes = xml2dict(root, tag_to_find='anime')
@@ -44,7 +44,7 @@ def main():
 
     print('-' * 15)
     print(f"Animes: {len(animes['anime'])}")
-    print(f'\nt: {time.time() - start_time:.{8}f} s')
+    print(f'\nt: {time.perf_counter() - start_time:.{8}f} s')
     print('-' * 15)
 
 
