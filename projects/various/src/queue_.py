@@ -2,9 +2,12 @@ from collections import deque
 
 
 class Queue:
-    def __init__(self, name=''):
-        self._container = deque()
+    def __init__(self, iterable=(), maxlen=None, name=''):
+        self._container = deque(iterable=iterable, maxlen=maxlen)
         self.name = name
+
+    def __iter__(self):
+        return iter(self._container)
 
     @property
     def is_empty(self):

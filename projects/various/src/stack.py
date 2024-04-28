@@ -2,10 +2,13 @@ from collections import deque
 
 
 class Stack:
-    def __init__(self, name='', num=0):
-        self._container = deque()
+    def __init__(self, iterable=(), maxlen=None, name='', num=0):
+        self._container = deque(iterable=iterable, maxlen=maxlen)
         self.name = name
         self.num = num
+
+    def __iter__(self):
+        return iter(self._container)
 
     @property
     def is_empty(self):

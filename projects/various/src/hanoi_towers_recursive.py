@@ -28,9 +28,9 @@ class HanoiTowers:
         self._setup()
 
     def _setup(self):
-        self.tower_start = Stack('tower_start')
-        self.tower_tmp = Stack('tower_tmp')
-        self.tower_end = Stack('tower_end')
+        self.tower_start = Stack(name='tower_start')
+        self.tower_tmp = Stack(name='tower_tmp')
+        self.tower_end = Stack(name='tower_end')
 
         for disc in range(self.n_discs, 0, -1):
             self.tower_start.push(disc)
