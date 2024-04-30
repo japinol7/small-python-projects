@@ -34,7 +34,7 @@ def listdict2xml(animes):
     for anime in animes:
         anime_ = etree.SubElement(root, 'anime')
         for k, v in anime.items():
-            xml_add_child(anime_, k, attrib=ELEMENTS_WITH_ATTRIBUTES.get(k), text=str(v))
+            add_child_to_xml(anime_, k, attrib=ELEMENTS_WITH_ATTRIBUTES.get(k), text=str(v))
     return root
 
 
@@ -43,7 +43,7 @@ def pprint_xml(element, **kwargs):
     print(xml_.decode('utf-8'), end='')
 
 
-def xml_add_child(parent, child_name, attrib=None, text=None):
+def add_child_to_xml(parent, child_name, attrib=None, text=None):
     child = etree.SubElement(parent, child_name, attrib=attrib)
     child.text = str(text) if text else ''
     return child
