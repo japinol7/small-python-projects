@@ -46,10 +46,10 @@ def parse_listdict2xml(input_vals, root_name: str, element_name: str, elements_w
         elements_with_attribs = {}
 
     root = etree.Element(root_name)
-    for anime in input_vals:
-        anime_ = etree.SubElement(root, element_name)
-        for k, v in anime.items():
-            add_child_to_xml_obj(anime_, k, attrib=elements_with_attribs.get(k), text=str(v))
+    for item in input_vals:
+        element = etree.SubElement(root, element_name)
+        for k, v in item.items():
+            add_child_to_xml_obj(element, k, attrib=elements_with_attribs.get(k), text=str(v))
     return root
 
 
