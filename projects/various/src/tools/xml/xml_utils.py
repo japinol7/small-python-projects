@@ -13,7 +13,8 @@ def add_child_to_xml_obj(parent, child_name, attrib=None, text=None):
     return child
 
 
-def parse_listdict2xml(input_vals, root_name: str, element_name: str, elements_with_attribs: dict = None):
+def parse_listdict2xml(input_vals, root_name: str, element_name: str,
+                       elements_with_attribs: dict = None):
     """Parses a list of dictionaries and returns a xml object.
     The root_name is the name of the root element you want to get.
     The element_name is the name of the elements you want to add to the root.
@@ -49,7 +50,8 @@ def parse_listdict2xml(input_vals, root_name: str, element_name: str, elements_w
     for item in input_vals:
         element = etree.SubElement(root, element_name)
         for k, v in item.items():
-            add_child_to_xml_obj(element, k, attrib=elements_with_attribs.get(k), text=str(v))
+            add_child_to_xml_obj(
+                element, k, attrib=elements_with_attribs.get(k), text=str(v))
     return root
 
 
