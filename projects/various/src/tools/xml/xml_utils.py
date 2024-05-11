@@ -7,7 +7,7 @@ log = logging.getLogger(__name__)
 
 
 def add_child_to_xml_obj(parent, child_name, attrib=None, text=None):
-    """Adds a child element to a xml element object."""
+    """Adds a child element to an xml element object."""
     child = etree.SubElement(parent, child_name, attrib=attrib)
     child.text = str(text) if text else ''
     return child
@@ -15,7 +15,7 @@ def add_child_to_xml_obj(parent, child_name, attrib=None, text=None):
 
 def parse_listdict2xml(input_vals, root_name: str, element_name: str,
                        elements_with_attribs: dict = None):
-    """Parses a list of dictionaries and returns a xml object.
+    """Parses a list of dictionaries and returns an xml object.
     The root_name is the name of the root element you want to get.
     The element_name is the name of the elements you want to add to the root.
     You can pass a dictionary with attributes for each element to be added
@@ -56,7 +56,7 @@ def parse_listdict2xml(input_vals, root_name: str, element_name: str,
 
 
 def parse_xml2dict(xml_input) -> dict:
-    """Parses a xml str or buffer and returns a dictionary."""
+    """Parses an xml str or buffer and returns a dictionary."""
     try:
         return xmltodict.parse(xml_input, process_namespaces=False)
     except Exception as e:
@@ -64,7 +64,7 @@ def parse_xml2dict(xml_input) -> dict:
 
 
 def parse_xml_obj_to_dict_filtered_by_tag(root, tag_to_find) -> dict:
-    """Parses a xml etree object, filters it by a tag and returns a dictionary."""
+    """Parses an xml etree object, filters it by a tag and returns a dictionary."""
     children = root.findall(tag_to_find)
 
     def get_tags(children_):
