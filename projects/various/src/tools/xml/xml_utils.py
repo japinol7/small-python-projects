@@ -18,7 +18,7 @@ def parse_listdict2xml(input_vals, root_name: str, element_name: str, elements_w
     The root_name is the name of the root element you want to get.
     The element_name is the name of the elements you want to add to the root.
     You can pass a dictionary with attributes for each element to be added
-    as attribute to the element.
+    as an attribute to the element.
     Example of usage:
         from datetime import datetime
         elements_with_attribs = {
@@ -30,7 +30,21 @@ def parse_listdict2xml(input_vals, root_name: str, element_name: str, elements_w
         ]
         root = parse_listdict2xml(input_vals, 'npcs', 'npc', elements_with_attribs)
         print(pformat_xml(root))
+    Example of output:
+        <npcs>
+            <npc>
+                <id date="2024-05-11">2</id>
+                <name>Shinji Ikari</name>
+            </npc>
+            <npc>
+                <id date="2024-05-11">3</id>
+                <name>Rei Ayanami</name>
+            </npc>
+        </npcs>
     """
+    if elements_with_attribs is None:
+        elements_with_attribs = {}
+
     root = etree.Element(root_name)
     for anime in input_vals:
         anime_ = etree.SubElement(root, element_name)
