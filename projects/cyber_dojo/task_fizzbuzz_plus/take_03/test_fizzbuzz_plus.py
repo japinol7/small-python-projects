@@ -13,16 +13,25 @@ from fizzbuzz_plus import fizzbuzz, fizzbuzz_range, to_str
     (10, 'Buzz'),
     (13, 'Fizz'),
     (15, 'FizzBuzz'),
+    (31, 'Fizz'),
     (52, 'Buzz'),
     ])
 def test_fizzbuzz(val, expected):
     assert fizzbuzz(val) == expected
 
 
+def test_fizzbuzz_range_until_fifteen():
+    result = list(fizzbuzz_range(15))
+    expected = ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz',
+                'Buzz', '11', 'Fizz', 'Fizz', '14', 'FizzBuzz']
+    assert result == expected
+
+
 @pytest.mark.parametrize('val, expected', [
     (1, '1'),
     (2, '1\n2'),
-    (15, "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\nFizz\n14\nFizzBuzz"),
+    (18, "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\nFizz\n14\n"
+         "FizzBuzz\n16\n17\nFizz"),
     ])
 def test_fizzbuzz_range(val, expected):
     assert to_str(fizzbuzz_range(val)) == expected

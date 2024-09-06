@@ -1,18 +1,18 @@
 from collections.abc import Iterable
 
 
-def fizzbuzz(num: int) -> str:
+def fizzbuzz(n: int) -> str:
     res = ''
-    if num % 3 == 0 or '3' in str(num):
+    if n % 3 == 0 or '3' in str(n):
         res += 'Fizz'
-    if num % 5 == 0 or '5' in str(num):
+    if n % 5 == 0 or '5' in str(n):
         res += 'Buzz'
-    return res or str(num)
+    return res or str(n)
 
 
-def fizzbuzz_range(num: int) -> Iterable:
-    return (fizzbuzz(x) for x in range(1, num + 1))
+def fizzbuzz_range(n: int) -> Iterable:
+    return (fizzbuzz(i) for i in range(1, n + 1))
 
 
 def to_str(iterable: Iterable) -> str:
-    return '\n'.join((str(x) for x in iterable))
+    return '\n'.join(iterable)
