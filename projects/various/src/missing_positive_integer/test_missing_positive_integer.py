@@ -14,5 +14,5 @@ from missing_positive_integer import MAX_N, missing_positive_integer
     (list(range(-50, 800_001)), 800_001),
     (range(-50, 80_000), 80_000),
     ])
-def test_fizzbuzz(val, expected):
+def test_missing_positive_integer(val, expected):
     assert missing_positive_integer(val) == expected
