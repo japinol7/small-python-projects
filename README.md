@@ -2,7 +2,7 @@
 
 	Small programs in Python to practice some language features.
 
-	version: 1.0.3
+	version: 1.0.4
 	author: Joan A. Pinol
 	author_nickname: japinol
 	author_gitHub: japinol7
