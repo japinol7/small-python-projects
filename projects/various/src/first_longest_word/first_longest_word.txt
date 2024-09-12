@@ -1,0 +1,15 @@
+First Longest Word
+-------------------
+
+Write a program that returns the first longest word in a string.
+
+Requirements:
+* Ignore punctuation.
+* Words can contain letters and numbers.
+
+
+Test examples:
+   ""                       -> ""
+   "&!="                    -> ""
+   "Have a nice time!"      -> "Have"
+   "Have a&!! nice weekend" -> "weekend"
