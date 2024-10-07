@@ -1,0 +1,28 @@
+Check Matching Brackets
+-----------------------
+
+Write a program that returns True if the brackets of the
+input text are correctly matched and each one is accounted for.
+Otherwise, return False.
+
+
+Test examples:
+   "Hi"                        -> True
+   "(hello)(buddy))"           -> False
+   "(h(ello)) b(uddy)"         -> True
+   "(hello)) (world) (b(uddy)" -> False
+
+
+
+-----------------------
+Optional:
+* Consider also other kinds of brackets: (, {, [.
+
+Optional test examples:
+   "Hi"                        -> True
+    "[h(ello)] b(uddy)"        -> True
+    "[h(ello)] b{uddy}"        -> True
+    "[hello]{budd(y)}"         -> True
+    "[hello]{budd(y})"         -> False
+    "[hello](buddy))"          -> False
+    "[hello]{budd)y(}"         -> False
