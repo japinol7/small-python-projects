@@ -9,7 +9,9 @@ Requirements:
 
 
 Test examples:
-   ""                       -> ""
-   "&!="                    -> ""
-   "Have a nice time!"      -> "Have"
-   "Have a&!! nice weekend" -> "weekend"
+   ""                        -> ""
+   "&!="                     -> ""
+   "Have a nice time!"       -> "Have"
+   "Have a&!! nice weekend"  -> "weekend"
+   "Are you self-aware?"     -> "self-aware"
+   "I really like AnomGirl91 -> "AnomGirl91"
