@@ -11,7 +11,8 @@ from first_longest_word import get_first_longest_word
     ("Have a&!! nice weekend", 'weekend'),
     ("Are you self-aware?", 'self-aware'),
     ("I really like AnomGirl91", 'AnomGirl91'),
-    ("when beauty is the price, what mortal fears dying?", 'beauty'),
+    ("when beauty is the price, "
+     "what mortal fears dying?", 'beauty'),
     ("Upon a darkened night\n"
      "the flame of love was burning in my breast\n"
      "And by a lantern bright\n"
@@ -40,15 +41,17 @@ from first_longest_word import get_first_longest_word
      "No clever words you can't defend\n"
      "They lead to never more.", 'whispering'),
     ("If you go when the snowflakes storm,\n"
-     "when the rivers freeze and summer ends.", 'snowflakes'),
+     "when the rivers freeze "
+     "and summer ends.", 'snowflakes'),
     ("Beloved, gaze in thine own heart\n"
-    "The holy tree is growing there;\n"
-    "From joy the holy branches start,\n"
-    "And all the trembling flowers they bear.\n"
-    "Remembering all that shaken hair\n"
-    "And how the winged sandals dart,\n"
-    "Thine eyes grow full of tender care:\n"
-    "Beloved, gaze in thine own heart.\n", 'Remembering'),
+     "The holy tree is growing there;\n"
+     "From joy the holy branches start,\n"
+     "And all the trembling flowers they bear.\n"
+     "Remembering all that shaken hair\n"
+     "And how the winged sandals dart,\n"
+     "Thine eyes grow full of tender care:\n"
+     "Beloved, gaze in thine "
+     "own heart.\n", 'Remembering'),
     ("If I can stop one heart from breaking,\n"
      "I shall not live in vain;\n"
      "If I can ease one life the aching,\n"
@@ -57,18 +60,20 @@ from first_longest_word import get_first_longest_word
      "Unto his nest again,\n"
      "I shall not live in vain.", 'breaking'),
     ("She walks in beauty, like the night\n"
-    "Of cloudless climes and starry skies;\n"
-    "And all that’s best of dark and bright\n"
-    "Meet in her aspect and her eyes;\n"
-    "Thus mellowed to that tender light\n"
-    "Which heaven to gaudy day denies.\n\n"
-    "One shade the more, one ray the less,\n"
-    "Had half impaired the nameless grace\n"
-    "Which waves in every raven tress,\n"
-    "Or softly lightens o’er her face;\n"
-    "Where thoughts serenely sweet express,\n"
-    "How pure, how dear their dwelling-place.", 'dwelling-place'),
-    ("As I was approaching Ovsyannikovo, I looked at the lovely sunset. "
+     "Of cloudless climes and starry skies;\n"
+     "And all that’s best of dark and bright\n"
+     "Meet in her aspect and her eyes;\n"
+     "Thus mellowed to that tender light\n"
+     "Which heaven to gaudy day denies.\n\n"
+     "One shade the more, one ray the less,\n"
+     "Had half impaired the nameless grace\n"
+     "Which waves in every raven tress,\n"
+     "Or softly lightens o’er her face;\n"
+     "Where thoughts serenely sweet express,\n"
+     "How pure, how dear "
+     "their dwelling-place.", 'dwelling-place'),
+    ("As I was approaching Ovsyannikovo, "
+     "I looked at the lovely sunset. "
      "A shaft of light in the piled-up clouds, and there, "
      "like a red irregular coal, the sun. "
      "All this above the forest, the rye. Joyful. "
@@ -77,12 +82,14 @@ from first_longest_word import get_first_longest_word
      "eternal world, but one of the eternal worlds, "
      "which is good, joyful, and which we not only can, "
      "but must make finer and more joyful for those living with us, "
-     "and for those who will live in it after us.", 'Ovsyannikovo'),
+     "and for those who will live in it "
+     "after us.", 'Ovsyannikovo'),
     ("To love is not to look at one another, "
      "but to look together in the same direction.", 'direction'),
     ("We have to keep the excitement like we did as children, "
      "but not their way; because theirs is the fruit of the ignorance, "
-     "whereas the grown-up ones is the result of the wisdom.", 'excitement'),
+     "whereas the grown-up ones is the result "
+     "of the wisdom.", 'excitement'),
     ("The essential quality of the human being is his freedom. "
      "The human being, by means of his intelligence, "
      "make himself aware of reality and he take charge of it. "
@@ -100,13 +107,13 @@ from first_longest_word import get_first_longest_word
      "Not what you have, "
      "but what you do with what you have.", 'embodiment'),
     ("Baby it's a cold hard world out there\n"
-    "Broken hearted people everywhere\n"
-    "Takin' whatever love they get\n"
-    "I don't wanna wind up like that, so\n\n"
-    "Baby throw your arms around my neck\n"
-    "Lay your pretty head against my chest\n"
-    "Listen to one heartbeat then the next\n"
-    "'Cause baby I don't wanna lose you yet", 'everywhere'),
+     "Broken hearted people everywhere\n"
+     "Takin' whatever love they get\n"
+     "I don't wanna wind up like that, so\n\n"
+     "Baby throw your arms around my neck\n"
+     "Lay your pretty head against my chest\n"
+     "Listen to one heartbeat then the next\n"
+     "'Cause baby I don't wanna lose you yet", 'everywhere'),
     ("A need to transmit knowledge and skills, "
      "a desire to acquire them, "
      "are constants of the human condition. "
@@ -116,7 +123,8 @@ from first_longest_word import get_first_longest_word
      "dreams beyond one's own; "
      "to induce in others a love for that which one loves; "
      "to make of one's inward present their future: "
-     "this is a threefold adventure like no other.", 'privileged'),
+     "this is a threefold adventure "
+     "like no other.", 'privileged'),
     ("...Four good things had happened to her, in fact, "
      "since she came to Misselthwaite Manor. "
      "She had felt as if she had understood a robin "
@@ -146,15 +154,32 @@ from first_longest_word import get_first_longest_word
      "May I ask whether these pleasing attentions "
      "proceed from the impulse of the moment, "
      "or are the result of previous study?", 'ironically'),
-    ("Good times come and they go,\n" 
+    ("She did not know it, but there with unborn futures "
+     "reeled out of existence, rebellion flamed "
+     "into coming centuries, "
+     "people and underpeople died in strange causes, "
+     "mothers changed the names of unborn lords "
+     "and star-ships whispered back from places "
+     "which men had not even imagined before. "
+     "Space3, which had always been there, waiting "
+     "for men’s notice, would come the sooner—because of her, "
+     "because of the door, because of her next few steps, "
+     "what she would say and the child she would meet. "
+     "(The ballad-writers told the whole story later on, "
+     "but they told it backwards, from their own knowledge "
+     "of D’joan and what Elaine had done to set the worlds afire. "
+     "The simple truth is the fact that a lonely woman "
+     "went through a mysterious door. That is all. "
+     "Everything else happened later.)", 'ballad-writers'),
+    ("Good times come and they go,\n"
      "even a good man'll break\n"
-     "He'll let his troubles bury him whole\n" 
+     "He'll let his troubles bury him whole\n"
      "even though he knows what's at stake\n"
-     "So I'm taking no chances, carrying over\n" 
+     "So I'm taking no chances, carrying over\n"
      "while I'm still good in His grace\n"
-     "I'm no fool, mama, I know the difference\n" 
+     "I'm no fool, mama, I know the difference\n"
      "between tempting and choosing my fate\n\n"
-     "'cause Lord, I'm goin' uptown\n" 
+     "'cause Lord, I'm goin' uptown\n"
      "to the Harlem River to drown\n"
      "Dirty water is gonna cover me over\n"
      "and I'm not gonna make a sound", 'difference'),
@@ -168,16 +193,17 @@ from first_longest_word import get_first_longest_word
      " and I\'ll show them it really will work in our play.''\n"
      "... Linus:\n"
      " ''I never thought it was such a bad little tree. "
-     "It's not bad at all, really. Maybe it just needs a little love.''\n"
+     "It's not bad at all, really. "
+     "Maybe it just needs a little love.''\n"
      "... Narrator: ''\n"
      "He looked at his little tree that no one had wanted, "
      "and he could hardly believe his eyes. "
      "His friends' efforts had transformed it "
      "into something truly special.", 'commercialism'),
     ("I wish I was in Carrighfergus,\n"
-    "Only for nights in Bellygrant.\n"
-    "I would swim over the deepest oceans,\n"
-    "Only for nights in Bellygrant.\n", 'Carrighfergus'),
+     "Only for nights in Bellygrant.\n"
+     "I would swim over the deepest oceans,\n"
+     "Only for nights in Bellygrant.\n", 'Carrighfergus'),
     ])
 def test_get_first_longest_word(text, expected):
     assert get_first_longest_word(text) == expected
