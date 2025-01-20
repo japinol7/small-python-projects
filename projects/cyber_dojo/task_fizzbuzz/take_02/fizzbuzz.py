@@ -1,4 +1,7 @@
-def fizzbuzz(num):
+from collections.abc import Iterable, Generator
+
+
+def fizzbuzz(num: int) -> str:
     res = ''
     if num % 3 == 0:
         res += 'Fizz'
@@ -7,9 +10,9 @@ def fizzbuzz(num):
     return res or str(num)
 
 
-def fizzbuzz_range(num):
+def fizzbuzz_range(num: int) -> Generator:
     return (fizzbuzz(x) for x in range(1, num + 1))
 
 
-def to_str(iterable):
+def to_str(iterable: Iterable) -> str:
     return '\n'.join((str(x) for x in iterable))
