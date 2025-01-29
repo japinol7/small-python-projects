@@ -20,15 +20,13 @@ class NaiveDict:
         return self.values_arr[idx][j]
 
     def __iter__(self):
-        return iter([x for items in self.key_arr for x in items])
+        return (x for items in self.key_arr for x in items if len(items) > 0)
 
-    def __str__(self):
-        return '\n'.join(
-            [str(x) for items in self.key_arr for x in items]
-        )
+    def keys(self):
+        return (x for items in self.key_arr for x in items if len(items) > 0)
 
     def values(self):
-        return iter([x for items in self.values_arr for x in items])
+        return (x for items in self.values_arr for x in items if len(items) > 0)
 
     def all_buckets(self):
         return (item for item in self.key_arr)
@@ -40,15 +38,21 @@ def _main():
     dict_1['Hilary Hahn'] = 'violin'
     dict_1['Wynton Marsalis'] = 'trumpet'
 
-    print("\nAll buckets:")
+    print("All buckets:")
     for k in dict_1.all_buckets():
         print(k)
 
     print(f"\n{dict_1['Hilary Hahn']=}")
 
-    print(f"\nItems:\n{dict_1}")
+    print("\nKeys:")
+    for k in dict_1:
+        print(k)
 
-    print("\nItems:")
+    print(f"\nKeys using keys():\n{list(dict_1.keys())}")
+
+    print(f"\nValues using values():\n{list(dict_1.values())}")
+
+    print("\nKeys and their values:")
     for k, v in zip(dict_1, dict_1.values()):
         print(f"{k}: {v}")
 
