@@ -7,8 +7,9 @@ from stack import Stack
 MIN_DISCS = 1
 MAX_DISCS = 24
 
-HanoiTowers_Move = namedtuple('hanoi_towers_move',
-                              ['move_n', 'disc_n', 'tower_from', 'tower_to'])
+HanoiTowers_Move = namedtuple(
+    'hanoi_towers_move',
+    ['move_n', 'disc_n', 'tower_from', 'tower_to'])
 
 
 class HanoiTowersException(Exception):
@@ -30,8 +31,9 @@ class HanoiTowers:
         self.total_moves = int(pow(2, self.n_discs) - 1)
 
         if not (MIN_DISCS <= n_discs <= MAX_DISCS):
-            raise HanoiTowersException(f"User Error. Invalid number of discs: "
-                                       f"must be between {MIN_DISCS} and {MAX_DISCS} .")
+            raise HanoiTowersException(
+                f"User Error. Invalid number of discs: "
+                f"must be between {MIN_DISCS} and {MAX_DISCS} .")
 
         self._setup()
 

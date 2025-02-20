@@ -24,7 +24,8 @@ def calc_intersection_of_strs_of_ordered_ints(lists_of_nums):
 if __name__ == '__main__':
     def check_test_some_cases():
         failed = 0
-        TestCaseMapping = namedtuple('test_case_mapping', ['input_val', 'expected'])
+        TestCaseMapping = namedtuple(
+            'test_case_mapping', ['input_val', 'expected'])
         test_cases = {
             1: TestCaseMapping(
                 ['2, 4, 11, 14, 30', '2, 4, 8, 11, 15, 21'], '2, 4, 11'),

@@ -22,8 +22,9 @@ class HanoiTowers:
         self.move = 1
 
         if not (MIN_DISCS <= n_discs <= MAX_DISCS):
-            raise HanoiTowersException(f"User Error. Invalid number of discs: "
-                                       f"must be between {MIN_DISCS} and {MAX_DISCS} .")
+            raise HanoiTowersException(
+                f"User Error. Invalid number of discs: "
+                f"must be between {MIN_DISCS} and {MAX_DISCS} .")
 
         self._setup()
 
@@ -43,7 +44,8 @@ class HanoiTowers:
 
     def move_disc_between_towers(self, start, end, tmp, disc):
         if disc == 1:
-            self.to_log_moves and log.info(f"{self.move:2}. Move disc {start.peek()} from {start.name} to {end.name}")
+            self.to_log_moves and log.info(
+                f"{self.move:2}. Move disc {start.peek()} from {start.name} to {end.name}")
             self.move += 1
             end.push(start.pop())
             return
@@ -53,7 +55,8 @@ class HanoiTowers:
         self.move_disc_between_towers(tmp, end, start, disc - 1)
 
     def move_discs_to_end_tower(self):
-        self.move_disc_between_towers(self.tower_start, self.tower_end, self.tower_tmp, self.n_discs)
+        self.move_disc_between_towers(
+            self.tower_start, self.tower_end, self.tower_tmp, self.n_discs)
 
 
 def main():
