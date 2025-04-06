@@ -65,7 +65,7 @@ class XmlRpcClient:
             'read', ids, fields,
             )
 
-    def search(self, model_obj_name, domain, order, limit=DEFAULT_LIMIT):
+    def search(self, model_obj_name, domain, order=None, limit=DEFAULT_LIMIT):
         """Gets the ids of the document object that match the specified domain."""
         return self.common.execute_kw(
             self.server.dbname, self.uid, self.server.password,
@@ -86,7 +86,7 @@ class XmlRpcClient:
             )
 
     def search_read(
-            self, model_obj_name, domain, fields, order, limit=DEFAULT_LIMIT):
+            self, model_obj_name, domain, fields, order=None, limit=DEFAULT_LIMIT):
         """Combines the search and read operations in one call.
         Returns a list of dictionaries with the required fields for each object
         that matches the specified domain.

@@ -1,7 +1,8 @@
 """Example odoo_client_ex_config."""
-__author__ = 'Joan A. Pinol  (japinol)'
 
-
+# Warning: This configuration is for demonstration purposes only.
+# DO NOT store secrets in this file.
+# Instead, use a secrets management service or environment variables.
 TEST_SERVER_ACCESS_CONFIG = {
     'host': 'localhost',
     'dbname': 'odoo',
