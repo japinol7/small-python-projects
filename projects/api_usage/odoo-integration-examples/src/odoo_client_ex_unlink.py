@@ -12,7 +12,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     odoo.client.unlink(
-        "account.move",
+        'account.move',
         ids=[29],
         )
 

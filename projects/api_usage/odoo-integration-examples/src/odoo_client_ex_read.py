@@ -12,13 +12,13 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     out_invoices_vals = odoo.client.read(
-        "account.move",
+        'account.move',
         ids=[2, 1],
         fields=['name', 'state'],
         )
 
-    for invs_vals in out_invoices_vals:
-        print(f"{invs_vals["name"]}, state: {invs_vals["state"]}")
+    for inv_vals in out_invoices_vals:
+        print(f"{inv_vals['name']}, state: {inv_vals['state']}")
 
 
 if __name__ == '__main__':

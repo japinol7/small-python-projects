@@ -13,7 +13,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     out_invoices_vals = odoo.client.search_read(
-        "account.move",
+        'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),
             ('state', 'not in', ('draft', 'cancel')),
@@ -23,8 +23,8 @@ def main():
         limit=5,
         )
 
-    for invs_vals in out_invoices_vals:
-        print(f"{invs_vals["name"]}, state: {invs_vals["state"]}")
+    for inv_vals in out_invoices_vals:
+        print(f"{inv_vals['name']}, state: {inv_vals['state']}")
 
 
 if __name__ == '__main__':

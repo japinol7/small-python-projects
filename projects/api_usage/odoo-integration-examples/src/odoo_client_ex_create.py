@@ -12,7 +12,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     odoo.client.create(
-        "account.move",
+        'account.move',
         values={
             'partner_id': 27,
             'move_type': 'out_invoice',

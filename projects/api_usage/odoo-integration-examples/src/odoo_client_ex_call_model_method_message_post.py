@@ -12,7 +12,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     odoo.client.call_kw_on_instances(
-        "account.move",
+        'account.move',
         method='message_post',
         ids=[1],
         values={

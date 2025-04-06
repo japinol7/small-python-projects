@@ -12,7 +12,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     odoo.client.write(
-        "account.move",
+        'account.move',
         ids=[1, 2],
         values={
             'narration': 'TEST',

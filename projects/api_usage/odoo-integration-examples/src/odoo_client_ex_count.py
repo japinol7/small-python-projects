@@ -12,7 +12,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     count_out_invoices = odoo.client.search_count(
-        "account.move",
+        'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),
             ('state', 'not in', ('draft', 'cancel')),

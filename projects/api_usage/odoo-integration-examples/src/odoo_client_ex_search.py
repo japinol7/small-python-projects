@@ -13,7 +13,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     out_invoices_ids = odoo.client.search(
-        "account.move",
+        'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),
             ('state', 'not in', ('draft', 'cancel')),

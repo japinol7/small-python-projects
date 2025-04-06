@@ -13,7 +13,7 @@ def main():
     odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
 
     invoice_types = odoo.client.call(
-        "account.move",
+        'account.move',
         method='get_invoice_types',
         values={
             'include_receipts': True,
