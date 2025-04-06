@@ -4,6 +4,7 @@ import json
 import random
 import urllib.request
 
+from .config import PORTS_TO_ACTIVATE_SSL
 from .exceptions import UserError
 from ..tools.logger.logger import log
 
@@ -15,6 +16,7 @@ class JsonRpcConnection:
         self.server = server
         self._url_root = None
         self.uid = None
+        self.ssl = True if server.port in PORTS_TO_ACTIVATE_SSL else False
         self._connect()
 
     def call(self, service, method, *args):
@@ -62,7 +64,11 @@ class JsonRpcConnection:
         log.info(f'Connecting to {self.server.host} ({self.server.dbname}) '
                  f'as {self.server.username}')
 
-        self._url_root = "http://%s:%s/jsonrpc" % (self.server.host, self.server.port)
+        if self.ssl:
+            self._url_root = "https://%s:%s/jsonrpc/" % (self.server.host, self.server.port)
+        else:
+            self._url_root = "http://%s:%s/jsonrpc/" % (self.server.host, self.server.port)
+
         self.uid = self.call(
             'common', 'login',
             self.server.dbname, self.server.username, self.server.password)
