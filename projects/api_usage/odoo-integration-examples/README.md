@@ -52,4 +52,4 @@ to use xml-rpc instead of json-rpc.
   * odoo_client_ex_search_read_invs_and_their_lines
   * odoo_client_ex_unlink
   * odoo_client_ex_write
-  
+  * odoo_client_ex_write_addon_state_to_upgrade
