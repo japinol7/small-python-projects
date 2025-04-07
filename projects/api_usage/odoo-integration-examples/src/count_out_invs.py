@@ -1,17 +1,17 @@
-"""Example odoo_client_ex_count."""
+"""Example count_out_invs."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from odoo_client_ex_config import TEST_SERVER_ACCESS_CONFIG
-from odoo_using_jsonrpc.odoo.odoo_client import OdooClient
+from config import TEST_SERVER_ACCESS_CONFIG
+from odoo_jsonrpc.odoo.odoo_client import OdooClient
 
 
 def main():
     """Example of usage for the odoo connection that uses jsonrpc or xmlrpc.
     Prints the Number of posted out invoices.
     """
-    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
+    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG).client
 
-    count_out_invoices = odoo.client.search_count(
+    count_out_invoices = odoo.search_count(
         'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),

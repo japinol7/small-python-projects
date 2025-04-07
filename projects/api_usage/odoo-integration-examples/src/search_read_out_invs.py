@@ -1,8 +1,8 @@
-"""Example odoo_client_ex_search_read."""
+"""Example search_read_out_invs."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from odoo_client_ex_config import TEST_SERVER_ACCESS_CONFIG
-from odoo_using_jsonrpc.odoo.odoo_client import OdooClient
+from config import TEST_SERVER_ACCESS_CONFIG
+from odoo_jsonrpc.odoo.odoo_client import OdooClient
 
 
 def main():
@@ -10,9 +10,9 @@ def main():
     Prints the names of the five most recent out invoices created
     that are not canceled and have been validated.
     """
-    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
+    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG).client
 
-    out_invoices_vals = odoo.client.search_read(
+    out_invoices_vals = odoo.search_read(
         'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),

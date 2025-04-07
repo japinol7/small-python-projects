@@ -1,10 +1,10 @@
-"""Example odoo_client_ex_search_read_invs_and_their_lines."""
+"""Example search_read_out_invs_and_their_lines."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
 from itertools import groupby
 
-from odoo_client_ex_config import TEST_SERVER_ACCESS_CONFIG
-from odoo_using_jsonrpc.odoo.odoo_client import OdooClient
+from config import TEST_SERVER_ACCESS_CONFIG
+from odoo_jsonrpc.odoo.odoo_client import OdooClient
 
 MAX_INVOICES_TO_FETCH = 5
 MAX_INVOICE_LINES_TO_FETCH = 400
@@ -12,7 +12,7 @@ MAX_INVOICE_LINES_TO_FETCH = 400
 
 def get_grouped(dataset, key_group):
     """Gets the dataset grouped by a key.
-    The data param must be a sequence of dicts.
+    The dataset param must be a sequence of dicts.
     Returns a groupby object grouped by key_group and
     a list of dictionaries with the dataset rows.
     """
@@ -22,29 +22,31 @@ def get_grouped(dataset, key_group):
     return groupby(sorted(dataset, key=key_func), key_func)
 
 
-def get_out_invoices_vals(odoo_cli):
-    return odoo_cli.client.search_read(
+def get_out_invoices_vals(odoo):
+    return odoo.search_read(
         'account.move',
         domain=[[
             ('move_type', '=', 'out_invoice'),
             ('state', 'not in', ('draft', 'cancel')),
         ]],
-        fields=['name', 'state', 'invoice_date', 'currency_id',
-                'amount_untaxed', 'amount_residual',
-                'invoice_line_ids'],
+        fields=['name', 'state', 'invoice_date',
+                'currency_id', 'amount_untaxed',
+                'amount_total', 'invoice_line_ids',
+                ],
         order='id desc',
         limit=MAX_INVOICES_TO_FETCH,
         )
 
 
-def get_invoice_lines_vals(odoo_cli, line_ids):
-    res = odoo_cli.client.search_read(
+def get_invoice_lines_vals(odoo, line_ids):
+    res = odoo.search_read(
         'account.move.line',
         domain=[[
             ('id', 'in', line_ids),
             ]],
         fields=[
-            'name', 'move_id', 'quantity', 'price_unit', 'price_subtotal'
+            'name', 'move_id', 'quantity', 'price_unit',
+            'price_subtotal',
             ],
         order='id desc',
         limit=MAX_INVOICE_LINES_TO_FETCH,
@@ -58,7 +60,7 @@ def print_invoices(out_invoices_vals, invoice_lines_vals):
               f"Invoice date: {inv_vals['invoice_date']}, "
               f"Currency: {inv_vals['currency_id'][1]}, "
               f"Untaxed amount: {inv_vals['amount_untaxed']:<,}, "
-              f"Amount due: {inv_vals['amount_residual']:<,}")
+              f"Amount total: {inv_vals['amount_total']:<,}")
         if not invoice_lines_vals.get(inv_vals['id']):
             print("\t No lines\n")
             continue
@@ -76,7 +78,7 @@ def main():
     Prints invoice info and their lines for the five most recent out
     invoices created that are not canceled and have been validated.
     """
-    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
+    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG).client
 
     # Fetch invoices
     out_invoices_vals = get_out_invoices_vals(odoo)

@@ -1,8 +1,8 @@
-"""Example odoo_client_ex_call_model_method."""
+"""Example call_model_method_get_invoice_types."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from odoo_client_ex_config import TEST_SERVER_ACCESS_CONFIG
-from odoo_using_jsonrpc.odoo.odoo_client import OdooClient
+from config import TEST_SERVER_ACCESS_CONFIG
+from odoo_jsonrpc.odoo.odoo_client import OdooClient
 
 
 def main():
@@ -10,9 +10,9 @@ def main():
     Calls a given method on the account move model to get all the
     invoice types, including receipts.
     """
-    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
+    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG).client
 
-    invoice_types = odoo.client.call(
+    invoice_types = odoo.call(
         'account.move',
         method='get_invoice_types',
         values={

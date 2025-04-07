@@ -1,13 +1,13 @@
-"""Example odoo_client_ex_write_addon_state_to_upgrade."""
+"""Example write_addon_state_to_upgrade."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from odoo_client_ex_config import TEST_SERVER_ACCESS_CONFIG
-from odoo_using_jsonrpc.odoo.tools.logger.logger import log
-from odoo_using_jsonrpc.odoo.odoo_client import OdooClient
+from config import TEST_SERVER_ACCESS_CONFIG
+from odoo_jsonrpc.odoo.tools.logger.logger import log
+from odoo_jsonrpc.odoo.odoo_client import OdooClient
 
 
-def fetch_addon_id(odoo_cli, addon_name):
-    addon_ids = odoo_cli.client.search(
+def fetch_addon_id(odoo, addon_name):
+    addon_ids = odoo.search(
         'ir.module.module',
         domain=[[
             ('name', '=', addon_name),
@@ -23,8 +23,8 @@ def fetch_addon_id(odoo_cli, addon_name):
     return addon_ids[0]
 
 
-def set_addon_state_to_upgrade(odoo_cli, addon_id):
-    odoo_cli.client.write(
+def set_addon_state_to_upgrade(odoo, addon_id):
+    odoo.write(
         'ir.module.module',
         ids=[addon_id],
         values={
@@ -37,7 +37,7 @@ def main():
     Changes the state of one addon so will be upgraded once the server
     restarts.
     """
-    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG)
+    odoo = OdooClient(**TEST_SERVER_ACCESS_CONFIG).client
 
     addon_name = 'jap_sale'
     addon_id = fetch_addon_id(odoo, addon_name)

@@ -1,7 +1,9 @@
 __author__ = 'Joan A. Pinol  (japinol)'
 
+import getpass
+
 from collections import namedtuple
-from .jsonrpc_jap import JsonRpcClient, JsonRpcConnection
+from .simple_xmlrpc import XmlRpcClient, XmlRpcConnection
 
 ServerConfig = namedtuple("ServerConfig", "host dbname username password port")
 
@@ -14,10 +16,13 @@ class OdooClient:
         self.client = self._get_client()
 
     def _get_client(self):
-        return JsonRpcClient(self._get_connection())
+        return XmlRpcClient(self._get_connection())
 
     def _get_connection(self):
-        return JsonRpcConnection(self.server_data)
+        return XmlRpcConnection(self.server_data)
 
     def _get_server_data(self, host, dbname, username, password, port):
+        if password is None:
+            password = getpass.getpass("Password/API Key token: ")
+
         return ServerConfig(host, dbname, username, password, port)
