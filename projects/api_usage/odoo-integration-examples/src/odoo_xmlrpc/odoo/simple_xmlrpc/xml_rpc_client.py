@@ -74,8 +74,7 @@ class XmlRpcClient:
             {'order': order, 'limit': limit},
             )
 
-    def search_count(
-            self, model_obj_name, domain):
+    def search_count( self, model_obj_name, domain):
         """Returns the number of ids for the document object that match the
         specified domain.
         """
