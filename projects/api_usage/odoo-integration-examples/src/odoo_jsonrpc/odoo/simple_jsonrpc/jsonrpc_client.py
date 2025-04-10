@@ -13,7 +13,7 @@ class JsonRpcClient:
 
     def get_server_version(self):
         """Gets the server version."""
-        return self._connection.call( 'common', 'version')['server_version']
+        return self._connection.call('common', 'version')['server_version']
 
     def call(self, model_obj_name, method, values):
         """Calls a given method on a given model object name
@@ -71,7 +71,7 @@ class JsonRpcClient:
             {'order': order, 'limit': limit},
             )
 
-    def search_count( self, model_obj_name, domain):
+    def search_count(self, model_obj_name, domain):
         """Returns the number of ids for the document object that match the
         specified domain.
         """
