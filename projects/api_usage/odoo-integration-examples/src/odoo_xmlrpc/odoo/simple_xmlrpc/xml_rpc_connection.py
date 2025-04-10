@@ -13,6 +13,7 @@ class XmlRpcConnection:
     def __init__(self, server):
         self.server = server
         self.common = None
+        self.models = None
         self.uid = None
         self.ssl = True if server.port in PORTS_TO_ACTIVATE_SSL else False
         self._connect()
@@ -22,9 +23,9 @@ class XmlRpcConnection:
                  f'as {self.server.username}')
 
         if self.ssl:
-            root = 'https://%s:%d/xmlrpc/' % (self.server.host, self.server.port)
+            root = 'https://%s:%d/xmlrpc/2/' % (self.server.host, self.server.port)
         else:
-            root = 'http://%s:%d/xmlrpc/' % (self.server.host, self.server.port)
+            root = 'http://%s:%d/xmlrpc/2/' % (self.server.host, self.server.port)
 
         self.uid = (xmlrpclib.ServerProxy(root + 'common').login(
             self.server.dbname, self.server.username, self.server.password)
@@ -33,4 +34,6 @@ class XmlRpcConnection:
         if not self.uid:
             raise UserError("Wrong username or password!")
 
-        self.common = xmlrpclib.ServerProxy(root + 'object', allow_none=True)
+        # Set endpoints
+        self.common = xmlrpclib.ServerProxy(root + 'common', allow_none=True)
+        self.models = xmlrpclib.ServerProxy(root + 'object', allow_none=True)

@@ -10,7 +10,7 @@ ServerConfig = namedtuple("ServerConfig", "host dbname username password port")
 
 class OdooClient:
     def __init__(self, host, dbname, username, password, port):
-        self.server_data = self._get_server_data(
+        self._server_data = self._get_server_data(
             host, dbname, username, password, port
             )
         self.client = self._get_client()
@@ -19,7 +19,7 @@ class OdooClient:
         return XmlRpcClient(self._get_connection())
 
     def _get_connection(self):
-        return XmlRpcConnection(self.server_data)
+        return XmlRpcConnection(self._server_data)
 
     def _get_server_data(self, host, dbname, username, password, port):
         if password is None:

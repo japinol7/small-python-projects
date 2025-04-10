@@ -23,9 +23,9 @@ def fetch_ribbon_parameters(odoo):
     return odoo.search_read(
         'ir.config_parameter',
         domain=[[
-            ('key', 'in', (
-                'ribbon.name', 'ribbon.color', 'ribbon.background.color'
-                )),
+            ('key', 'in',
+             ('ribbon.name', 'ribbon.color', 'ribbon.background.color')
+             ),
             ]],
         fields=['key', 'value'],
         limit=5,

@@ -11,9 +11,9 @@ def fetch_addon_id(odoo, addon_name):
         'ir.module.module',
         domain=[[
             ('name', '=', addon_name),
-            ('state', 'not in', (
-                'uninstalled', 'to install', 'uninstallable',
-                )),
+            ('state', 'not in',
+                ('uninstalled', 'to install', 'uninstallable')
+             ),
             ]],
         limit=1,
         )

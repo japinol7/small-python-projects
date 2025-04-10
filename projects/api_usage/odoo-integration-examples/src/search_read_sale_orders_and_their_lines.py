@@ -27,7 +27,7 @@ def get_sales_vals(odoo):
         'sale.order',
         domain=[[
             ('state', 'not in', ('draft', 'cancel')),
-        ]],
+            ]],
         fields=['name', 'state', 'date_order', 'currency_id',
                 'amount_untaxed', 'amount_total',
                 'order_line',

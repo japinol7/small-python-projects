@@ -28,7 +28,7 @@ def get_out_invoices_vals(odoo):
         domain=[[
             ('move_type', '=', 'out_invoice'),
             ('state', 'not in', ('draft', 'cancel')),
-        ]],
+            ]],
         fields=['name', 'state', 'invoice_date',
                 'currency_id', 'amount_untaxed',
                 'amount_total', 'invoice_line_ids',
