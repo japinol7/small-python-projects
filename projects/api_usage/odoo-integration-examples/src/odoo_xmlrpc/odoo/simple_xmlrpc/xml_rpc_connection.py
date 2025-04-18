@@ -22,6 +22,10 @@ class XmlRpcConnection:
         log.info(f'Connecting to {self.server.host} ({self.server.dbname}) '
                  f'as {self.server.username}')
 
+        if self.server.proxy_url:
+            log.warning(
+                "Proxy configuration ignored. Feature not implemented for xml-rpc.")
+
         if self.ssl:
             root = 'https://%s:%d/xmlrpc/2/' % (self.server.host, self.server.port)
         else:

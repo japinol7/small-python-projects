@@ -9,4 +9,5 @@ TEST_SERVER_ACCESS_CONFIG = {
     'username': 'admin',
     'password': 'odoo',
     'port': 8069,
+    'proxy_url': None,
     }

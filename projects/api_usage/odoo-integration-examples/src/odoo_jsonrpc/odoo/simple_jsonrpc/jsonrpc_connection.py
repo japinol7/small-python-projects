@@ -17,6 +17,7 @@ class JsonRpcConnection:
         self._url_root = None
         self.uid = None
         self.ssl = True if server.port in PORTS_TO_ACTIVATE_SSL else False
+        self._is_proxy_set = False
         self._connect()
 
     def call(self, service, method, *args):
@@ -60,9 +61,22 @@ class JsonRpcConnection:
 
         return reply['result']
 
+    def _set_proxy(self):
+        log.debug(f"Setting proxy to: {self.server.proxy_url}")
+        proxy_support = urllib.request.ProxyHandler(
+            {'http': '%s' % self.server.proxy_url,
+             'https': '%s' % self.server.proxy_url,
+             })
+        opener = urllib.request.build_opener(proxy_support)
+        urllib.request.install_opener(opener)
+        self._is_proxy_set = True
+
     def _connect(self):
         log.info(f'Connecting to {self.server.host} ({self.server.dbname}) '
                  f'as {self.server.username}')
+
+        if not self._is_proxy_set and self.server.proxy_url:
+            self._set_proxy()
 
         if self.ssl:
             self._url_root = "https://%s:%s/jsonrpc/" % (self.server.host, self.server.port)
