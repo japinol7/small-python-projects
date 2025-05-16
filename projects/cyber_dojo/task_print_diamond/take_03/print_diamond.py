@@ -48,7 +48,7 @@ class PrintDiamond:
         for i in range(1, rows_half_n):
             ch = chr(i + ord('A'))
             rows_first_half += [
-                f"{ch}{' ' * spcs}{ch}".center(cols_n, SEP)
+                f"{ch}{SEP * spcs}{ch}".center(cols_n, SEP)
                 ]
             spcs += 2
         rows += rows_first_half

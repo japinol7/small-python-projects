@@ -20,5 +20,5 @@ def _convert_roman_numeral_to_number(roman_numeral):
     return num
 
 
-def reverse_roman(number):
-    return _convert_roman_numeral_to_number(number)
+def reverse_roman(roman_numeral):
+    return _convert_roman_numeral_to_number(roman_numeral)
