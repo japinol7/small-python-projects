@@ -43,8 +43,6 @@ Given      a          txt        file   of     many      lines,     where    fie
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
 column     are        separated  by     at     least     one        space.
-Further,   allow      for        each   word   in        a          column   to      be      either left
-justified, right      justified, or     center justified within     its      column.
 
 
 - Center column-aligned
@@ -52,8 +50,6 @@ justified, right      justified, or     center justified within     its      col
    are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
   column      are     separated    by     at     least      one      space.
- Further,    allow       for      each   word     in         a       column    to      be    either left
-justified,   right    justified,   or   center justified   within     its    column.
 
 
 - Right column-aligned
@@ -61,5 +57,3 @@ justified,   right    justified,   or   center justified   within     its    col
        are delineated         by      a single  'dollar' character,    write       a program
       that     aligns       each column     of    fields         by ensuring    that   words     in each
     column        are  separated     by     at     least        one   space.
-  Further,      allow        for   each   word        in          a   column      to      be either left
-justified,      right justified,     or center justified     within      its column.

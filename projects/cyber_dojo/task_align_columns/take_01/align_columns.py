@@ -20,6 +20,8 @@ class AlignColumns:
 
         res = []
         for line in parts:
-            res += [' '.join(f'{word:{alignment.value}{width_}}' for width_, word in zip(widths, line))]
+            res += [' '.join(f'{word:{alignment.value}{width_}}'
+                             for width_, word in zip(widths, line)
+                             )]
 
-        return ''.join(res)
+        return '\n'.join(res)

@@ -10,19 +10,19 @@ column$are$separated$by$at$least$one$space."""
 
 EXPECTED_ALIGN_VALS = {
     ColumnAlignment.LEFT:
-        "Given  a          text      file   of     many     lines,     where    fields within  a  line"
-        "are    delineated by        a      single 'dollar' character, write    a      program"
-        "that   aligns     each      column of     fields   by         ensuring that   words   in each"
+        "Given  a          text      file   of     many     lines,     where    fields within  a  line\n"
+        "are    delineated by        a      single 'dollar' character, write    a      program\n"
+        "that   aligns     each      column of     fields   by         ensuring that   words   in each\n"
         "column are        separated by     at     least    one        space.  ",
     ColumnAlignment.RIGHT:
-        " Given          a      text   file     of     many     lines,    where fields  within  a line"
-        "   are delineated        by      a single 'dollar' character,    write      a program"
-        "  that     aligns      each column     of   fields         by ensuring   that   words in each"
+        " Given          a      text   file     of     many     lines,    where fields  within  a line\n"
+        "   are delineated        by      a single 'dollar' character,    write      a program\n"
+        "  that     aligns      each column     of   fields         by ensuring   that   words in each\n"
         "column        are separated     by     at    least        one   space.",
     ColumnAlignment.CENTER:
-        "Given      a        text     file    of     many     lines,    where   fields within  a  line"
-        " are   delineated    by       a    single 'dollar' character,  write     a    program"
-        " that    aligns     each    column   of    fields      by     ensuring  that   words  in each"
+        "Given      a        text     file    of     many     lines,    where   fields within  a  line\n"
+        " are   delineated    by       a    single 'dollar' character,  write     a    program\n"
+        " that    aligns     each    column   of    fields      by     ensuring  that   words  in each\n"
         "column    are     separated   by     at    least      one      space. ",
     }
 
