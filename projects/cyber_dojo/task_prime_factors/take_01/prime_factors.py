@@ -7,7 +7,8 @@ class PrimeFactors:
     @staticmethod
     def generate_factors(num):
         if num < 0:
-            raise PrimeFactorsException("User error. Given number cannot be a negative number.")
+            raise PrimeFactorsException(
+                "User error. Given number cannot be a negative number.")
 
         return PrimeFactors._prime_factors(num)
 

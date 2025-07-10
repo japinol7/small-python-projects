@@ -3,9 +3,7 @@ class Fizzbuzz:
     def fizzbuzz(number):
         res = 'Fizz' if number % 3 == 0 else ''
         res += 'Buzz' if number % 5 == 0 else ''
-        if not res:
-            res = number
-        return res
+        return res or number
 
     @classmethod
     def fizzbuzz_range(cls, max_number):

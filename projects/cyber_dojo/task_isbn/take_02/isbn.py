@@ -6,7 +6,7 @@ def _validate_isbn_13(isbn_digits, isbn_dc):
     isbn_dc = int(isbn_dc)
     # Multiply each digit alternately by 1 or 3 and sum these products together
     check_digit = sum((
-            x * 3 if i % 2 == 0 else x for i, x in enumerate(isbn_digits, start=1)
+        x * 3 if i % 2 == 0 else x for i, x in enumerate(isbn_digits, start=1)
         ))
     check_digit %= 10
     check_digit = (10 - check_digit) % 10
@@ -26,7 +26,7 @@ def _validate_isbn_10(isbn_digits, isbn_dc):
 
     # Multiply each digit by its position number and sum these products together
     check_digit = sum((
-            x * i for i, x in enumerate(isbn_digits, start=1)
+        x * i for i, x in enumerate(isbn_digits, start=1)
         ))
     check_digit %= 11
     if check_digit == 10:
