@@ -1,0 +1,28 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "odoo-integration-examples"
+version = "0.0.3"
+source = { virtual = "." }
+dependencies = [
+    { name = "odoo-jsonrpc" },
+    { name = "odoo-xmlrpc" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "odoo-jsonrpc", git = "https://github.com/japinol7/odoo-jsonrpc.git?rev=v0.0.2" },
+    { name = "odoo-xmlrpc", git = "https://github.com/japinol7/odoo-xmlrpc.git?rev=v0.0.2" },
+]
+
+[[package]]
+name = "odoo-jsonrpc"
+version = "0.0.2"
+source = { git = "https://github.com/japinol7/odoo-jsonrpc.git?rev=v0.0.2#89bf37d0dbd75866f7621329509debf786b87ce1" }
+
+[[package]]
+name = "odoo-xmlrpc"
+version = "0.0.2"
+source = { git = "https://github.com/japinol7/odoo-xmlrpc.git?rev=v0.0.2#eeae8a4985810c2b83b973756db1e7fb4501bf0c" }

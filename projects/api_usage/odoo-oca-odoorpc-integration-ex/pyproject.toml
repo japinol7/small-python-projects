@@ -1,0 +1,9 @@
+[project]
+name = "odoo-oca-odoorpc-integration-ex-0"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "odoorpc>=0.10.1,<2",
+]

@@ -1,0 +1,17 @@
+[project]
+name = "odoo-xmlrpc"
+authors = [{name = "Joan A. Pinol  (japinol)"}]
+version = "0.0.2"
+classifiers = [
+    "License :: MIT License",
+]
+requires-python=">=3.13"
+dependencies = [
+]
+
+[project.optional-dependencies]
+test = [
+]
+
+[project.urls]
+Home = "https://github.com/japinol7/odoo-xmlrpc"

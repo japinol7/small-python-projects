@@ -1,0 +1,14 @@
+[project]
+name = "odoo-integration-examples"
+version = "0.0.3"
+description = "odoo-integration-examples"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "odoo-jsonrpc",
+    "odoo-xmlrpc",
+]
+
+[tool.uv.sources]
+odoo-jsonrpc = { git = "https://github.com/japinol7/odoo-jsonrpc.git", rev = "v0.0.2" }
+odoo-xmlrpc = { git = "https://github.com/japinol7/odoo-xmlrpc.git", rev = "v0.0.2" }

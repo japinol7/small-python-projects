@@ -16,5 +16,8 @@ def add_stdout_handler(logger_format=LOGGER_FORMAT):
     stdout_handler.setLevel(LOGGER_LEVEL)
     stdout_handler.setFormatter(
         logging.Formatter(fmt=logger_format, datefmt=LOGGER_DATE_FORMAT)
-    )
+        )
     log.addHandler(stdout_handler)
+
+
+add_stdout_handler()

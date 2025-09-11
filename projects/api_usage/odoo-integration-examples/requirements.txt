@@ -1,0 +1,2 @@
+git+https://github.com/japinol7/odoo-jsonrpc.git@v0.0.2
+git+https://github.com/japinol7/odoo-xmlrpc.git@v0.0.2

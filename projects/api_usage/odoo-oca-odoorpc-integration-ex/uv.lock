@@ -1,0 +1,23 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "odoo-oca-odoorpc-integration-ex-0"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "odoorpc" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "odoorpc", specifier = ">=0.10.1,<2" }]
+
+[[package]]
+name = "odoorpc"
+version = "0.10.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cf/0a/9f907fbfefd2486bb4a3faab03f094f03b300b413004f348a3583ecc1898/OdooRPC-0.10.1.tar.gz", hash = "sha256:d0bc524c5b960781165575bad9c13d032d6f968c3c09276271045ddbbb483aa5", size = 58086, upload-time = "2023-08-16T09:13:42.346Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/20/60/8c5ea2a63151d6c1215e127909eeee3c16e792bbae92ab596dd921d6669d/OdooRPC-0.10.1-py2.py3-none-any.whl", hash = "sha256:a0900bdd5c989c414b1ef40dafccd9363f179312d9166d9486cf70c7c2f0dd44", size = 38482, upload-time = "2023-08-16T09:13:40.8Z" },
+]

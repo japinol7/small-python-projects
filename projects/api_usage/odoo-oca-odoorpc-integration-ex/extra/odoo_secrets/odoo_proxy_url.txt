@@ -1,0 +1,2 @@
+Warning: This file is only for structure demonstration purposes.
+See the following file for more info: odoo_secrets_access_token.key.
