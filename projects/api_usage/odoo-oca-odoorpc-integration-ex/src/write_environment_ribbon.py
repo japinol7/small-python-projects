@@ -3,7 +3,7 @@ __author__ = 'Joan A. Pinol  (japinol)'
 
 from pprint import pp
 
-from src.odoo.res_connection import OdooConnection
+from odoo.res_connection import OdooConnection
 from config import TEST_SERVER_ACCESS_CONFIG
 from src.odoo.tools.logger.logger import log
 

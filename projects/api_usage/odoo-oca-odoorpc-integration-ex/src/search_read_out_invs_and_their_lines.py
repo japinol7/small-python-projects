@@ -3,7 +3,7 @@ __author__ = 'Joan A. Pinol  (japinol)'
 
 from itertools import groupby
 
-from src.odoo.res_connection import OdooConnection
+from odoo.res_connection import OdooConnection
 from config import TEST_SERVER_ACCESS_CONFIG
 
 MAX_INVOICES_TO_FETCH = 5

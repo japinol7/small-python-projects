@@ -1,7 +1,7 @@
 """Example call_model_method_get_invoice_types."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from src.odoo.res_connection import OdooConnection
+from odoo.res_connection import OdooConnection
 from config import TEST_SERVER_ACCESS_CONFIG
 
 

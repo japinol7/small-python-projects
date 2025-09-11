@@ -1,7 +1,7 @@
 """Example search_read_out_invs."""
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from src.odoo.res_connection import OdooConnection
+from odoo.res_connection import OdooConnection
 from config import TEST_SERVER_ACCESS_CONFIG
 
 

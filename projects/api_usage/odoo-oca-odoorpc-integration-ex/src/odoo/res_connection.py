@@ -1,6 +1,6 @@
 import odoorpc
 
-from src.odoo.tools.logger.logger import log
+from .tools.logger.logger import log
 
 
 class OdooConnection:
