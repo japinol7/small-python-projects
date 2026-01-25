@@ -33,6 +33,12 @@ class LinkedList:
     def is_empty(self):
         return self._size < 1
 
+    def __iter__(self):
+        node = self._head
+        while node is not None:
+            yield node.data
+            node = node.next
+
     def to_list(self):
         if self.is_empty():
             return []
@@ -238,6 +244,11 @@ def main():
     print(res)
     assert linked_list.exist(105) is False
 
+    print("\n-- Check iteration: ")
+    iter_list = [i for i in linked_list]
+    print(iter_list)
+    assert iter_list == linked_list.to_list()
+
     print("\n-- Remove item 20")
     linked_list.remove(20)
     list_ = linked_list.to_list()
@@ -313,6 +324,11 @@ def main():
     assert linked_list.is_empty() is True
     assert linked_list.to_list() == []
     assert linked_list.size == 0
+
+    print("\n-- Check iteration over an empty linked list: ")
+    iter_list = [i for i in linked_list]
+    print(iter_list)
+    assert iter_list == []
 
     print(f"\n-- End of program {APP_NAME} {APP_VERSION} --\n")
 
