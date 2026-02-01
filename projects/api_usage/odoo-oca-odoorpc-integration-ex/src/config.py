@@ -12,8 +12,6 @@ ODOO_SECRETS_KEY_FOLDER_NAME = os.path.join(
     str(Path.home()), '.api_keys', 'odoo_secrets')
 ODOO_SECRETS_TOKEN_FILE_NAME = os.path.join(
     ODOO_SECRETS_KEY_FOLDER_NAME, 'odoo_secrets_access_token.key')
-ODOO_PROXY_URL_FILE_NAME = os.path.join(
-    ODOO_SECRETS_KEY_FOLDER_NAME, 'odoo_proxy_url.txt')
 
 TEST_SERVER_ACCESS_CONFIG = {
     'host': 'localhost',
@@ -22,7 +20,5 @@ TEST_SERVER_ACCESS_CONFIG = {
     'password': read_file_as_string(
         ODOO_SECRETS_TOKEN_FILE_NAME).strip() or 'odoo',
     'port': 8069,
-    'proxy_url': read_file_as_string(
-        ODOO_PROXY_URL_FILE_NAME).strip() or None,
     'timeout': 10,
     }

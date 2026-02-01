@@ -17,7 +17,7 @@ def main():
         method='get_invoice_types',
         kwargs={
                 'include_receipts': True,
-            }
+            },
         )
 
     print(invoice_types)

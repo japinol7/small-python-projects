@@ -1,0 +1,4 @@
+# These requirements only apply to the odoo_json2 package.
+requests>=2.32.5,<3
+# These requirements only apply to the odoo_json2x and odoo_json2xa packages.
+httpx>=0.28.1,<2

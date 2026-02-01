@@ -17,7 +17,7 @@ def search_installed_module_ids(odoo, module_names):
                 ],
             'order': 'name ASC',
             'limit': len(module_names),
-            }
+            },
         )
 
 

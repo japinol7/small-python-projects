@@ -39,6 +39,13 @@ class LinkedList:
             yield node.data
             node = node.next
 
+    @property
+    def iter_reversed(self):
+        node = self._tail
+        while node is not None:
+            yield node.data
+            node = node.prev
+
     def to_list(self):
         if self.is_empty():
             return []
@@ -248,6 +255,11 @@ def main():
     iter_list = [i for i in linked_list]
     print(iter_list)
     assert iter_list == linked_list.to_list()
+
+    print("\n-- Check reverse iteration: ")
+    iter_list = [i for i in linked_list.iter_reversed]
+    print(iter_list)
+    assert iter_list == list(reversed(linked_list.to_list()))
 
     print("\n-- Remove item 20")
     linked_list.remove(20)

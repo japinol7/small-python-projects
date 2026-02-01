@@ -12,7 +12,7 @@ def main():
     odoo = OdooConnection(**TEST_SERVER_ACCESS_CONFIG).odoo
 
     count_out_sales = odoo.env['sale.order'].search_count([
-        ('state', 'not in', ('draft', 'sent', 'cancel'))
+        ('state', 'not in', ('draft', 'sent', 'cancel')),
         ])
 
     print(f"Number of confirmed sales: {count_out_sales}")
