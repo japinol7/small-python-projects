@@ -62,5 +62,5 @@ class GameOfLife:
         for row in grid[:-1]:
             row.append('\n')
 
-        grid_flat = sum(grid, [])
+        grid_flat = [x for row in grid for x in row]
         return ''.join(grid_flat)
