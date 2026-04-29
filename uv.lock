@@ -86,6 +86,6 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "pytest", specifier = ">=9.0.2" },
+    { name = "pytest", specifier = ">=9.0.3" },
     { name = "pytest-mock", specifier = ">=3.15.1" },
 ]
