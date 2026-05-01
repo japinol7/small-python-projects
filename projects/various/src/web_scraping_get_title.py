@@ -1,5 +1,5 @@
 APP_NAME = 'Web Scraping - Get Title'
-APP_VERSION = '0_00_1'
+APP_VERSION = '0_01_0'
 
 import requests
 from bs4 import BeautifulSoup

@@ -1,16 +1,18 @@
 APP_NAME = 'Web Scraping - Get Images'
-APP_VERSION = '0_00_1'
+APP_VERSION = '0_01_0'
 
 import base64
-from io import BytesIO
 import os
-import tempfile
 import subprocess
+import tempfile
 import webbrowser
+from io import BytesIO
 
-from bs4 import BeautifulSoup
-from PIL import Image
 import requests
+from PIL import Image
+from bs4 import BeautifulSoup
+
+MAX_IMAGES_TO_FETCH = 3
 
 
 def _is_running_inside_kitty():
@@ -107,7 +109,7 @@ def _get_all_images():
     soup = BeautifulSoup(res.text, 'html.parser')
 
     im_buffers = []
-    for im in soup.find_all('img', attrs={'class': 'poster'}, limit=3):
+    for im in soup.find_all('img', attrs={'class': 'poster'}, limit=MAX_IMAGES_TO_FETCH):
         url_im = im['src']
         print(url_im)
         try:
