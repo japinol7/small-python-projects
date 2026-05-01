@@ -108,8 +108,9 @@ def _get_all_images():
     res = requests.get("https://www.themoviedb.org/movie")
     soup = BeautifulSoup(res.text, 'html.parser')
 
+    im_max = MAX_IMAGES_TO_FETCH
     im_buffers = []
-    for im in soup.find_all('img', attrs={'class': 'poster'}, limit=MAX_IMAGES_TO_FETCH):
+    for im in soup.find_all('img', attrs={'class': 'poster'}, limit=im_max):
         url_im = im['src']
         print(url_im)
         try:
