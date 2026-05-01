@@ -1,5 +1,5 @@
 APP_NAME = 'Web Scraping - Get Images'
-APP_VERSION = '0_00_1'
+APP_VERSION = '0_01_0'
 
 import base64
 from io import BytesIO
