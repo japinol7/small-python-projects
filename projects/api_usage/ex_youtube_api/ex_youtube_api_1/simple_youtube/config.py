@@ -8,12 +8,10 @@ YOUTUBE_API_VERSION = "v3"
 YOUTUBE_API_KEY_FOLDER = os.path.join(
     str(Path.home()),
     ".api_keys",
-    "youtube_secrets",
-    )
-YOUTUBE_API_KEY = os.path.join(
+    "youtube_secrets")
+YOUTUBE_API_KEY_FILE_NAME = os.path.join(
     YOUTUBE_API_KEY_FOLDER,
-    "youtube_secrets_api_key.key",
-    ).strip()
+    "youtube_secrets_api_key.key")
 YOUTUBE_API_POLL_INTERVAL = 5
 YOUTUBE_API_MAX_RESULTS = 75  # Recommended max: 75
 YOUTUBE_API_REQUEST_TIMEOUT = 15

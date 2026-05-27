@@ -1,6 +1,6 @@
 __author__ = 'Joan A. Pinol  (japinol)'
 
-from simple_youtube.config import YOUTUBE_API_KEY
+from simple_youtube.config import YOUTUBE_API_KEY_FILE_NAME
 from simple_youtube.youtube_client import YoutubeClient
 from tools.logger import logger
 from tools.logger.logger import log
@@ -21,7 +21,8 @@ def get_last_messages_from_live_stream(
         filter_keywords=None, filter_out_keywords=None
     ):
     with YoutubeClient(
-        api_key=utils.read_file_as_string(YOUTUBE_API_KEY),
+        api_key=utils.read_file_as_string(
+            YOUTUBE_API_KEY_FILE_NAME).strip(),
         filter_keywords=filter_keywords,
         filter_out_keywords=filter_out_keywords,
     ) as client:
