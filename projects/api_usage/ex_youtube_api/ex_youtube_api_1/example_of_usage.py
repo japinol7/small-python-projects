@@ -34,7 +34,7 @@ def get_last_messages_from_live_stream(
             log.info(
                 f"{count:4} "
                 f"{item.author[:24]:24} "
-                f"{item.message[:180]}")
+                f"{item.message[:200]}")
             count += 1
 
         log.debug("EOF")
